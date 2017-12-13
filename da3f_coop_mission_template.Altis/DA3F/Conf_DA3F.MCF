@@ -1,0 +1,12 @@
+/*
+Aroun
+Conf_DA3F.MCF
+*/
+#define true 1
+#define false 0
+class DA3F_CfgAroun {
+    class Aroun_Infos
+    {
+        DA3F_Original_Author = "[DA3F]Aroun Le BriCodeur (MCF GaminG)";
+    };
+};
