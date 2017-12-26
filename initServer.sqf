@@ -29,8 +29,7 @@ if !(_this select 0) exitWith {}; //Not server
 {
 	{
 		_mrk = format ["DA3F_Spawn_%1", _foreachindex];
-			if !(_x isEqualTo _mrk) then
-				{
+			if !(_x isEqualTo _mrk) then {
 				_x setMarkerAlpha 0;
 			};
 	} forEach allMapMarkers;
