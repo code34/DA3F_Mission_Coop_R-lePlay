@@ -4,3 +4,4 @@ Mission Template Coop-Rp :: Consiste à vivre la vie d'une base avec pour object
 
 - ts3.devarma3france.fr:12517
 - http://www.devarma3france.fr/
+- Nouveau fichier SQL bientôt disponible
