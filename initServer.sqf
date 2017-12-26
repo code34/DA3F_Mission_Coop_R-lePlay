@@ -19,25 +19,26 @@
 */
 
 
-if (!(_this select 0)) exitWith {}; //Not server
+if !(_this select 0) exitWith {}; //Not server
 [] call compile preprocessFileLineNumbers "\da3f_cprp_serverside\init.sqf";
-	[]spawn DA3F_fnc_Spawn_Mrk_Units;
-	[]call DA3F_fnc_init_Base;
 
-	[]spawn
+[]spawn DA3F_fnc_Spawn_Mrk_Units;
+[]call DA3F_fnc_init_Base;
+
+[]spawn
+{
 	{
-		{
-			_mrk = format ["DA3F_Spawn_%1", _foreachindex];
-				if !(_x isEqualTo _mrk) then
-					{
-					_x setMarkerAlpha 0;
-				};
-		} forEach allMapMarkers;
-	};
+		_mrk = format ["DA3F_Spawn_%1", _foreachindex];
+			if !(_x isEqualTo _mrk) then {
+				_x setMarkerAlpha 0;
+			};
+	} forEach allMapMarkers;
+};
 
 []spawn{
-Crate_List = ["Citerne_Terminal_1","Citerne_Terminal_2","Citerne_Terminal_3","Coffre_Terminal_1","Silo_Terminal_1","Citerne_BaseOp_1","Citerne_BaseOp_2","Coffre_BaseOp_1","Silo_BaseOp_1"];
- publicVariable "Crate_list";
- [] remoteExecCall ["DA3F_fnc_SetData",2];
+	Crate_List = ["Citerne_Terminal_1","Citerne_Terminal_2","Citerne_Terminal_3","Coffre_Terminal_1","Silo_Terminal_1","Citerne_BaseOp_1","Citerne_BaseOp_2","Coffre_BaseOp_1","Silo_BaseOp_1"];
+ 	publicVariable "Crate_list";
+ 	[] remoteExecCall ["DA3F_fnc_SetData",2];
 };
-	execVM "DA3F\Ennemy\fn_Start_Mission.sqf";
+
+execVM "DA3F\Ennemy\fn_Start_Mission.sqf";
