@@ -4,3 +4,4 @@ Mission Template Coop-Rp :: Consiste à la vivre la vie d'une base avec pour obj
 
 - ts3.devarma3france.fr:12517
 - http://www.devarma3france.fr/
+c'est de la merde ça me soul de ouf !
