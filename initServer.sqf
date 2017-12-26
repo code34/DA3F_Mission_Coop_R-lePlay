@@ -19,7 +19,7 @@
 */
 
 
-if (!(_this select 0)) exitWith {}; //Not server
+if !(_this select 0) exitWith {}; //Not server
 [] call compile preprocessFileLineNumbers "\da3f_cprp_serverside\init.sqf";
 	[]spawn DA3F_fnc_Spawn_Mrk_Units;
 	[]call DA3F_fnc_init_Base;
