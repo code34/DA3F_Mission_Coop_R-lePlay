@@ -152,16 +152,15 @@ _clearAll	= [];
 			*/
 	_fnc_pos=
 	{
-		_pos = (_this select 0);
-		_radius = (_this select 1);
-			_pos_1 	= [(_pos select 0) + ceil(random _radius),(_pos select 1) + ceil(random _radius)];
-			_pos_2 	= [(_pos select 0) - ceil(random _radius),(_pos select 1) - ceil(random _radius)];
-			_pos_3 	= [(_pos select 0) - ceil(random _radius),(_pos select 1) + ceil(random _radius)];
-			_pos_4 	= [(_pos select 0) + ceil(random _radius),(_pos select 1) - ceil(random _radius)];
-			_Allpos	= [_pos_1,_pos_2,_pos_3,_pos_4];
-			_calcul = (floor(random(count _Allpos -1)));
-			_pos	= _Allpos select _calcul;
-			_pos
+		private _pos = (_this select 0);
+		private _radius = (_this select 1);
+		private _pos_1 = [(_pos select 0) + ceil(random _radius),(_pos select 1) + ceil(random _radius)];
+		private _pos_2 = [(_pos select 0) - ceil(random _radius),(_pos select 1) - ceil(random _radius)];
+		private _pos_3 = [(_pos select 0) - ceil(random _radius),(_pos select 1) + ceil(random _radius)];
+		private _pos_4 = [(_pos select 0) + ceil(random _radius),(_pos select 1) - ceil(random _radius)];
+		private _Allpos	= [_pos_1,_pos_2,_pos_3,_pos_4];
+		_pos = selectRandom _Allpos;
+		_pos;
 	};
 
 /*
