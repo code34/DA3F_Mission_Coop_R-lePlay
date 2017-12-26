@@ -8,7 +8,7 @@
 *       Mission Template for community fr Arma 3
 *		Version 0.0.1
 *		Dev'Communautaire.
-*		Open source by Aroun Le BriCodeur (MCF GaminG) | [GNU GENERAL PUBLIC LICENSE]
+*		Open source by Aroun Le BriCodeur (MCF GaminG) | [License à venir...]
 *		merci de partager le travail fait sur la mission sur le forum de notre site:
 *		thank you for sharing the work done on the mission on the forum of our site:
 *		http://devarma3france.fr
