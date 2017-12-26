@@ -23,4 +23,4 @@ DA3F_IsInitialisation = false;
 	[]execVM "DA3F\configuration.sqf";
 };
 //[]call DA3F_fnc_init_Units;
-0=""spawn DA3F_fnc_esc_Menu;
+""spawn DA3F_fnc_esc_Menu;

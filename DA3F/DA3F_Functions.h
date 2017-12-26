@@ -24,6 +24,7 @@ class DA3F_Master
             class customInventory {};
             class Appli {}; // Menu I
             class Give {}; // Menu I
+            class GiveCash {}; // Menu I
             class Use {}; // Menu I
     };
     class DA3F_Master_Admin

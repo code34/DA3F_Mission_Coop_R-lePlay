@@ -103,7 +103,11 @@ player createDiarySubject ["Crédits","Historique"];
 					<br/>
 					Un grand MERCI aux contributeurs de la mission grâce à vous le projet évolue.
 					<br/>
-					Liste des contributeurs à venir...
+					Spécialement :
+					<br/>
+					- Dan Anderson
+					- Code34
+					- Da_St
 				"
 		]
 	];

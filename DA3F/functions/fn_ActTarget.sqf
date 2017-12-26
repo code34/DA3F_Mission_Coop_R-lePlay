@@ -40,6 +40,24 @@ switch (_type) do
         DA3F_Cash = DA3F_Cash + _val;
         [1,format ["%1<br/>vous a donné<br/>%2€", _name,_val]]call DA3F_fnc_hint;
     };
+    // Give monney (en attente de finir d'incorporer la 2ème devise)
+    case 14: {
+        _val    = _this select 1;
+        _name   = _this select 2;
+        _devise = _this select 3;
+        _ico    = "";
+        switch (_devise) do {
+            case "€": {
+                DA3F_Cash = DA3F_Cash + _val;
+                _ico = _ico + "€";
+            };
+            case "Klix": {
+                DA3F_WCash = DA3F_WCash + _val;
+                _ico = _ico + format ["<img size='0.65' image='%1' />", DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
+            };
+        };
+        [1,format ["%1<br/>vous a donné<br/>%2%3", _name,[_val]call DA3F_fnc_numberText,_ico]]call DA3F_fnc_hint;
+    };
     // Give items
     case 3:
         {
@@ -78,6 +96,7 @@ switch (_type) do
         _bool = (_this select 4);
             _unit setVariable [format ["%1",_Nvar],_args,_bool];
         };
+
         // Info mission
         case 6:
         {
