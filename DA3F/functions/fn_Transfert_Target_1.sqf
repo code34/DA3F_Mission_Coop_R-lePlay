@@ -99,13 +99,13 @@ switch (_switch) do {
             }];
                 //    DA3F_TarObj setVariable ["DA3F_StockItems",[(_contenu + _val),_max,_type],true];
             [_item,_val,"del"]call DA3F_fnc_Add_Ret_Items;
-            /*
+
             MNS_Svar_Items(_item,(_cnt-_val));
             DA3F_Items_Inv = DA3F_Items_Inv - (_itemPoids * _val);
                 if (DA3F_Items_Inv < 0) then
                     {
                         DA3F_Items_Inv = 0;
-                    };*/
+                    };
         };
         closeDialog 0;
     };
@@ -166,13 +166,14 @@ switch (_switch) do {
                 //    DA3F_TarObj setVariable ["DA3F_StockItems",[(_contenu + _val),_max,_type],true];
 
             [_item,_val,"add"]call DA3F_fnc_Add_Ret_Items;
-            /*
+/*
             MNS_Svar_Items(_item,(_cnt+_val));
             DA3F_Items_Inv = DA3F_Items_Inv + (_itemPoids * _val);
                 if (DA3F_Items_Inv < 0) then
                     {
                         DA3F_Items_Inv = 0;
-                    };*/
+                    };
+                    */
         };
         closeDialog 0;
     };

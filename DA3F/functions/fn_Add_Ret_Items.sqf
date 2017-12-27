@@ -87,7 +87,9 @@
 						_arrItems pushBack [_item,_value];
 						_MaxPoidsItems 	= _MaxPoidsItems + (_poids * _value);
 						MNS_Svar_Items(_item,_value);
-				}];
+					}];
+
+				DA3F_Items_Inv = _MaxPoidsItems;
 				player setVariable ["DA3F_InvVirt",[_arrItems,_MaxPoidsItems],false];
 				_Succes = true;
 			}];
@@ -115,7 +117,11 @@
 						},{
 						MNS_Svar_Items(_item,0);
 					}];
+					{
+						MNS_Svar_Items(_x select 0,_x select 1);
+					} forEach _arrItems;
 					}];
+					DA3F_Items_Inv = _MaxPoidsItems;
 					player setVariable ["DA3F_InvVirt",[_arrItems,_MaxPoidsItems],false];
 					_Succes = true;
 				},{
