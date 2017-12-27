@@ -66,6 +66,7 @@
 			colorBackground[] = {-1,-1,-1,1};
 			colortext[] = {-1,0.8,0.1,1};
 			sizeEx = 0.03;
+			onlbselchanged = "_this call fnc_DA3F_ShowInfoPos";
 		};
 		class DA3F_btn_TP: MCF_RscButtonMenu
 		{
@@ -117,7 +118,7 @@
 			text = "Fermeture"; //--- ToDo: Localize;
 			x = 0.613437 * safezoneW + safezoneX;
 			y = 0.412 * safezoneH + safezoneY;
-			w = 0.0129166 * safezoneW;
+			w = 0.0129186 * safezoneW;
 			h = 0.320852 * safezoneH;
 			colorBackground[] = {0.9,0.1,0.1,0.9};
 			onbuttonclick	= "closedialog 0";

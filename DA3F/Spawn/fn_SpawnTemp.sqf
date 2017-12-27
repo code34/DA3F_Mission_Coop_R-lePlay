@@ -21,5 +21,14 @@ if !(createDialog "DA3F_menu_SpTemp") exitWith {};
 				_pos = mapGridPosition _pos;
 				_ret = format ["Pos. GPS : %1 - Nom de la save : %2",_pos,_txt];
 				_add=lbAdd[1500,_ret];
+				lbSetData[1500,(lbSize 1500)-1,str[_pos,_txt]];
 			} forEach DA3F_Save_Pos;
 		}];
+fnc_DA3F_ShowInfoPos={
+	disableSerialization;
+	_data = lbData[ctrlIDC(_this select 0),(_this select 1)];
+	_arrInfo = call compile format ["%1", _data];
+	_pos = _arrInfo select 0;
+	_NamePos = _arrInfo select 1;
+	[1,format ["Nom de la save :<br/> %2<br/><br/>position GPS :<br/> %1", _pos,_NamePos]]call DA3F_fnc_hint;
+};
