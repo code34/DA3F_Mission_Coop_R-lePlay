@@ -74,7 +74,7 @@ switch (_type) do
                 [1,format ["%1<br/>vous a donné<br/>%2 %3", _name,_val,Items_Cfg(getText,_item,"displayname")]]call DA3F_fnc_hint;
             }];
         };
-    // Addaction obj for all player (No JIP (after ??? ^^))
+    // Addaction obj for all player
     case 4: {
     _PC = (_this select 1);
         _PC addAction
@@ -124,7 +124,7 @@ switch (_type) do
                             DA3F_Cash = DA3F_Cash + _gain;
                         };
 
-                        case "£": {
+                        case "Klix": {
                             DA3F_WCash = DA3F_WCash + _gain;
                         };
                         default {
@@ -133,7 +133,6 @@ switch (_type) do
                     };
                     [1,format ["Vous venez de toucher :<br/>%1%2<br/> pour votre travail",_gain,_devise]]call DA3F_fnc_hint;
                 };
-
                 case 2: {
                     _item       = _gain select 0;
                     _val        = _gain select 1;

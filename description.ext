@@ -75,18 +75,30 @@ class RscTitles {
 class CfgFunctions {
 	#include "DA3F\DA3F_Functions.h"
 };
-/*
-// A venir...
+
 class CfgSounds {
-    sounds[] = {carLock};
+    sounds[] = {carLock,uragan_1,uragan_end};
     class carLock {
         name = "carLock";
     //    sound[] = {"\DA3F\DA3F_Fone\carLock.ogg", 1.0, 1};
     //    sound[] = {"\@the_survivors_rp\addond\the_survivors_rp_base_by_da3f\data\Sound\WaitTelBip.ogg", 1.0, 1};
         titles[] = {0,""};
     };
+    class uragan_1
+    {
+        name = "uragan_1";
+        sound[] = {"\sound\uragan_1.ogg", db+10, 1};
+        titles[] = {1, ""};
+    };
+    class uragan_end
+    {
+        name = "uragan_end";
+        sound[] = {"\sound\uragan_end.ogg", db+10, 1};
+        titles[] = {1, ""};
+    };
+
 };
-*/
+
 
 class CfgDebriefing {
     class BackLobby {

@@ -109,16 +109,22 @@
 						},{
 						_poids		= Items_Cfg(getNumber,_item,"poids");
 						_MaxPoidsItems 	= _MaxPoidsItems - (_poids * _value);
+
+						if (_NrbItm > 0) then [{
 						_arrItems set [_index,[_item,_NrbItm]];
-						MNS_Svar_Items(_item,_NrbItm);
+						},{
+						MNS_Svar_Items(_item,0);
+					}];
 					}];
 					player setVariable ["DA3F_InvVirt",[_arrItems,_MaxPoidsItems],false];
 					_Succes = true;
 				},{
 					_exit_NoItems = true;
 				}];
+
 		    };
 		};
+
 		if (_exit_poids) exitWith {[1,"Vous n'avez pas assez de place."]call DA3F_fnc_hint;};
 		if (_exit_NoItems) exitWith {[1,"Vous n'avez pas cet item."]call DA3F_fnc_hint;};
 		_Succes

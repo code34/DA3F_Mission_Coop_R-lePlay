@@ -47,7 +47,7 @@ class DA3F_ShopsVeh {
 
     class Base_Terminal {
         side[] = {""};
-        conditions = "DA3F_Sp_Pilote";
+        conditions = ""; //DA3F_Sp_Pilote
         vehicles[] = 
             {
                 {"Car",

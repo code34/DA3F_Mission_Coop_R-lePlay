@@ -2,6 +2,10 @@
 [DA3F] Aroun Le BriCodeur
 Light sur logic de jeu
 _DA3F=this call DA3F_fnc_LightGL;
+
+// Pour DA_ST (Test Editeur)
+// mets ça dans un objet en ayant un fichier "fn_LightGL.sqf" en racine de la mission (à côté de mission.sqm)
+_DA3F=this execVM "fn_LightGL.sqf";
 */
 _this spawn{
 _values = 100;

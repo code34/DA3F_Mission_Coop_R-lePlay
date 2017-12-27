@@ -105,7 +105,7 @@ class controls {
 			y = 0.676 * safezoneH + safezoneY;
 			w = 0.134062 * safezoneW;
 			h = 0.022 * safezoneH;
-			class Attributes	{align="center";size=0.9;};
+			class Attributes {align = "center";};
 		};
 		class DA3F_Txt_SelectCiterne: MCF_RscStructuredText
 		{
@@ -115,7 +115,7 @@ class controls {
 			y = 0.676 * safezoneH + safezoneY;
 			w = 0.134062 * safezoneW;
 			h = 0.022 * safezoneH;
-			class Attributes	{align="center";size=0.9;};
+			class Attributes	{align="center"};
 		};
 		class DA3F_btn_valide: MCF_RscButtonMenu
 		{
@@ -126,7 +126,7 @@ class controls {
 			w = 0.0825 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0.9,0.3,0.1,1};
-			class Attributes	{align="center"};
+			class Attributes {align = "center";};
 			onbuttonclick = "_this call DA3F_fnc_refuel";
 		};
 		class DA3F_btn_close: MCF_RscButtonMenu

@@ -29,7 +29,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -40,21 +40,23 @@ class DA3F_Dyn_Mission {
         {
             "Envoyer les infos de la boîte noire", // Nom de l'action sur l'objet
             {
-                "[""Upload"",0.3] spawn DA3F_fnc_Progresse;", // code executé par l'action
+               // "_handle=[""Upload"",0.3] spawn DA3F_fnc_Progresse;waitUntil {sleep .3;scriptDone _handle};if !([""Carbu_Brute"",ceil (random 100),""add""]call DA3F_fnc_Add_Ret_Items) exitWith {DA3F_WCash = DA3F_WCash + 1500;[1,format [""Vous venez de toucher :<br/>%1<img size='0.65' image='%2' /><br/> pour votre travail"",_gain, DA3F_Cfg(getText,""DA3F_IconCustomDevise"")]]call DA3F_fnc_hint;", // code executé par l'action
+                "",
                 ""
             };
         };
-        Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
+        Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
         -1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
             {
                 {"cash",
                     {
-                        10000,
-                        15000,
-                        20000
-                    }
+                        1000,
+                        1500,
+                        2000
+                    },
+                    "€"
                 },
                 {"veh",
                     {
@@ -64,8 +66,8 @@ class DA3F_Dyn_Mission {
                 },
                 {"items",
                     {
-                        {"Carbu_Brute",2},
-                        {"Poudre_Noir",2}
+                        {"Carbu_Brute",ceil (random 20)},
+                        {"Poudre_Noir",ceil (random 20)}
                     }
                 };
             };
@@ -113,17 +115,18 @@ class DA3F_Dyn_Mission {
                 ""
             };
         };
-        Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
+        Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
         1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
             {
                 {"cash",
                     {
-                        25000,
-                        30000,
-                        35000
-                    }
+                        2500,
+                        3000,
+                        3500
+                    },
+                    "€"
                 },
                 {"veh",
                     {
@@ -133,8 +136,8 @@ class DA3F_Dyn_Mission {
                 },
                 {"items",
                     {
-                        {"Carbu_Brute",2},
-                        {"Poudre_Noir",2}
+                        {"Carbu_Brute",ceil (random 20)},
+                        {"Poudre_Noir",ceil (random 20)}
                     }
                 };
             };
@@ -190,10 +193,11 @@ class DA3F_Dyn_Mission {
             {
                 {"cash",
                     {
-                        25000,
-                        30000,
-                        35000
-                    }
+                        2500,
+                        3000,
+                        3500
+                    },
+                    "Klix"
                 },
                 {"veh",
                     {
@@ -204,8 +208,8 @@ class DA3F_Dyn_Mission {
                 },
                 {"items",
                     {
-                        {"Carbu_Brute",2},
-                        {"Poudre_Noir",2}
+                        {"Carbu_Brute",ceil (random 20)},
+                        {"Poudre_Noir",ceil (random 20)}
                     }
                 };
             };

@@ -71,12 +71,30 @@
 		{
 			idc = 2401;
 			text = "Spawn"; //--- ToDo: Localize;
-			x = 0.407187 * safezoneW + safezoneX;
+			x = 0.517187 * safezoneW + safezoneX;
 			y = 0.676 * safezoneH + safezoneY;
-			w = 0.190781 * safezoneW;
+			w = 0.085781 * safezoneW;
 			h = 0.044 * safezoneH;
 			colorBackground[] = {0.8,0.2,0.1,0.8};
 			onbuttonclick	= "_this call DA3F_fnc_SpawnTempPos";
+			class Attributes 
+				{
+					align = "center";
+					valign = "bottom";
+					sizeEx= 0.04;
+					font="EtelkaMonospacePro";
+				};
+		};
+		class DA3F_btn_Del: MCF_RscButtonMenu
+		{
+			idc = 2402;
+			text = "Supp."; //--- ToDo: Localize;
+			x = 0.407187 * safezoneW + safezoneX;
+			y = 0.676 * safezoneH + safezoneY;
+			w = 0.085781 * safezoneW;
+			h = 0.044 * safezoneH;
+			colorBackground[] = {0.8,0.2,0.1,0.8};
+			onbuttonclick	= "_this call DA3F_fnc_DelTempPos";
 			class Attributes 
 				{
 					align = "center";

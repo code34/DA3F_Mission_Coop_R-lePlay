@@ -16,9 +16,9 @@ while {true} do {
 _line_1 = (_display displayCtrl 1100);
 _line_2 = (_display displayCtrl 1101);
 _line_3 = (_display displayCtrl 1102);
-_line_1 ctrlSetStructuredText parseText format ["<a href='http://www.devarma3france.fr/' align='center' size='1' color='#3177EA'>Site Dev'Arma 3 France</a>", nil]; // Site
-_line_2 ctrlSetStructuredText parseText format ["<a href='https://www.facebook.com/groups/ArmaIsNotDead/' align='center' size='1' color='#FEFEFE'>Facebook : Arma Is Not Dead</a>", nil]; // Fb
-_line_3 ctrlSetStructuredText parseText format ["<a href='https://www.paypal.me/LeBriCodeur' align='center' size='1' color='#FF0000'>Faire un don</a>", nil]; // PayPal
+_line_1 ctrlSetStructuredText parseText format ["<a href='http://www.devarma3france.fr/' align='center' size='0.7' color='#3177EA'>Site Dev'Arma 3 France</a>", nil]; // Site
+_line_2 ctrlSetStructuredText parseText format ["<a href='https://www.facebook.com/groups/ArmaIsNotDead/' align='center' size='0.7' color='#FEFEFE'>Facebook : Arma Is Not Dead</a>", nil]; // Fb
+_line_3 ctrlSetStructuredText parseText format ["<a href='https://www.paypal.me/LeBriCodeur' align='center' size='0.7' color='#FF0000'>Faire un don</a>", nil]; // PayPal
 
 _line_1 ctrlSetTooltip "http://www.devarma3france.fr/";
 _line_1 ctrlSetTooltipColorBox [0.1,0.2,0.8,0.9];

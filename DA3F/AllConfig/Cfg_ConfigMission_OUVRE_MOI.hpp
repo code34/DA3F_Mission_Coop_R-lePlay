@@ -49,7 +49,7 @@ class DA3F_CfgMission {
         DA3F_MaxDistancePlayer  = 1500; // Distance de détection pour la supression des bots (si pas de joueur pas de bots sa sert à rien !)
         DA3F_MaxTimeDelVeh      = 30; // Temps en secondes avant le delete d'un véhicule gênant le spawn
         DA3F_FullArsenal        = 1; // 1 = Full arsenal Dispo | 0 = Pas d'arsenal
-        DA3F_IconCustomDevise   = "icons\ico_ItemsDefault.paa";
+        DA3F_IconCustomDevise   = "icons\icoKlix.paa";
     };
 
     class DA3F_Spawn_Ennemy

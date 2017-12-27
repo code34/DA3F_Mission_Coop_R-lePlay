@@ -47,6 +47,7 @@ _Base_AllSilo		= [];
 
    	_ActionMaster = compile _master;
     _PC =	call _ActionMaster;
+    if (isNil "_PC") exitWith {};
     _PC setVariable ["DA3F_ClassParent",_NameClass,true];
 	_PC addAction ["Consulter les stats de la base",
 		{

@@ -3,7 +3,7 @@
 *       Dev'Arma 3 France
 *       Mission Template
 *       [DA3F] Aroun Le BriCodeur
-*       fn_Give.sqf
+*       fn_GiveCash.sqf
 *
 */
 #include "..\..\DA3F_macros.hpp"
@@ -26,7 +26,9 @@ disableSerialization;
             };
         };
         if (_exit) exitWith {[1,"Tu ne dispose pas des fonds suffisant"]call DA3F_fnc_hint;};
-[14,_value,name player,_Deviz] remoteExecCall ["DA3F_fnc_ActTarget",_unit];
+			[14,_value,name player,_Deviz] remoteExecCall ["DA3F_fnc_ActTarget",_unit];
+
+	_ico = "";
         switch (_Deviz) do {
             case "€": {
                 DA3F_Cash = DA3F_Cash - _value;
@@ -34,7 +36,7 @@ disableSerialization;
             };
             case "Klix": {
                 DA3F_WCash = DA3F_WCash - _value;
-                _ico = _ico + format ["<img size='0.65' image='%1' />", DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
+                _ico = _ico + format ["<img size='0.65' image='%1' />",DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
             };
         };
         [1,format["Tu viens de donner <br/>%1%2<br/>à : %3",_value,_ico,name _unit]]call DA3F_fnc_hint;

@@ -102,12 +102,17 @@ player createDiarySubject ["Crédits","Historique"];
 					Merci à toute les personnes qui témoignent du soutient en vers le projet ou la DA3F en général
 					<br/>
 					Un grand MERCI aux contributeurs de la mission grâce à vous le projet évolue.
-					<br/>
+					<br/><br/>
 					Spécialement :
 					<br/>
 					- Dan Anderson
+					<br/>
 					- Code34
+					<br/>
 					- Da_St
+					<br/>
+					- William DeLaRue (icon klix)
+					<br/>
 				"
 		]
 	];

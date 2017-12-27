@@ -26,6 +26,7 @@ class DA3F_Master
             class Give {}; // Menu I
             class GiveCash {}; // Menu I
             class Use {}; // Menu I
+            class SaveUnit {}; // Menu I
     };
     class DA3F_Master_Admin
     {
@@ -131,6 +132,7 @@ class DA3F_Master
             class SpawnTempPos {};
             class Spawn_loadCamera {};
             class Spawn_ResizePix {};
+            class DelTempPos {};
     };
 
     class DA3F_functions
