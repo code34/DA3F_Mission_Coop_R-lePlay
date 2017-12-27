@@ -21,3 +21,5 @@
 #define Items_Cfg(TYPE,Class,SETTING) TYPE(missionConfigFile >> "DA3F_Cfg_Items_virt" >> Class >> SETTING)
 #define MNS_Gvar_Items(itemName) missionNamespace getVariable format ["DA3F_Item_%1",itemName]
 #define MNS_Svar_Items(itemName,val) missionNamespace setVariable [format ["DA3F_Item_%1",itemName],val]
+#define Spe_Cfg(TYPE,Class,SETTING) TYPE(missionConfigFile >> "DA3F_Cfg_Spe" >> Class >> SETTING)
+#define MNS_Gvar_Spe(var) missionNamespace getVariable format ["DA3F_Sp_%1",var]

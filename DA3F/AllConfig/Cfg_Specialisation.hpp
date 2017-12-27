@@ -26,6 +26,16 @@ class DA3F_Cfg_Spe {
         Desc                = "Vous voilà 1ère Classe ! Une longue route vous attends";                               // Description de la spécialisation
         icon                = "icons\ico_ItemsDefault.paa";     // Voir si on garde ???
     };
+    class Derogation
+    {
+        var                 = "Dero";                         // Variable de la license
+        displayname         = "Dérogation de vol";                         // Nom de la license
+        Price_Buy           = -1;                             // Prix d'achat de la license  (-1 non visible dans le menu)
+        Price_Sell          = -1;                               // Prix de vente de la license (-1 non visible dans le menu)
+        devise              = "€";                              // Devise de la spe
+        Desc                = "Vous êtes en possession d'une autorisation exceptionnelle pour voler";                               // Description de la spécialisation
+        icon                = "icons\ico_ItemsDefault.paa";     // Voir si on garde ???
+    };
 
     class General
     {
