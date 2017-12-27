@@ -6,7 +6,7 @@
 *       init.sqf
 *		/////////////////\\\\\\\\\\\\\\\\\
 *       Mission Template for community fr Arma 3
-*		Version 0.0.1
+*		Version 0.0.2
 *		Dev'Communautaire.
 *		Open source by Aroun Le BriCodeur (MCF GaminG) | [New LICENSE..]
 *		merci de partager le travail fait sur la mission sur le forum de notre site:
