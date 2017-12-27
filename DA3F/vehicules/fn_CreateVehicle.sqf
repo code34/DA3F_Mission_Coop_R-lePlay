@@ -44,6 +44,27 @@ if !(_dmg isEqualTo []) then {
         clearMagazineCargoGlobal _veh;
         clearItemCargoGlobal _veh;
         clearBackpackCargoGlobal _veh;
+
+            _veh addEventHandler ["GetIn",{
+                    _this spawn{
+                    //hint format ["%1  %2  %3 ", typeOf (_this select 0), _this select 1, _this select 2];
+                    _className  = typeOf (_this select 0);
+                    _unit       = (_this select 2);
+                    _typeVeh    = ClassVeh(_className);
+                    _exit       = false;
+
+                    if (_typeVeh isEqualTo "Air") then {
+                        if ((_this select 1) isEqualTo "driver" && !DA3F_Sp_Pilote) then {
+                            _exit       = true;
+                    //  [1,"Tu n'est pas pilote"]call DA3F_fnc_hint;
+                        };
+                    };
+                    if (_exit) exitWith {
+                        [1,format["%1<br/>Tu n'est pas pilote",name _unit]]call DA3F_fnc_hint;
+                        (driver (_this select 0)) action ["getout", (_this select 0)];
+                        };
+                    };
+                }];
 /*
         _veh addEventHandler ["Killed",{
         params

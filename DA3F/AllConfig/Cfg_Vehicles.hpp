@@ -63,20 +63,21 @@ class DA3F_ShopsVeh {
                     {"I_C_Plane_Civil_01_F",3200,200,"€",""},
                     {"C_Heli_light_01_ion_F",3200,200,"€",""},
                     {"B_Heli_Light_01_F",3200,100,"€",""},
-                    {"B_Heli_Light_01_dynamicLoadout_F",25000,100,"€","DA3F_Sp_PPro"},
-                    {"B_Heli_Transport_01_F",35000,100,"€",""},
-                    {"B_Heli_Transport_03_F",47000,100,"€",""},
-                    {"B_T_VTOL_01_infantry_F",52000,100,"€",""},
-                    {"B_T_VTOL_01_vehicle_F",52000,100,"€",""},
-                    {"B_T_VTOL_01_armed_F",75000,100,"€",""},
-                },
+                    {"B_Heli_Light_01_dynamicLoadout_F",25000,100,"€","DA3F_Sp_Pilote"},
+                    {"B_Heli_Transport_01_F",35000,100,"€","DA3F_Sp_Pilote"},
+                    {"B_Heli_Transport_03_F",47000,100,"€","DA3F_Sp_Pilote"},
+                    {"B_T_VTOL_01_infantry_F",52000,100,"€","DA3F_Sp_Pilote"},
+                    {"B_T_VTOL_01_vehicle_F",52000,100,"€","DA3F_Sp_Pilote"},
+                    {"B_T_VTOL_01_armed_F",75000,100,"€","DA3F_Sp_Pilote"},
+                }/*
+                ,
                 {"Custom",
                     {"C_Heli_light_01_ion_F",3200,200,"€",""},
                     {"B_Heli_Light_01_F",3200,100,"€",""},
                     {"I_MRAP_03_F",1500,500,"€",""},
                     {"I_G_Offroad_01_F",1400,200,"€",""},
                     {"I_Truck_02_fuel_F",25000,200,"€",""},
-                }
+                }*/
             };
         };
 
