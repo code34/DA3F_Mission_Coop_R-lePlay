@@ -174,5 +174,6 @@ class DA3F_Master
             class TargetIdentity {};
             class Progresse {};
             class Add_Ret_Items {};
+            class NoPilote {};
     };
 };

@@ -64,7 +64,7 @@ if (str _this isEqualTo "true") then [{
 	    _indexHiera = getNumber(_x >> "requiLvl");
 	    if (_indexHiera isEqualTo _hierarchie) then [{
 		    missionNamespace setVariable [format ["DA3F_Rank_%1",_varName],true];
-		    player setVariable ["DA3F_Rank",_class,true];
+		    player setVariable [format["DA3F_Rank_%1",_class],true,true];
 	    },{
 		    missionNamespace setVariable [format ["DA3F_Rank_%1",_varName],false];
 	}];
