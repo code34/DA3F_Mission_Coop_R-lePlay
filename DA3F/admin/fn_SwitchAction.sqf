@@ -9,8 +9,9 @@
 */
 #include "..\..\DA3F_macros.hpp"
 disableSerialization;
+private ["_index_Units", "_infos", "_edit", "_unit", "_index_Action", "_SwitchAction", "_choix", "_inipos"];
 _index_Units	= lbCurSel 1500;
-    if (_index_Units isEqualTo -1)exitWith {[1,"Séléctionne un joueur"]call DA3F_fnc_hint;};
+if (_index_Units isEqualTo -1)exitWith {[1,"Séléctionne un joueur"]call DA3F_fnc_hint;};
 _infos			= compile(lbData [1500,_index_Units]);
 _infos			= call _infos;
 _uid			= _infos select 0;
