@@ -8,6 +8,7 @@
 */
 	#include "..\..\DA3F_macros.hpp"
 	disableSerialization;
+	private ["_idc", "_index", "_infos", "_arrInfos", "_ClassNveh", "_plak", "_litres", "_dis", "_NameVeh", "_fuelCapa", "_Vu_du_menu", "_Ctrl_txt"];
 	_idc 		= ctrlIDC (_this select 0);
 	_index 		= (_this select 1);
 	_infos 		= compile(lbData [_idc,_index]);

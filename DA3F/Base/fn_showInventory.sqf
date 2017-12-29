@@ -9,14 +9,15 @@
 */
 disableSerialization;
 #include "..\..\DA3F_macros.hpp"
+private ["_idc", "_index", "_Data_Exped", "_arrExp", "_PoidMaxExp", "_Data_Desti", "_arrDes", "_PoidMaxDes", "_items", "_Nrb", "_nameItem", "_menu", "_add"];
 _idc		= ctrlIDC (_this select 0);
 _index		= (_this select 1);
-_Data_Exped = compile(lbData[2102,lbCurSel 2102]);
-_Data_Exped = call _Data_Exped;
+_Data_Exped 	= compile(lbData[2102,lbCurSel 2102]);
+_Data_Exped 	= call _Data_Exped;
 _arrExp 	= _Data_Exped select 0;
 _PoidMaxExp	= _Data_Exped select 1;
-_Data_Desti = compile(lbData[2103,lbCurSel 2103]);
-_Data_Desti = call _Data_Desti;
+_Data_Desti 	= compile(lbData[2103,lbCurSel 2103]);
+_Data_Desti 	= call _Data_Desti;
 _arrDes 	= _Data_Desti select 0;
 _PoidMaxDes	= _Data_Desti select 1;
 
@@ -24,7 +25,7 @@ _PoidMaxDes	= _Data_Desti select 1;
 
 switch (_idc) do {
     case 2102: {
-   		lbClear 1500;
+   	lbClear 1500;
     	{
 			_items 	= _x select 0;
 			_Nrb 	= _x select 1;
@@ -32,11 +33,11 @@ switch (_idc) do {
 			_menu 	= format ["%2 X %1",_nameItem,_Nrb];
 			_add 	= lbAdd[1500,_menu];
 			lbSetData[1500,(lbSize 1500)-1,str[_items,_Nrb]];
-		} forEach _arrExp;
+	} forEach _arrExp;
     };
 
     case 2103: {
-   		lbClear 1501;
+   	lbClear 1501;
     	{
 			_items 	= _x select 0;
 			_Nrb 	= _x select 1;
