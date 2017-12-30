@@ -25,8 +25,7 @@ if !(_this select 0) exitWith {}; //Not server
 
 []call DA3F_fnc_init_Base;
 
-[]spawn
-{
+[]spawn{
 	{
 		_mrk = format ["DA3F_Spawn_%1", _foreachindex];
 			if !(_x isEqualTo _mrk) then {
@@ -36,8 +35,6 @@ if !(_this select 0) exitWith {}; //Not server
 };
 
 []spawn{
-	Crate_List = ["Citerne_Terminal_1","Citerne_Terminal_2","Citerne_Terminal_3","Coffre_Terminal_1","Silo_Terminal_1","Citerne_BaseOp_1","Citerne_BaseOp_2","Coffre_BaseOp_1","Silo_BaseOp_1","Citerne_BaseMarine_1","Citerne_BaseMarine_2","Silo_BaseMarine_1","Coffre_BaseMarine_1"];
- 	publicVariable "Crate_list";
  	[] remoteExecCall ["DA3F_fnc_SetData",2];
 };
 

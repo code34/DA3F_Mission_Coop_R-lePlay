@@ -8,47 +8,51 @@
 *		[]call DA3F_fnc_AddActionToBase;
 *
 */
+private ["_Base_Allcoffre", "_Base_Allciterne", "_Base_AllSilo", "_NameClass", "_side", "_name_base", "_marker", "_master", "_Stock_Items", "_Stock_Carbu", "_Stock_silo", "_containers_Max", "_Max_Carbut", "_Max_Items", "_icon", "_a", "_ActionMaster", "_PC", "_classCiterne", "_classCoffre", "_classSilo", "_display", "_txt", "_cnt", "_cntC", "_cntI", "_AllCoffre", "_AllStockage_In_Base", "_BaseClass", "_box", "_info", "_BoxPoidsmax", "_CfgPoidsmax", "_add", "_type", "_Coffres", "_Citernes", "_Silos", "_searchBox", "_searchCarb", "_yolo", "_contenu", "_MaxCapa"];
 
 _Base_Allcoffre 	= [];
 _Base_Allciterne 	= [];
 _Base_AllSilo		= [];
 {
-	_NameClass		= (configName _x);
-	_side	 		= getArray	(_x >> "side");
-	_name_base 		= getText	(_x >> "displayname");
-	_marker	 		= getText	(_x >> "marker");
-	_master	 		= getText	(_x >> "Name_Obj_Stat_Base");
+	_NameClass	= (configName _x);
+	_side	 	= getArray	(_x >> "side");
+	_name_base 	= getText	(_x >> "displayname");
+	_marker	= getText	(_x >> "marker");
+	_master	= getText	(_x >> "Name_Obj_Stat_Base");
 	_Stock_Items	= getArray	(_x >> "Obj_Stock_Items");
 	_Stock_Carbu	= getArray	(_x >> "Obj_Stock_Carbu");
-	_Stock_silo		= getArray	(_x >> "Obj_Stock_Silos");
+	_Stock_silo	= getArray	(_x >> "Obj_Stock_Silos");
 	_containers_Max	= getNumber	(_x >> "containers_Max");
-	_Max_Carbut	 	= getNumber	(_x >> "Stock_Max_Carbut");
-	_Max_Items	 	= getNumber	(_x >> "Stock_Max_Items");
-	_icon	 		= getText	(_x >> "icon");
-	ArraySide		= [];
-{
-	switch (_x) do {case "west": {ArraySide pushBack west};case "GUER": {ArraySide pushBack independent};};
-} forEach _side;
+	_Max_Carbut	= getNumber	(_x >> "Stock_Max_Carbut");
+	_Max_Items	= getNumber	(_x >> "Stock_Max_Items");
+	_icon	 	= getText	(_x >> "icon");
+	ArraySide	= [];
+	{
+		switch (_x) do {
+			case "west": {ArraySide pushBack west};
+			case "GUER": {ArraySide pushBack independent};
+		};
+	} forEach _side;
 
 	for "_a" from 0 to (count _Stock_Items -1) do
-		{
+	{
 			_Base_Allcoffre pushBack ((_Stock_Items select _a)select 0)
-		};
+	};
 
 	for "_a" from 0 to (count _Stock_Carbu -1) do
-		{
+	{
 			_Base_Allciterne pushBack ((_Stock_Carbu select _a)select 0)
-		};
+	};
 
 	for "_a" from 0 to (count _Stock_silo -1) do
-		{
+	{
 			_Base_AllSilo pushBack ((_Stock_silo select _a)select 0)
-		};
+	};
 
-   	_ActionMaster = compile _master;
-    _PC =	call _ActionMaster;
-    if (isNil "_PC") exitWith {};
-    _PC setVariable ["DA3F_ClassParent",_NameClass,true];
+	_ActionMaster = compile _master;
+	_PC = call _ActionMaster;
+	if (isNil "_PC") exitWith {};
+	_PC setVariable ["DA3F_ClassParent",_NameClass,true];
 	_PC addAction ["Consulter les stats de la base",
 		{
 		#include "..\..\DA3F_macros.hpp"

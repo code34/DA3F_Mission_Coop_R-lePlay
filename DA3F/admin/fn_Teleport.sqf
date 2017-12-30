@@ -7,6 +7,7 @@
 *		Teleport unit
 *
 */
+private ["_unit", "_inipos"];
 closeDialog 0;
 _unit = _this select 0;
 if (isNil "_unit") then

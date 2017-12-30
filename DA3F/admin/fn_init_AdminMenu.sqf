@@ -8,6 +8,7 @@
 *
 */
 disableSerialization;
+private ["_display", "_unit", "_dist", "_armeEnMain", "_realNameWeap", "_menu", "_add"];
 if !(createDialog "DA3F_AdminMenu") exitWith {};
 	_display = (findDisplay 2212172);
 
