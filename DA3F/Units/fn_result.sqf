@@ -19,7 +19,7 @@ if (str _this isEqualTo "true") then [{
 	[]call DA3F_fnc_SetStats;
 
 	[] call DA3F_fnc_SpawnStartMenu;
-	[] call DA3F_fnc_statusBar;
+	[]spawn DA3F_fnc_statusBar;
 
 
 	player addEventHandler["Killed", {_this call DA3F_fnc_onPlayerKilled}];
@@ -107,7 +107,7 @@ if (str _this isEqualTo "true") then [{
 	[]call DA3F_fnc_SetStats;
 
 	[] call DA3F_fnc_SpawnStartMenu;
-	[] call DA3F_fnc_statusBar;
+	[]spawn DA3F_fnc_statusBar;
 
 {
     missionNamespace setVariable [format ["DA3F_Sp_%1",_x],true];
@@ -140,4 +140,5 @@ _invItem = (_invVirt select 0);
 	player addEventHandler ["InventoryOpened", {_this spawn DA3F_fnc_customInventory;}];
 	[]spawn DA3F_fnc_AddActionToBase;
 	[]spawn DA3F_fnc_NoCarbu_in_station;
+	execVM "DA3F\functions\DA3F_particules.sqf";
 };

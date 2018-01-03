@@ -17,7 +17,7 @@
        };
 
 class MCFStatusBar {
-	idd = -1;
+	idd = 50584;
 	onLoad = "uiNamespace setVariable ['MCFStatusBar', _this select 0]";
 	onUnload = "uiNamespace setVariable ['MCFStatusBar', objNull]";
 	onDestroy = "uiNamespace setVariable ['MCFStatusBar', objNull]";

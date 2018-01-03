@@ -3,7 +3,8 @@
 *       Dev'Arma 3 France
 *       Mission Template
 *       [DA3F] Aroun Le BriCodeur
-*       configuration.sqf
+*       fn_Use.sqf
+*		Utilisation des items Virtuel et Physique (menu i | Utiliser ou double clique)
 *
 */
 

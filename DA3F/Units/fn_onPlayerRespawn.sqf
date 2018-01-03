@@ -26,6 +26,6 @@ MCF_CountShoot = 0;
 if (player getVariable "DA3F_IsLoadActiv") then {
 	[player, [missionNamespace, "DA3F_InvUnit"]] call BIS_fnc_loadInventory;
 };
-[]call DA3F_fnc_statusBar;
+[]spawn DA3F_fnc_statusBar;
 []call DA3F_fnc_SetupAction;
 

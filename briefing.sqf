@@ -21,6 +21,9 @@ player createDiarySubject ["Crédits","Historique"];
 		]
 	];
 
+
+
+
 	player createDiaryRecord ["Clavier",
 		[
 			"Raccourcis des touches",

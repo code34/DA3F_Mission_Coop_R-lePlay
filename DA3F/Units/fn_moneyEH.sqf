@@ -55,7 +55,20 @@ if (_distance > 0) then {
 
 
 if !(isNil "_rebelPrime") then {
-	DA3F_Cash=DA3F_Cash+_rebelPrime;
+	_PrimCash = _rebelPrime select 0;
+	_devise = _rebelPrime select 1;
+	switch (_devise) do {
+	    case "€": {
+	DA3F_Cash = DA3F_Cash + _PrimCash;
+	    };
+	    case "Klix": {
+	DA3F_WCash = DA3F_WCash + _PrimCash;
+	    };
+
+	    default {
+		DA3F_Cash = DA3F_Cash + _rebelPrime;
+	    };
+	};
 };
 
 private	_Cash_2 = DA3F_Cash;
@@ -89,9 +102,21 @@ _Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Co
 	}];
 }];
 _Weapon ctrlCommit 0;
+	_PrimCash = _rebelPrime select 0;
+	_devise = _rebelPrime select 1;
+	switch (_devise) do {
+	    case "€": {
+			[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.€<br/>Units : %2</t>",DA3F_Cash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;
+	    };
+	    case "Klix": {
+			[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.<img size='0.4' image='icons\icoKlix.paa' /><br/>Units : %2</t>",DA3F_WCash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;
+	    };
 
-[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.€<br/>Units : %2</t>",DA3F_Cash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;
-_future = time + 5;
+	    default {
+			[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.€<br/>Units : %2</t>",DA3F_Cash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;
+	    };
+	};
+_future = time + 10;
 waitUntil {time >= _future};
 MCF_CountShoot = 0;
 };

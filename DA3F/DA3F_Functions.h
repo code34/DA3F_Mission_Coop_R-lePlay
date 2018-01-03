@@ -117,6 +117,23 @@ class DA3F_Master
             class Switch_Concess_Garage {};
     };
 
+    class DA3F_shopcustom
+    {
+        file = "DA3F\DA3F_ShopCustom";
+            class SC_init {};
+            class SC_Panier {};
+            class SC_showList {};
+            class SC_showItems {};
+            class SC_MajPanier {};
+            class SC_Maj_txt_Panier {};
+            class SC_ValideCmd {};
+            class SC_Livraison {};
+            class SC_ClearPanier {};
+            class SC_Switch {};
+            class SC_Count {};
+            class SC_Infos_Items {};
+    };
+    
     class DA3F_initSpawn
     {
         file = "DA3F\Spawn";
@@ -175,5 +192,6 @@ class DA3F_Master
             class Progresse {};
             class Add_Ret_Items {};
             class NoPilote {};
+            class ZoneDeRadion {};
     };
 };

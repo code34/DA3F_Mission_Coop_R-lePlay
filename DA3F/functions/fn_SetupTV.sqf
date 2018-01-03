@@ -18,7 +18,7 @@ _this addAction["<t color='#019AC5' size='1.3'>Full Arsenal<t/>",
 	["Open",true ] spawn BIS_fnc_arsenal;
 },nil,0,false,false,"","_this distance _target < 4"];
 };
-
+_this addAction ["<t color='#00F700' size='1.2' >Call Custom Shop<t/>",DA3F_fnc_SC_init,"Base_Terminal",900,false,false,"",""];
 
 _this addAction["<t color='#2A9DBE' size='1.3'>Charger mon stuff au respawn<t/>",
 {

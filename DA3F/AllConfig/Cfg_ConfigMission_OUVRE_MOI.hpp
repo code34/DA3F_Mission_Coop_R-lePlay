@@ -86,7 +86,8 @@ class DA3F_CfgMission {
             {"DA3F_SpUnitsCity_28",600}, // 
             {"DA3F_SpUnitsCity_29",600}, //  
             {"DA3F_SpUnitsCity_30",600}, //
-            {"DA3F_SpUnitsCity_31",600} // 
+            {"DA3F_SpUnitsCity_31",600}, // 
+            {"DA3F_SpUnitsCity_32",800} // 
         };
     };
 };
@@ -102,3 +103,4 @@ class DA3F_CfgMission {
 #include "Cfg_Vehicles.hpp"
 #include "Cfg_DA3FDynMission.hpp"
 #include "Cfg_Rank.hpp"
+#include "Cfg_Shop_AirDrop.hpp"

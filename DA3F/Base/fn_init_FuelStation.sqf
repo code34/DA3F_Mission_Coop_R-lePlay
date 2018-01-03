@@ -11,7 +11,7 @@ private ["_class", "_debug", "_listVeh", "_display", "_cnt", "_Stock", "_Max", "
 disableSerialization;
 if !(createDialog "Gui_station") exitWith {};
 _class		= _this select 3;
-_debug		= true;
+_debug		= false;
 if (isNil "_class" or _class isEqualTo "") then
 {
 	_class = ClassVeh(typeOf (_listVeh select 0));

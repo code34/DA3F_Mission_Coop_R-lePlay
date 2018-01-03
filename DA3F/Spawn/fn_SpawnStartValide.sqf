@@ -70,7 +70,7 @@ if !((player getVariable "DA3F_DB_Pos") isEqualTo []) then {
 DA3F_Save_Pos pushBack [(player getVariable "DA3F_DB_Pos"),format["save auto pos : %1",mapGridPosition(player getVariable "DA3F_DB_Pos")]];
 };
 sleep 5;
-[1,"Ajout de la position de la base dans le menu de sauvegarde de position temporaire.<br/>Pour un retour rapide à la base :<br/>Menu joueur (² au dessus de TAB) -> Save position -> valider -> séléctionnez la ligne 'Base de départ' -> Spawn"]call DA3F_fnc_hint;
+[1,"Ajout de la position de la base dans le menu de sauvegarde de position temporaire.<br/>Pour un retour rapide à la base :<br/>Menu inventaire 'i' -> Save position -> séléctionnez la ligne 'Base de départ' -> Spawn<br/>Cela vous téléporte instantanément à la base.<br/>Option temporaire disponible pendant le dev de la mission "]call DA3F_fnc_hint;
 sleep 30;
 	_msg = format ["Bonjour<br/><t color='#2EFE00' size='1.1'>%1<t/><br/><br/><t color='#FEFEFE' size='1'>Bienvenue sur le projet communautaire de Aroun<t/><br/><t color='#00E0FE' size='1.3'>Projet en cours de dev<t/><br/><t color='#FEFEFE' size='1'>Le serveur n'est pas sous mot de passe pour permettre aux personnes qui suivent le projet de ce connecter pour essayer et faire avancer la mission<br/>Merci de prendre en considération que la mission ne dispose pas de toutes ces fonctionnalités et de me rapporter incohérences ou bug que vous pourriez rencontrer afin d'en faire le suivit<t/><br/><br/><t color='#00E0FE' size='1.3'>%2<t/>", name player,_name_mission];
 		[1,_msg]call DA3F_fnc_hint;

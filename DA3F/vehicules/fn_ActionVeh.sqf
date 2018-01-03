@@ -8,7 +8,9 @@
 *
 */
 #include "..\..\DA3F_macros.hpp"
+
 disableSerialization;
+if (dialog) exitWith {closeDialog 0};
 if (cursorTarget isKindOf "Man") exitWith {};
 if !(createDialog "Gui_veh") exitWith {};
 	_display = (findDisplay 251217);

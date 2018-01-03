@@ -22,9 +22,10 @@ if !(_this select 0) exitWith {}; //Not server
 [] call compile preprocessFileLineNumbers "\da3f_cprp_serverside\init.sqf";
 
 []spawn DA3F_fnc_Spawn_Mrk_Units;
+[]spawn DA3F_fnc_ZoneDeRadion;
 
 []call DA3F_fnc_init_Base;
-
+/*
 []spawn{
 	{
 		_mrk = format ["DA3F_Spawn_%1", _foreachindex];
@@ -33,7 +34,7 @@ if !(_this select 0) exitWith {}; //Not server
 			};
 	} forEach allMapMarkers;
 };
-
+*/
 []spawn{
  	[] remoteExecCall ["DA3F_fnc_SetData",2];
 };

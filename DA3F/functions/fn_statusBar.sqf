@@ -9,7 +9,7 @@
 */
 
 //waitUntil {DA3F_IsInitialisation};
-[] spawn {
+
 private ["_DA3F_Adresse_TS","_DA3F_NameMission","_rscLayer","_counter"];
 disableSerialization;
 _DA3F_Adresse_TS 	= getText(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "DA3F_Adresse_TS");
@@ -29,6 +29,7 @@ _rscLayer cutRsc["MCFStatusBar","PLAIN"];
 		_DA3F_Soif = (round(DA3F_Soif));
 		_DA3F_Damg = (round((damage player)*100));
 		_counter = _counter - 1;
+		if ((uiNamespace getVariable "MCFStatusBar") isEqualTo objNull) exitWith {[]spawn DA3F_fnc_statusBar};
 		((uiNamespace getVariable "MCFStatusBar")displayCtrl 1000)ctrlSetText
     format["%9 : %1 | Fps: %2 | Argent: %3€ |  Banque: %11€  | Position: %4 | Faim : %5%7 | Soif : %6%7 | Morts total : %8",
 		    _DA3F_Adresse_TS,
@@ -44,33 +45,6 @@ _rscLayer cutRsc["MCFStatusBar","PLAIN"];
 		    [DA3F_Bank] call DA3F_fnc_numberText
     	];
 	};
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

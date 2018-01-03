@@ -24,7 +24,7 @@ private ["_master", "_result", "_varMaster", "_stocks", "_NameClass", "_sides", 
 	_marker	= getText	(_x >> "marker");
 	_master	= getText	(_x >> "Name_Obj_Stat_Base");
 	_stocks append (getArray	(_x >> "Obj_Stock_Items"));
-	_stocks append (getArray	(_x >> "Obj_Stock_Carbu"));
+	_stockCarbu = (getArray	(_x >> "Obj_Stock_Carbu"));
 	_stocks append (getArray	(_x >> "Obj_Stock_Silos"));
 	_containers_Max = getNumber	(_x >> "containers_Max");
 	_citernes_Max	= getNumber	(_x >> "citernes_Max");
@@ -52,6 +52,23 @@ private ["_master", "_result", "_varMaster", "_stocks", "_NameClass", "_sides", 
 		} forEach _sides;
 		_searchBox pushBack _obj;
 	} forEach _Coffres;
+
+	_arr_All_Stock = [];
+	{
+		_arr_All_Stock pushBack (_x select 0);
+	} forEach _stockCarbu;
+	_CiternesArr = nearestObjects [getMarkerPos _marker,_arr_All_Stock,350];
+	{
+		_obj = _x;
+		_obj setVariable ["DA3F_StockItems",[[],0],true];
+		_obj setVariable ["DA3F_MaxStock",_Max_Carbut,true];
+		_obj setVariable ["DA3F_ClassParent",_NameClass,true];
+		{
+			_side = _x;
+			_obj setVariable ["DA3F_Side",_side,true];
+		} forEach _sides;
+		_searchBox pushBack _obj;
+	} forEach _CiternesArr;
 	_varMaster = compile format ["%1 %2",_master,"setVariable [""DA3F_Stat_PC"",_searchBox,true];"];
 	call _varMaster;
 } forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_Base_stats"));

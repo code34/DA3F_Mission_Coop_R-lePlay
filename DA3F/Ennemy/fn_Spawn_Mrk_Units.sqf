@@ -17,7 +17,8 @@ _DA3F_UnitsInCity = [];
 
 private _DA3F_MaxUnitsInMap = getNumber(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "DA3F_MaxUnitsInMap");
 private _listMrk = getArray(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Spawn_Ennemy" >> "DA3F_listMrk");
-_listMrk = _listMrk - ["respawn_guerrila",800];
+_listMrk 	= _listMrk - ["respawn_guerrila",800];
+_prime	 	= 750;
 for "_i" from 0 to 1 step 0 do
 	{
 	for "_a" from 0 to (count _listMrk -1) do
@@ -72,20 +73,26 @@ for "_i" from 0 to 1 step 0 do
 						     	getMarkerPos _mrk;
 						    };
 						};
+
 						bots_reco = [_randomPos, east, (configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> _randType >> _spUnits)] call BIS_fnc_spawnGroup;
 						bots_DA3F 	= [_randomPos, east,_val_Units] call BIS_fnc_spawnGroup;
-						_da3f=[_mrk]spawn DA3F_fnc_Spawn_House_Units;
+
+						if !(_mrk in ["DA3F_SpUnitsCity_32"])then
+							{
+								_da3f=[_mrk]spawn DA3F_fnc_Spawn_House_Units;
+						};
+
 					[0,format["Des unités de la rebellions ont été aperçu en position %1 . Restez sur vor gardes !",mapGridPosition _randomPos]]remoteExecCall["DA3F_fnc_hint",0];
-						_prime		= 750;
+
 							{
 								_x setVariable ["DA3F_BotRandom",true,true];
-								_x setVariable ["DA3F_PrimeKill",(round random _prime),true];
+								_x setVariable ["DA3F_PrimeKill",[(round random _prime),selectRandom["€","Klix"]],true];
 								_x addMPEventHandler ["mpkilled",{_this call DA3F_fnc_moneyEH;}];
 								[_x]call DA3F_fnc_Delete_Units;
 							} forEach (units group (leader (bots_DA3F)) + (units group (leader (bots_reco))));
 							{
 								(leader (_x)) setVariable ["DA3F_BotRandom",true,true];
-								(leader (_x)) setVariable ["DA3F_PrimeKill",(round random (_prime*2)),true];
+								(leader (_x)) setVariable ["DA3F_PrimeKill",[(round random (_prime*2)),selectRandom["€","Klix"]],true];
 								//[bots_DA3F]execVM "DA3F\DA3F_Rebellions\patrol.sqf";
 									[_x]call DA3F_fnc_patrol;
 							}foreach [bots_reco,bots_DA3F];

@@ -99,6 +99,16 @@ DA3F_fnc_ValideInteraction={
 	_index = (_this select 1);
 	_data = lbData[_idc,_index];
 	switch (_data) do {
+		case "Aide": {
+		_msg = format ["Volume = (9 - ç)
+		<br/>
+Ejection pilote (Air) = Shift + H
+<br/>
+Consomer items virtuel = Double clique <br/> ou <br/> Utiliser menu I
+<br/>
+Utiliser Trousse de soin ()  = Double clique <br/>",nil];
+			[1,format ["%1", _msg]]call DA3F_fnc_hint;
+		};
 	    case "Messagerie": {
 	    	closeDialog 0;
     		call DA3F_fnc_Coms_CallCo;
@@ -125,6 +135,7 @@ DA3F_fnc_ValideInteraction={
 			lbSetData [1501,(lbSize 1501)-1,_x];
 	} forEach
 		[
+			"Aide",
 			"Messagerie",
 			"Save Posistion",
 			"Syncro de vos données"

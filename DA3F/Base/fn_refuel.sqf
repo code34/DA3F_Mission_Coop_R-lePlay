@@ -15,7 +15,7 @@ _this spawn
 	_debug		= true;
 	_idc 		= 1500;
 	_index 		= lbCurSel 1500;
-	_index_Box	= lbCurSel 1500;
+	_index_Box	= lbCurSel 2100;
 	_infos 		= compile(lbData [_idc,_index]);
 	_carbu 		= compile(lbData [2100,lbCurSel 2100]);
 	_carbu		= call _carbu;
@@ -41,13 +41,15 @@ _this spawn
 				[1,format ["Litre avant: %2<br/>Litre après %1<br/>Litre ajouté %3<br/>New fuel : %4<br/>fuel : %5", _calcul, _Actulitre, _value, _Newfuel,_ActualFuel]]call DA3F_fnc_hint;
 			};
 			closeDialog 0;
-			[1,format ["Remplissage en cours...%1", _carbu]]call DA3F_fnc_hint;
-			sleep (2 + (random 5));
-			//_wait = ["Remplissage",0.3,false] spawn DA3F_fnc_Progresse;
-			//	waitUntil {sleep .3;scriptDone _wait};
+		//	[1,format ["Remplissage en cours...%1", _carbu]]call DA3F_fnc_hint;
+			//sleep (2 + (random 5));
+			_wait = ["Remplissage",0.3,false] spawn DA3F_fnc_Progresse;
+				waitUntil {sleep .3;scriptDone _wait};
+			// If Btn Valide
 			if (_Btn_idc isEqualTo 2400) then {
 				_veh setFuel _Newfuel;
 			};
+			// If Btn Faire le plein
 			if (_Btn_idc isEqualTo 2402) then {
 				_veh setFuel 1;
 			};
@@ -56,19 +58,19 @@ _this spawn
 			_max 	= _citerne getVariable 'DA3F_MaxStock';
 			_newInfo = [];
 			_total = _a select 1;
-			_total	= _total - _value;
-			//_newInfo pushBack [_item,_nrb];
-			/*
+			_items = _a select 0;
 			{
 				_item 	= _x select 0;
 				_nrb 	= _x select 1;
 				_nrb	= _nrb - _value;
-				_total	= _total - _value;
-				_newInfo pushBack [_item,_nrb];
-			} forEach (_a select 0);
-			*/
-			_citerne setVariable ["DA3F_StockItems",[[],_total],true];
-			[1,format ["%1 - %2 <br/><br/>%3<br/>%4", _calcul, _citerne,_a,_value]]call DA3F_fnc_hint;
+				_poids 	= Items_Cfg(getNumber,_item,"Poids");
+				_x set [1,_nrb];
+				_total	= _total - (_value*_poids);
+			} forEach _items;
+			_a set [1,_total];
+			//_citerne setVariable ["DA3F_StockItems",[[],_total],true];
+			[1,format ["Remplissage Terminé", nil]]call DA3F_fnc_hint;
+			//[1,format ["%1 - %2 <br/><br/>%3<br/>%4", _calcul, _citerne,_a,_value]]call DA3F_fnc_hint;
 			//	[1,format ["Ravitaillement terminé<br/>le véhicule dispose de %1.L", _calcul]]call DA3F_fnc_hint;
 		};
 	} forEach _listVeh;

@@ -10,6 +10,7 @@
 #include "..\..\DA3F_macros.hpp"
 private ["_target","_Name_Var","_display","_showInfo","_contenu","_MaxCapa"];
 disableSerialization;
+if (dialog) exitWith {closeDialog 0};
 if !(createDialog "Gui_Coms_Consult") exitWith {};
 	_target		= (_this select 0);
 	_Name_Var	= (_this select 1);

@@ -41,6 +41,7 @@ player setVariable ["DA3F_DB_Pos",[],false];
 player setVariable ["DA3F_Mdp_Co","1234",false];
 player setVariable ["DA3F_New_Co",false,false];
 player setVariable ["DA3F_InvVirt",[[],0],false];
+player setVariable ["DA3F_PanierShop",[],false];
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 

@@ -133,14 +133,14 @@ _clearAll	= [];
 			{
 				_clearAll pushBack _x;
 				_x setVariable ["DA3F_BotRandom",true,true];
-				_x setVariable ["DA3F_PrimeKill",(round random _prime),true];
+				_x setVariable ["DA3F_PrimeKill",[(round random _prime),selectRandom["€","Klix"]],true];
 				_x addMPEventHandler ["mpkilled",{_this call DA3F_fnc_moneyEH;}];
 			//	[_x]call DA3F_fnc_Delete_Units;
 			} forEach (units group (leader (bots_DA3F)) + (units group (leader (bots_reco)))+ (units group (leader (bots_Infant))));
 
 			{
 				(leader (_x)) setVariable ["DA3F_BotRandom",true,true];
-				(leader (_x)) setVariable ["DA3F_PrimeKill",(round random (_prime*2)),true];
+				(leader (_x)) setVariable ["DA3F_PrimeKill",[(round random (_prime*2)),selectRandom["€","Klix"]],true];
 				//[bots_DA3F]execVM "DA3F\DA3F_Rebellions\patrol.sqf";
 					[_x]call DA3F_fnc_patrol;
 			}foreach [bots_reco,bots_DA3F,bots_Infant];
