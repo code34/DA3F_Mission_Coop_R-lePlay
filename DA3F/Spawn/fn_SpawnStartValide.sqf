@@ -11,12 +11,11 @@
 private ["_name_mission","_display","_sel","_text","_AllMrk","_mrk","_pos"];
 _this spawn {
 disableSerialization;
-
 _name_mission 	= DA3F_Cfg(getText,"DA3F_NameMission");
 _display        = (findDisplay 221117);
 _sel            = (lbCurSel 1500);
 _IsPara         = (lbCurSel 2100);
-_class 			= DA3F_SpawnList select _sel;
+_class 			= lbData[1500,_sel];
 if (_sel isEqualTo -1) exitWith {[1,"Tu dois choisir une insertion"]call DA3F_fnc_hint};
 _text           = format ["%1<br/>%2",Spawn_Cfg(getText,_class,"Title"),Spawn_Cfg(getText,_class,"Descrip")];
 _mrk            = Spawn_Cfg(getText,_class,"marker");

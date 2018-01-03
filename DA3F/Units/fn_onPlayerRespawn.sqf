@@ -28,4 +28,5 @@ if (player getVariable "DA3F_IsLoadActiv") then {
 };
 []spawn DA3F_fnc_statusBar;
 []call DA3F_fnc_SetupAction;
+	execVM "DA3F\functions\DA3F_particules.sqf";
 

@@ -39,7 +39,7 @@ for "_a" from 0 to (count _DA3F_listMrk -1) do
   };
 
 
-_Spawn_list = [];
+//_Spawn_list = [];
 {
     _NameClass    = (configName _x);
     _NameMarker   = getText (_x >> "marker");
@@ -54,15 +54,16 @@ _Spawn_list = [];
       _x = "Aucune info"
     };
   } forEach [_nameSpawn,_titre,_Description];
-_Spawn_list pushBack _NameClass;
-_AllMrk pushBack [_NameMarker,_titre,_Description,_radius];
+//_Spawn_list pushBack _NameClass;
+//_AllMrk pushBack [_NameMarker,_titre,_Description,_radius];
 
     _add=lbAdd[1500,format ["%1 - %2", _nameSpawn,_titre]];
+    lbSetData[1500,(lbSize 1500)-1,_NameClass];
       _ctrl     = ((findDisplay 1091217)displayCtrl 1500);
       _ctrl lbSetPictureRight [(lbSize _ctrl)-1,_icon]; //_ctrl lbSetPicture [(lbSize _ctrl)-1,_DA3F_Pixitems];
 
 } forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_SpawnBase"));
-missionNamespace setVariable ["DA3F_SpawnList",_Spawn_list];
+//missionNamespace setVariable ["DA3F_SpawnList",_Spawn_list];
 
 /*
   {
@@ -86,7 +87,7 @@ missionNamespace setVariable ["DA3F_SpawnList",_Spawn_list];
     _add=lbAdd[2101,_x]
   } forEach ["200","300","400","500"];
 // hint str _AllMrk; // Surveillence array
-missionNamespace setVariable ["DA3F_Mrk_Sp",_AllMrk];
+//missionNamespace setVariable ["DA3F_Mrk_Sp",_AllMrk];
 [(findDisplay 1091217)]spawn{
 disableSerialization;
 waitUntil {isNull (_this select 0)};

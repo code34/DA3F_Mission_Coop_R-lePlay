@@ -48,7 +48,7 @@ switch (_type) do {
     case 2: {
 		_display 		= (findDisplay 1091217);
 		_select_IDC 	= (_this select 0)select 1;
-		_DA3F_Class 	= DA3F_SpawnList select _select_IDC;
+		_DA3F_Class 	= lbData[1500,(lbCurSel 1500)];
 		_DA3F_Mrk  		= getText	(missionConfigFile >> "DA3F_Cfg_SpawnBase" >> _DA3F_Class >> "marker");
 		_NameSp			= getText	(missionConfigFile >> "DA3F_Cfg_SpawnBase" >> _DA3F_Class >> "displayname");
 		_txt_resume 	= getText	(missionConfigFile >> "DA3F_Cfg_SpawnBase" >> _DA3F_Class >> "Title");
