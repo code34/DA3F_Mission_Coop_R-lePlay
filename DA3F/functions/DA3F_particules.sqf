@@ -179,9 +179,9 @@ if (_unit distance getMarkerPos "mrk_rad"> _radius OR !(alive _unit)) exitWith {
 
 	_ppGrain ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
 	_ppColor ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [0, 0, 0, 0], [0,0,0, 0]];
-	_ppColor ppEffectCommit 3;
-	_ppGrain ppEffectCommit 3;
-
+	_ppColor ppEffectCommit 0;
+	_ppGrain ppEffectCommit 0;
+		sleep 0.1;
 	_ppGrain ppEffectEnable false;
 	_ppColor ppEffectEnable false;
 

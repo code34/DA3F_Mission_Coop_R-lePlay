@@ -36,6 +36,16 @@ class DA3F_Master
             class Teleport {};
     };
 
+    class DA3F_Farm
+    {
+        file = "DA3F\area_ressources";
+            class Pompe_interaction {};
+            class Expoitation_Petrol {};
+            class Expoitation_Petrol_InfoVeh {};
+            class Expoitation_Petrol_Veh {};
+            class move_Mouse {};
+    };
+
     class DA3F_Base
     {
         file = "DA3F\Base";

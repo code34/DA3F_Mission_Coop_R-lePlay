@@ -14,9 +14,9 @@ if (isNil "_unit") then
     [{
         [1,"L'administrateur vous autorise une téléportation<br/>cliquez ou vous souhaitez être TP"]call DA3F_fnc_hint;
         openMap true;
-        _inipos = getpos player;
+        _inipos = getpos (vehicle player);
         ValideTP= false;
-        onMapSingleClick "player setpos _pos;ValideTP= true;onMapSingleClick ''; true";
+        onMapSingleClick "(vehicle player) setpos _pos;ValideTP= true;onMapSingleClick ''; true";
         waitUntil
         {
             sleep .3;
@@ -29,9 +29,9 @@ if (isNil "_unit") then
         [1,"cliquez ou vous souhaitez faire le TP"]call DA3F_fnc_hint;
         openMap true;
         DA3F_unit = _unit;
-        _inipos = getpos DA3F_unit;
+        _inipos = getpos (vehicle DA3F_unit);
         ValideTP= false;
-        onMapSingleClick "DA3F_unit setpos _pos;ValideTP= true;onMapSingleClick ''; true";
+        onMapSingleClick "(vehicle DA3F_unit) setpos _pos;ValideTP= true;onMapSingleClick ''; true";
         waitUntil
         {
             sleep .3;

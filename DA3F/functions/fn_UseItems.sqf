@@ -26,7 +26,12 @@ switch (true) do {
     		  DA3F_Faim = DA3F_Faim + _value;
 			     if (DA3F_Faim > 100) then {DA3F_Faim = 100};
     	   }];
-
+           []spawn {
+           for "_a" from 0 to 3 do {
+            player setDamage ((damage player)- 0.05);
+            sleep (3 + random 2);
+           };
+       };
         [_item,1,"del"]call DA3F_fnc_Add_Ret_Items;
     	closeDialog 0;
     };

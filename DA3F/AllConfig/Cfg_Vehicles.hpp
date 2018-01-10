@@ -66,6 +66,7 @@ class DA3F_ShopsVeh {
                     {"I_G_Offroad_01_F",1400,200,"€",""},
                     {"I_C_Offroad_02_unarmed_F",950,200,"€",""},
                     {"B_MRAP_01_hmg_F",5400,200,"€",""},
+                    {"O_Truck_03_fuel_F",2400,200,"€",""},
                 },
                 {"Air",
                     {"I_C_Plane_Civil_01_F",3200,200,"€",""},
@@ -130,13 +131,131 @@ class DA3F_ShopsVeh {
 /*
     _veh getVariable "DA3F_ID_Veh" // select 0 = ItemVirtSpace |  select 1 = Carburant 
 */
+
 class DA3F_Cfg_Veh {
     
     class Default {
-        vItemSpace = 80;
+        ItemVirtSpace = 80;
+        Carburant    = "Diesel"; // Type de carburant utilisé par le véhicule
         conditions = "";
-        price = 1000;
         textures[] = {};
+    };
+
+    class B_MRAP_01_hmg_F
+    {
+        ItemVirtSpace       = 100; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class I_C_Van_02_vehicle_F
+    {
+        ItemVirtSpace       = 200; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class I_C_Van_02_transport_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class B_Truck_01_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class O_Truck_02_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class O_Truck_03_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class O_T_Truck_03_fuel_ghex_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class O_G_Van_01_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class B_G_Van_01_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class I_Truck_02_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class I_G_Van_01_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class C_Van_01_fuel_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
+    };
+
+    class C_IDAP_Truck_02_water_F
+    {
+        ItemVirtSpace       = 250; // Nombre d'emplacement du coffre virtuel
+        OtherName           = ""; // Nom de l'objet
+        Carburant           = "Diesel"; // Type de carburant utilisé par le véhicule
+        icon                = "icons\water.paa"; // Chemin de l'image pour l'objet
+        textures[]          = {};
     };
 
     class I_MRAP_03_F

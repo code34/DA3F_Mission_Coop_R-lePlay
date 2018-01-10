@@ -16,7 +16,7 @@ if !(isNil {DA3F_TarObj getVariable "DA3F_StockItems"}) exitWith {
 		[DA3F_TarObj,"DA3F_CoffreBase"]call DA3F_fnc_Consult_Stats_Box_Citernes;
 		true;
 	};
-if (_class in ["Car","Air","Tank","Ship"] && ((DA3F_TarObj distance player )< 5)) exitWith {
+if ((_class in ["Car","Air","Tank","Ship"] && ((DA3F_TarObj distance player )< 8)) OR !(isNil {DA3F_TarObj getVariable "DA3F_InvVirtVeh"})) exitWith {
 		call DA3F_fnc_ActionVeh;
 	};
 /*

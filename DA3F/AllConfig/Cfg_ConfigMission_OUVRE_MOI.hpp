@@ -43,14 +43,16 @@ class DA3F_CfgMission {
         DA3F_Max_save_Veh       = 5;    // Nombre de véhicules que le joueurs peut save. restez sur des petites valeurs (Max 15 [à tester selon votre serveur]) sur la version sans BDD. 
         DA3F_WinCash            = 100;  // Prime de mort 
         cash_Bonus              = 100;  // Prime multiplié par tranche de 100 m au dessus de 100 m 
-        DA3F_cash_Food          = 100;  // Prime multiplié par tranche de 100 m au dessus de 100 m 
+        DA3F_cash_Food          = 20;  // cout pour se restaurer dans les bases  
         DA3F_FatigueActive      = 0;    // 
         DA3F_MaxUnitsInMap      = 60; // Maximum d'unités Opfor sur la map (Bots)
         DA3F_MaxDistancePlayer  = 1500; // Distance de détection pour la supression des bots (si pas de joueur pas de bots sa sert à rien !)
+        DA3F_InvCiternePetrol   = 10000; // Contenance de l'usine de la zone pétrolière
         DA3F_MaxTimeDelVeh      = 30; // Temps en secondes avant le delete d'un véhicule gênant le spawn
         DA3F_FullArsenal        = 1; // 1 = Full arsenal Dispo | 0 = Pas d'arsenal
         DA3F_IconCustomDevise   = "icons\icoKlix.paa";
     };
+    
 
     class DA3F_Spawn_Ennemy
     {

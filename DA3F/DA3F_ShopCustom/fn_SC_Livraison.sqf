@@ -10,9 +10,9 @@
 
 // ce qui suit est un exemple pour vous montrer que vous pouvez mettre n'importe quel format de position (doit rester SQF pour maintenir tout les formats)
 
-_allBureauLivraison = [[6165.21,8679.75,0],[6167.45,8684.31,0],getMarkerPos "sp_colis",getPos Je_Suis_Un_Pnj];
+_allBureauLivraison = [[9307.03,15808.8],[3903.46,13491.4],[5111.69,11128.7],[11206.4,8374.25],[19370.7,9670.48]];
 // Temps entre chaque message
-_TimeLivraison = (5 + random 5);
+_TimeLivraison = (30 + random 30);
 			_fnc_hint={
 			hintSilent parseText format ["<t color='#FC2700' size='1.3'>%1<t/><br/><br/><t color='#FEFEFE' size='1.1'>%2<t/>",(_this select 0),(_this select 1)];
 			};

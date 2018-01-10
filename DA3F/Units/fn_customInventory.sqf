@@ -81,7 +81,7 @@ disableSerialization;
 	_EditCash 		ctrlSetText "1";
 	_txtInfo		ctrlSetStructuredText parseText format ["<t color='#F44100' align='left' size='1' >Cash :<t/><t color='#FEFEFE' align='right' size='1' >%1€<t/><br/><br/><t color='#F44100' align='left' size='1' >Bank :<t/><t color='#FEFEFE' align='right' size='1' >%2€<t/><br/><br/><t color='#F44100' align='left' size='1' >Klix :<t/><t color='#FEFEFE' align='right' size='1' >%3<img size='0.65' image='%4' /><t/>",[DA3F_Cash]call DA3F_fnc_numberText,[DA3F_Bank]call DA3F_fnc_numberText,[DA3F_WCash]call DA3F_fnc_numberText,DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
 
-
+/*
 DA3F_fnc_DlClick={
 if (isNil "DA3F_Dbl_clik") then [{DA3F_Dbl_clik = false;
 _wait = time + 1;
@@ -92,6 +92,63 @@ DA3F_Dbl_clik = nil;
 	DA3F_Dbl_clik = nil;
 }];
 };
+*/
+    fnc_Use_Items = {
+    End_Action = false;
+        _idc = ctrlIDC (_this select 0);
+        _selectedIndex = _this select 1;
+        _data = format ["Data\n%1\n________\n",lbData [_idc, _selectedIndex]];
+        _text = format ["Text\n%1\n________\n",lbText [_idc, _selectedIndex]];
+        _value = format ["Value\n%1\n________\n",lbValue [_idc, _selectedIndex]];
+        //_pic = format ["Picture\n%1\n________\n",lbPicture [_idc, _selectedIndex]];
+		_selected = format ["%1",((findDisplay 602)displayCtrl _idc) lbIsSelected _selectedIndex];
+		_selectd = format ["%1",lbSelection  ((findDisplay 602)displayCtrl _idc)];
+        _arr = getArray(configfile >> "CfgInventory" >> "SlotTypes" >> "RightHand");
+        hint format["Inventaire: \n%1\n%2\n%3\n%4\n%5\n%6\n\n%7\n%8\n\n%9",_selectedIndex,_data,_text,_value,_selected,_selectd,_arr,_idc,[] call BIS_fnc_invSlotType];
+        _data = lbData [_idc, _selectedIndex];
+
+        if (isNil "DA3F_Dbl_clik") then [{
+
+        	DA3F_Dbl_clik = false;
+			_wait = time + 1;
+			waitUntil {time >= _wait};
+			DA3F_Dbl_clik = nil;
+		},{
+        if !(_data isEqualTo "") then [{
+        	player removeItem format ["%1", lbData [_idc, _selectedIndex]];
+        },{
+			_txt = lbText [_idc, _selectedIndex];
+			{
+			_compar = _x;
+			if (_compar isEqualTo "FirstAidKit") then
+				{
+					_compar = "1ers secours";
+					closeDialog 0;
+					if (vehicle player isEqualTo player) then [{
+						private _handle = ["Soin",0.08,false] spawn DA3F_fnc_Progresse;
+					},{
+						private _handle = ["Soin",0.12,false] spawn DA3F_fnc_Progresse;
+				}];
+					waitUntil {sleep .3; scriptDone _handle};
+			};
+
+					if (End_Action) then
+						[{
+						End_Action = false;
+					},{
+						systemChat format ["%1 Utilisé !",_compar];
+						player setDamage 0;
+					}];
+				if ([_compar,_txt] call BIS_fnc_inString) then
+					{
+						player removeItem format ["%1", (items player) select _selectedIndex];
+				};
+			}forEach (items player);
+	    }];
+	DA3F_Dbl_clik = nil;
+}];
+        false
+    };
 
 DA3F_fnc_ValideInteraction={
 	disableSerialization;

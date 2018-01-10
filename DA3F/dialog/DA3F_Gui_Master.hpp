@@ -27,3 +27,4 @@
 #include "DA3F_Gui_AdminMenu.hpp" 		
 #include "DA3F_Gui_interacVeh.hpp" 		
 #include "DA3F_Gui_SC.hpp" 		
+#include "DA3F_Gui_ExploitPetrol.hpp" 		

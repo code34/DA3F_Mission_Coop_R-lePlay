@@ -53,7 +53,8 @@ if (_distance > 0) then {
 	DA3F_Cash=DA3F_Cash+ _cash_Bonus;
 };
 
-
+private _PrimCash 	= 0;
+private _devise 	= "";
 if !(isNil "_rebelPrime") then {
 	_PrimCash = _rebelPrime select 0;
 	_devise = _rebelPrime select 1;
@@ -95,10 +96,10 @@ _Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Co
 },{
 
 if (_distance <= 99) then [{
-_Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Combo :  %4<\t><br/><t color='#FE4400' size='1.3'>Distance : %2m<\t><br/><t color='#FE0019' size='1'>Prime de l'ennemi : %5.€<\t><br/><t color='#FE0019' size='1'>+ %1.€<\t>",_money,_distance,_sym,MCF_CountShoot,_rebelPrime]);
+_Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Combo :  %4<\t><br/><t color='#FE4400' size='1.3'>Distance : %2m<\t><br/><t color='#FE0019' size='1'>Prime de l'ennemi : %5.%6<\t><br/><t color='#FE0019' size='1'>+ %1.€<\t>",_money,_distance,_sym,MCF_CountShoot,_PrimCash,_devise]);
 },
 {
-_Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Combo :  %4<\t><br/><t color='#FE4400' size='1.3'>Distance : %2m<\t><br/><t color='#FE0019' size='1'>Bonus de distance : %5.€<\t><br/><t color='#FE0019' size='1'>Prime de l'ennemi : %6.€<\t><br/><t color='#FE0019' size='1'>+ %1.€<\t>",_money,_distance,_sym,MCF_CountShoot,_cash_Bonus,_rebelPrime]);
+_Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Combo :  %4<\t><br/><t color='#FE4400' size='1.3'>Distance : %2m<\t><br/><t color='#FE0019' size='1'>Bonus de distance : %5.€<\t><br/><t color='#FE0019' size='1'>Prime de l'ennemi : %6.%7<\t><br/><t color='#FE0019' size='1'>+ %1.€<\t>",_money,_distance,_sym,MCF_CountShoot,_cash_Bonus,_PrimCash,_devise]);
 	}];
 }];
 _Weapon ctrlCommit 0;
