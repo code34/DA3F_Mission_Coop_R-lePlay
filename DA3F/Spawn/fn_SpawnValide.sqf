@@ -16,8 +16,9 @@ _display        = (findDisplay 181117);
 _sel            = (lbCurSel 1500);
 if (_sel isEqualTo -1) exitWith {};
 _text           = ((_display)displayCtrl 1500) lbText _sel;
-_class 			= lbData[1500,_sel];
-_mrk            = Spawn_Cfg(getText,_class,"marker");
+//_class 			= lbData[1500,_sel];
+_mrk 			= lbData[1500,_sel];
+//_mrk            = Spawn_Cfg(getText,_class,"marker");
 _pos            = [((getMarkerPos _mrk)select 0) + random 250,((getMarkerPos _mrk)select 1) + random 250,((getMarkerPos _mrk)select 2)];
 if (_mrk isEqualTo "respawn_guerrila") then [{
 	player setPos getMarkerPos "respawn_guerrila";

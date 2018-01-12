@@ -1,12 +1,3 @@
-/*
-*
-*       Dev'Arma 3 France
-*       Mission Template
-*       [DA3F] Aroun Le BriCodeur
-*       fn_Progresse.sqf
-*       Progresse with var
-*
-*/
 _exit = false;
 disableSerialization;
 //_title    = "Upload";
@@ -44,11 +35,10 @@ _titleText  ctrlSetStructuredText parseText format["<t size='1px' color='#FA320A
 // Kill the UI display and check for various states
 5 cutText ["","PLAIN"];
 player playActionNow "stop";
-    if(_exit) exitWith {[1,"Tu ne dois pas bouger"]call DA3F_fnc_hint;End_Action = true;};
-    if!(alive player) exitWith {[1,"Tu es mort"]call DA3F_fnc_hint;End_Action = true};
+    if(_exit) exitWith {[1,"Tu ne dois pas bouger"]call DA3F_fnc_hint;End_Action = true};
+    if!(alive player) exitWith {[1,"Tu ne dois pas bouger"]call DA3F_fnc_hint;End_Action = true};
 //[1,"Fin de l'envoi<br/>Il est temps de rentrer notre mission est fini"]call DA3F_fnc_hint;
 if (_bool) then {
     DA3F_Valide_Missio = true;
     publicVariable "DA3F_Valide_Missio";
     };
-    true;

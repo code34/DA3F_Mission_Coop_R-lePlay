@@ -12,10 +12,10 @@
 	_fnc_CalculPos={
 		_pos=selectRandom
 		[
-			 [(1 + random 5), (1 + random 5), random 1],
-			 [(1 + random 5), (1 - random 5), random 1],
-			 [(1 - random 5), (1 + random 5), random 1],
-			 [(1 - random 5), (1 - random 5), random 1]
+			 [(3 + random 5), (3 + random 5), random 3],
+			 [(3 + random 5), (3 - random 5), random 3],
+			 [(3 - random 5), (3 + random 5), random 3],
+			 [(3 - random 5), (3 - random 5), random 3]
 		];
 		_pos
 	};
@@ -34,16 +34,16 @@
 
 
 _ppGrain = ppEffectCreate ["filmGrain", 2050];
-_ppColor = ppEffectCreate ["colorCorrections", 1550];
+//_ppColor = ppEffectCreate ["colorCorrections", 1550];
 _ppGrain ppEffectEnable true;
-_ppColor ppEffectEnable true;
+//_ppColor ppEffectEnable true;
 _ppGrain ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [1.5, 1, 1.2, 0.4], [0.199, 0.387, 0.214, 0]];
-_ppColor ppEffectEnable true;
-_ppColor ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [1.1, 1, 1.2, 0.4], [0.199, 0.587, 0.114, 0]];
-_ppColor ppEffectCommit 10;
+//_ppColor ppEffectEnable true;
+//_ppColor ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [1.1, 1, 1.2, 0.4], [0.199, 0.587, 0.114, 0]];
+//_ppColor ppEffectCommit 10;
 _ppGrain ppEffectCommit 10;
 ppEffectCommitted _ppGrain;
-ppEffectCommitted _ppColor;
+//ppEffectCommitted _ppColor;
 
 	_pos =selectRandom[[((getpos _unit)select 0)+(random 50),((getpos _unit)select 1)+(random 50),0],[((getpos _unit)select 0)-(random 50),((getpos _unit)select 1)+(random 50),0],[((getpos _unit)select 0)+(random 50),((getpos _unit)select 1)-(random 50),0],[((getpos _unit)select 0)-(random 50),((getpos _unit)select 1)-(random 50),0]];
 	_posProxy =selectRandom[[((getpos _unit)select 0)+(random 10),((getpos _unit)select 1)+(random 10),0],[((getpos _unit)select 0)-(random 10),((getpos _unit)select 1)+(random 10),0],[((getpos _unit)select 0)+(random 10),((getpos _unit)select 1)-(random 10),0],[((getpos _unit)select 0)-(random 10),((getpos _unit)select 1)-(random 10),0]];
@@ -178,14 +178,14 @@ if ((random 100)> 90) then {
 if (_unit distance getMarkerPos "mrk_rad"> _radius OR !(alive _unit)) exitWith {
 
 	_ppGrain ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-	_ppColor ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [0, 0, 0, 0], [0,0,0, 0]];
-	_ppColor ppEffectCommit 0;
+//	_ppColor ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [0, 0, 0, 0], [0,0,0, 0]];
+//	_ppColor ppEffectCommit 0;
 	_ppGrain ppEffectCommit 0;
 		sleep 0.1;
 	_ppGrain ppEffectEnable false;
-	_ppColor ppEffectEnable false;
+//	_ppColor ppEffectEnable false;
 
-	ppEffectDestroy [_ppGrain, _ppColor];
+	ppEffectDestroy [_ppGrain];
 
 		if !(isNil "_DA3F_Fog_local_2") then {
 			deleteVehicle _DA3F_Fog_local_2;

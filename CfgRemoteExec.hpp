@@ -18,6 +18,7 @@ class CfgRemoteExec {
             F(DA3F_fnc_Coms_Target,CLIENT)
             F(DA3F_fnc_result,CLIENT)
             F(DA3F_fnc_GetMyVehGarage,CLIENT)
+            F(DA3F_fnc_Globalsound,CLIENT)
             
         /* Server Side */
             F(DB_fnc_GetVehInGarage,SERVER)

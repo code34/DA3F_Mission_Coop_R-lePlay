@@ -15,7 +15,7 @@ _plak = (cursorTarget getVariable ["DA3F_VehInfo",[]])select 2; hint str _plak;
 */
 
 _this spawn {
-private ["_selectCat","_selectveh","_selectMrk","_selectInVeh","_timeDelVehinMrkSp","_exit","_veh","_PriceAchat","_PriceVente","_mrk","_Infomrk","_pos","_vehGenant","_pos_1","_pos_2","_alti","_vehsp","_invVirt"];
+private ["_selectCat","_selectveh","_selectMrk","_selectInVeh","_timeDelVehinMrkSp","_exit","_veh","_PriceAchat","_PriceVente","_mrk","_Infomrk","_pos","_vehGenant","_pos_1","_pos_2","_alti","_vehsp","_invVirt","_classVeh"];
 
 #include "..\..\DA3F_macros.hpp"
 disableSerialization;
@@ -123,7 +123,7 @@ if (_exit) exitWith {hint "Rempliser tous les champs"};
 
 		_infos 		= [(getPlayerUID player),(name player),_plak];
 		_invVirt 	= Veh_Cfg(getNumber,(typeOf _vehsp),"ItemVirtSpace");
-		if (_invVirt isEqualTo 0 OR isNil "_invVirt" OR isNull _invVirt) then {
+		if (_invVirt isEqualTo 0 OR isNil "_invVirt") then {
 			_invVirt 	= Veh_Cfg(getNumber,"Default","ItemVirtSpace");
 		};
 		_TypeCarbu 	= Veh_Cfg(getText,(typeOf _vehsp),"Carburant");
@@ -131,8 +131,11 @@ if (_exit) exitWith {hint "Rempliser tous les champs"};
 		_vehsp setVariable ["DA3F_ID_Veh",[_invVirt,_TypeCarbu],true];
 		_vehsp setVariable ["DA3F_VehInfo",_infos,true];
 		_vehsp setVariable ["DA3F_InvVirtVeh",[[],0],true];
-
+        _vehsp setVariable ["DA3F_Save_Me_Please",true,true];
 		_classVeh	=  ClassVeh(_veh);
+		if (_classVeh isEqualTo "Support") then {
+			_classVeh = "Car";
+		};
 		_side = switch (playerSide) do {case independent: {"Indep"};case west: {"west"};};
 	if ((getPlayerUID player) in DA3F_Admin && _debug) then
 		{

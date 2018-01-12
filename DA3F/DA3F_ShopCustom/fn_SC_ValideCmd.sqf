@@ -52,7 +52,7 @@ hintSilent str _total;
 sleep 2;
 	if (_devise isEqualTo "€") then {
 
-	if (life_cash < _total && life_atmbank < _total) exitWith
+	if (DA3F_Cash < _total && DA3F_Bank < _total) exitWith
 		{
 			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
 			sleep (5+random 5);
@@ -60,10 +60,10 @@ sleep 2;
 		};
 			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
 			sleep (5+random 5);
-			if (life_cash < _total) then [{
-				life_atmbank = life_atmbank - _total;
+			if (DA3F_Cash < _total) then [{
+				DA3F_Bank = DA3F_Bank - _total;
 			},{
-				life_cash = life_cash - _total;
+				DA3F_Cash = DA3F_Cash - _total;
 			}];
 	};
 

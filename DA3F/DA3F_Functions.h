@@ -125,6 +125,7 @@ class DA3F_Master
             class Shop_Spe_BuySell {};
             class ShowDesc_Spe {};
             class Switch_Concess_Garage {};
+            class Shop_New_VirtItems {};
     };
 
     class DA3F_shopcustom
@@ -203,5 +204,6 @@ class DA3F_Master
             class Add_Ret_Items {};
             class NoPilote {};
             class ZoneDeRadion {};
+            class Globalsound {};
     };
 };

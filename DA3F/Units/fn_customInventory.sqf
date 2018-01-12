@@ -26,6 +26,11 @@ disableSerialization;
 		private _Btn_Valide = findDisplay 602 ctrlCreate ["RscButtonMenu", 2401, findDisplay 602 displayCtrl 2401];
 		private _List_Intera = findDisplay 602 ctrlCreate ["RscListbox", 1501, findDisplay 602 displayCtrl 1501];
 		private _Btn_Givecah= findDisplay 602 ctrlCreate ["RscButtonMenu", 2403, findDisplay 602 displayCtrl 2403];
+            ((findDisplay 602) displayCtrl 631) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//uniform
+      //      ((findDisplay 602) displayCtrl 632) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_test"];//uniform
+            ((findDisplay 602) displayCtrl 633) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//uniform
+            ((findDisplay 602) displayCtrl 638) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//vest
+            ((findDisplay 602) displayCtrl 619) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//backpack
 
 	// Posistion
 	_txtInfo	 	ctrlSetPosition [0.80948 * safezoneW + safezoneX, 0.396 * safezoneH + safezoneY, 0.177187 * safezoneW, 0.21 * safezoneH];
@@ -81,7 +86,7 @@ disableSerialization;
 	_EditCash 		ctrlSetText "1";
 	_txtInfo		ctrlSetStructuredText parseText format ["<t color='#F44100' align='left' size='1' >Cash :<t/><t color='#FEFEFE' align='right' size='1' >%1€<t/><br/><br/><t color='#F44100' align='left' size='1' >Bank :<t/><t color='#FEFEFE' align='right' size='1' >%2€<t/><br/><br/><t color='#F44100' align='left' size='1' >Klix :<t/><t color='#FEFEFE' align='right' size='1' >%3<img size='0.65' image='%4' /><t/>",[DA3F_Cash]call DA3F_fnc_numberText,[DA3F_Bank]call DA3F_fnc_numberText,[DA3F_WCash]call DA3F_fnc_numberText,DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
 
-/*
+
 DA3F_fnc_DlClick={
 if (isNil "DA3F_Dbl_clik") then [{DA3F_Dbl_clik = false;
 _wait = time + 1;
@@ -92,7 +97,7 @@ DA3F_Dbl_clik = nil;
 	DA3F_Dbl_clik = nil;
 }];
 };
-*/
+
     fnc_Use_Items = {
     End_Action = false;
         _idc = ctrlIDC (_this select 0);
@@ -104,7 +109,7 @@ DA3F_Dbl_clik = nil;
 		_selected = format ["%1",((findDisplay 602)displayCtrl _idc) lbIsSelected _selectedIndex];
 		_selectd = format ["%1",lbSelection  ((findDisplay 602)displayCtrl _idc)];
         _arr = getArray(configfile >> "CfgInventory" >> "SlotTypes" >> "RightHand");
-        hint format["Inventaire: \n%1\n%2\n%3\n%4\n%5\n%6\n\n%7\n%8\n\n%9",_selectedIndex,_data,_text,_value,_selected,_selectd,_arr,_idc,[] call BIS_fnc_invSlotType];
+    //    hint format["Inventaire: \n%1\n%2\n%3\n%4\n%5\n%6\n\n%7\n%8\n\n%9",_selectedIndex,_data,_text,_value,_selected,_selectd,_arr,_idc,[] call BIS_fnc_invSlotType];
         _data = lbData [_idc, _selectedIndex];
 
         if (isNil "DA3F_Dbl_clik") then [{
@@ -117,32 +122,31 @@ DA3F_Dbl_clik = nil;
         if !(_data isEqualTo "") then [{
         	player removeItem format ["%1", lbData [_idc, _selectedIndex]];
         },{
-			_txt = lbText [_idc, _selectedIndex];
+		private _txt = lbText [_idc, _selectedIndex];
 			{
-			_compar = _x;
+			private _compar = _x;
 			if (_compar isEqualTo "FirstAidKit") then
 				{
 					_compar = "1ers secours";
 					closeDialog 0;
 					if (vehicle player isEqualTo player) then [{
-						private _handle = ["Soin",0.08,false] spawn DA3F_fnc_Progresse;
-					},{
-						private _handle = ["Soin",0.12,false] spawn DA3F_fnc_Progresse;
-				}];
+						_handle = ["Soin",0.08,false] spawn DA3F_fnc_Progresse;
 					waitUntil {sleep .3; scriptDone _handle};
+					},{
+						_handle = ["Soin",0.12,false] spawn DA3F_fnc_Progresse;
+					waitUntil {sleep .3; scriptDone _handle};
+				}];
 			};
 
-					if (End_Action) then
-						[{
-						End_Action = false;
-					},{
-						systemChat format ["%1 Utilisé !",_compar];
-						player setDamage 0;
-					}];
-				if ([_compar,_txt] call BIS_fnc_inString) then
-					{
-						player removeItem format ["%1", (items player) select _selectedIndex];
-				};
+					if !(End_Action) exitWith
+						{
+							systemChat format ["%1 Utilisé !",_compar];
+							player setDamage 0;
+							if ([_compar,_txt] call BIS_fnc_inString) then
+								{
+									player removeItem format ["%1", (items player) select _selectedIndex];
+							};
+						};
 			}forEach (items player);
 	    }];
 	DA3F_Dbl_clik = nil;
@@ -159,7 +163,7 @@ DA3F_fnc_ValideInteraction={
 		case "Aide": {
 		_msg = format ["Volume = (9 - ç)
 		<br/>
-Ejection pilote (Air) = Shift + H
+Ejection pilote (Air) = Shift + H (! Au dessus de 160m !)
 <br/>
 Consomer items virtuel = Double clique <br/> ou <br/> Utiliser menu I
 <br/>

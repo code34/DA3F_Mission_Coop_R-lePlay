@@ -44,7 +44,7 @@ if !(_dmg isEqualTo []) then {
         clearMagazineCargoGlobal _veh;
         clearItemCargoGlobal _veh;
         clearBackpackCargoGlobal _veh;
-
+        _veh setVariable ["DA3F_Save_Me_Please",true,true];
             _veh addEventHandler ["GetIn",{
                     _this spawn DA3F_fnc_NoPilote;
                 }];

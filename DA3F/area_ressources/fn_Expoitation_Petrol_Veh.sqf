@@ -20,7 +20,7 @@ private ["_maxPoids_CiternePetrole","_MaxInv","_TypeCarbu"];
 	if !(createDialog "Gui_ExploitPetrol") exitWith {};
 
 	_maxPoids_CiternePetrole = DA3F_Cfg(getNumber,"DA3F_InvCiternePetrol");
-
+	player setVariable ["DA3F_Pc_Petrol",(_this select 0),false];
 	_listVeh = nearestObjects[player,
 	[
 		"B_Truck_01_fuel_F",
@@ -62,7 +62,10 @@ private ["_maxPoids_CiternePetrole","_MaxInv","_TypeCarbu"];
 	while {!(isNull (findDisplay 1040118))} do {
 		_info 		= _display displayCtrl 1100;
 		_cuve 		= nearestObjects [player,["Land_dp_smallTank_F"],50]select 0;
-		_stockage 	= (_cuve getVariable "DA3F_StockPetrol")select 1;
+		_stockage 	= ((_this select 0) getVariable "DA3F_StockPetrol")select 1;
+		if (isNil "_stockage") then {
+			_stockage = 0;
+		};
 		_convert 	= linearConversion [0, _maxPoids_CiternePetrole, _stockage, 0, 10, true];
 	    _info ctrlSetStructuredText parseText format ["<t color='#FEFEFE' size='1'>Citerne : <t/><t color='#01A6D9' size='1'>%1/%2<t/>",_stockage,_maxPoids_CiternePetrole];
 		_progBar progressSetPosition _convert;

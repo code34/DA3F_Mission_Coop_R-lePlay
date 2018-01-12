@@ -12,6 +12,9 @@
 disableSerialization;
 if (dialog) exitWith {closeDialog 0};
 if (cursorTarget isKindOf "Man") exitWith {};
+if (isNull cursorTarget) exitWith {};
+if (cursorTarget distance player > 8) exitWith {};
+
 if !(createDialog "Gui_veh") exitWith {};
 	_display = (findDisplay 251217);
 

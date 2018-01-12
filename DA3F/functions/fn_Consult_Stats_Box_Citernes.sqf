@@ -21,10 +21,25 @@ if !(createDialog "Gui_Coms_Consult") exitWith {};
 	_Side 		= (_target getVariable "DA3F_Side");
 	_Btn_GoInv 	= ((_display)displayCtrl 2400);
 	_Btn_GoStok = ((_display)displayCtrl 2401);
+	_class		= (ClassVeh(typeOf _target));
+	if (_class in ["Car","Air","Tank","Ship"]) exitWith {closeDialog 0};
+
+
+	/*
+	_Btn_GoInv 	ctrladdEventHandler ["buttonclick",{["Rec"] call DA3F_fnc_Transfert_Target}];
+	_Btn_GoStok ctrladdEventHandler ["buttonclick",{["Env"] call DA3F_fnc_Transfert_Target}];
+	*/
+
 	_Btn_GoInv 	ctrladdEventHandler ["buttonclick",{[1] call DA3F_fnc_Transfert_Target_1}];
 	_Btn_GoStok ctrladdEventHandler ["buttonclick",{[0] call DA3F_fnc_Transfert_Target_1}];
+
+	/*
 		    _arr = call DA3F_fnc_Cnt_Items_Spe;
             _Arr_items = (_arr select 1)select 0;
+    */
+_inventoryUnit 	= player getVariable "DA3F_InvVirt";
+_Arr_items 		= _inventoryUnit select 0;
+_Poids 			= _inventoryUnit select 1;
 
 	{
 		_item 	= _x select 0;

@@ -39,5 +39,17 @@ _TotalPoids	= _invVeh select 1;
 _MaxInv 	= _arr select 2;
 		_className 	= typeOf _veh;
 		_NameVeh 	= Real_NameVeh(_className);
+_cntItem = 0;
+_NewTotal = 0;
+{
+	_item = _x select 0;
+	_nrbItem = _x select 1;
+	_poids = Items_Cfg(getNumber,_item,"poids");
+	if (_item isEqualTo "Carbu_Brute") then {
+		_cntItem = _cntItem + _nrbItem;
+	};
+	_NewTotal = _NewTotal + (_poids * _nrbItem);
+} forEach _items;
 
-_info ctrlSetStructuredText parseText format ["<t color='#FEFEFE' align='left' size='1'>véhicule :<t/><t color='#01A6D9' size='1' align='right'>%1<t/><br/><t color='#FEFEFE' align='left' size='1'>Capacité :<t/><t color='#01A6D9' size='1' align='right'>%2/%3<t/>",_NameVeh,_TotalPoids,_MaxInv];
+//_info ctrlSetStructuredText parseText format ["<t color='#FEFEFE' align='left' size='1'>véhicule :<t/><t color='#01A6D9' size='1' align='right'>%1<t/><br/><t color='#FEFEFE' align='left' size='1'>Capacité :<t/><t color='#01A6D9' size='1' align='right'>%2/%3<t/>",_NameVeh,_TotalPoids,_MaxInv];
+_info ctrlSetStructuredText parseText format ["<t color='#FEFEFE' align='left' size='1'>véhicule :<t/><t color='#01A6D9' size='1' align='right'>%1<t/><br/><t color='#FEFEFE' align='left' size='1'>Capacité :<t/><t color='#01A6D9' size='1' align='right'>%2/%3<t/><br/><t color='#FEFEFE' align='left' size='1'>Quantité :<t/><t color='#01A6D9' size='1' align='right'>%4<t/>",_NameVeh,_NewTotal,_MaxInv,_cntItem];

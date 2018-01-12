@@ -9,92 +9,111 @@
 */
 #include "..\..\DA3F_macros.hpp"
 disableSerialization;
-_switch         = _this select 0;
-_index_Exped    = lbCurSel 1500;
-_index_Desti    = lbCurSel 1501;
+params[["_type","",[""]]];
+_display        = (findDisplay 121217);
+_datalist1      = ((_display)displayCtrl 1500);
+_datalist1      = ((_display)displayCtrl 1501);
+_index_inv      = lbCurSel 1500;
+_data_inv       = compile (lbData[1500,lbCurSel 1500]);
+_index_stock    = lbCurSel 1501;
+_data_stock     = compile (lbData[1501,lbCurSel 1501]);
 _val            = compile (ctrlText 1400);
 _val            = call _val;
-switch (_switch) do {
-    case 0: {
-        if !(isNil {DA3F_TarObj getVariable "DA3F_CoffreBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 2;
-        };
+_data_inv       = call _data_inv;
+_data_stock     = call _data_stock;
+_exit           = false;
 
-        if !(isNil {DA3F_TarObj getVariable "DA3F_CiterneBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 2;
-            _cnt =  MNS_Gvar_Items("Carbu_Brute");
-            _itemPoids      = Items_Cfg(getNumber,"Carbu_Brute","poids");
-            if (_cnt < _val) exitWith {[1,"Tu ne dispose pas de cette quantité"]call DA3F_fnc_hint};
-                if ((_contenu + _val)>_max) exitWith {[1,"Le stockage n'a pas assez de place"]call DA3F_fnc_hint};
-                    DA3F_TarObj setVariable ["DA3F_CiterneBase",[(_contenu + _val),_max,_type],true];
-            MNS_Svar_Items("Carbu_Brute",(_cnt-_val));
-            DA3F_Items_Inv = DA3F_Items_Inv - (_itemPoids * _val);
-                if (DA3F_Items_Inv < 0) then
-                    {
-                        DA3F_Items_Inv = 0;
-                    };
-        };
+if (_type isEqualTo "") exitWith {};
 
-        if !(isNil {DA3F_TarObj getVariable "DA3F_SiloBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_SiloBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_SiloBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_SiloBase")select 2;
-            _cnt =  MNS_Gvar_Items("Obj_burger");
-            _itemPoids      = Items_Cfg(getNumber,"Obj_burger","poids");
-            if (_cnt < _val) exitWith {[1,"Tu ne dispose pas de cette quantité"]call DA3F_fnc_hint};
-                if ((_contenu + _val)>_max) exitWith {[1,"Le stockage n'a pas assez de place"]call DA3F_fnc_hint};
-                    DA3F_TarObj setVariable ["DA3F_SiloBase",[(_contenu + _val),_max,_type],true];
-            MNS_Svar_Items("Obj_burger",(_cnt-_val));
-            DA3F_Items_Inv = DA3F_Items_Inv - (_itemPoids * _val);
-                if (DA3F_Items_Inv < 0) then
-                    {
-                        DA3F_Items_Inv = 0;
-                    };
-        };
+_maxCapa    = (DA3F_TarObj getVariable "DA3F_ID_Veh")select 0;
+
+
+
+// Player
+_inventoryUnit = player getVariable "DA3F_InvVirt";
+_Item = _data_inv select 0;
+_Poids = _data_inv select 1;
+
+_allItemsUnit =[];
+_index_Unit = 0;
+{
+    _allItemsUnit pushBack (_x select 0);
+    if ((_x select 0) isEqualTo _Item) then {
+        _index_Unit = _index_Unit + _foreachindex;
     };
+}forEach (_inventoryUnit select 0);
 
-    case 1: {
-        if !(isNil {DA3F_TarObj getVariable "DA3F_CoffreBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_CoffreBase")select 2;
-        };
+///////////
 
-        if !(isNil {DA3F_TarObj getVariable "DA3F_CiterneBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_CiterneBase")select 2;
-            _cnt =  MNS_Gvar_Items("Carbu_Brute");
-                _itemPoids      = Items_Cfg(getNumber,"Carbu_Brute","poids");
-                _Poids_total    = (_itemPoids * _val);
-                if (_Poids_total > DA3F_Max_Items_Inv) exitWith {[1,"Tu manque de place"]call DA3F_fnc_hint};
-                    if (_val > _contenu) exitWith {[1,"Le stockage ne dispose pas de cette quantité"]call DA3F_fnc_hint};
-                      //  if ((_cnt + _val)> 0) exitWith {[1,"Le stockage n'a pas assez de place"]call DA3F_fnc_hint};
-                            DA3F_TarObj setVariable ["DA3F_CiterneBase",[(_contenu - _val),_max,_type],true];
+// Caisse/Stockage
+_inventoryStock = DA3F_TarObj getVariable "DA3F_StockItems";
+_ItemStock = _data_stock select 0;
+_PoidsStock = _data_stock select 1;
 
-            MNS_Svar_Items("Carbu_Brute",(_cnt+_val));
-                DA3F_Items_Inv  = DA3F_Items_Inv + _Poids_total;
-        };
-
-        if !(isNil {DA3F_TarObj getVariable "DA3F_SiloBase"}) then {
-            _contenu = (DA3F_TarObj getVariable "DA3F_SiloBase")select 0;
-            _max = (DA3F_TarObj getVariable "DA3F_SiloBase")select 1;
-            _type = (DA3F_TarObj getVariable "DA3F_SiloBase")select 2;
-            _cnt =  MNS_Gvar_Items("Obj_burger");
-                _itemPoids      = Items_Cfg(getNumber,"Obj_burger","poids");
-                _Poids_total    = (_itemPoids * _val);
-                if (_Poids_total > DA3F_Max_Items_Inv) exitWith {[1,"Tu manque de place"]call DA3F_fnc_hint};
-                    if (_val > _contenu) exitWith {[1,"Le stockage ne dispose pas de cette quantité"]call DA3F_fnc_hint};
-                    //    if ((_cnt + _val)> 0) exitWith {[1,"Le stockage n'a pas assez de place"]call DA3F_fnc_hint};
-                            DA3F_TarObj setVariable ["DA3F_SiloBase",[(_contenu - _val),_max,_type],true];
-
-            MNS_Svar_Items("Obj_burger",(_cnt+_val));
-                DA3F_Items_Inv  = DA3F_Items_Inv + _Poids_total;
-        };
+_allItemsStock =[];
+_index_Stock = 0;
+{
+    _allItemsStock pushBack (_x select 0);
+    if ((_x select 0) isEqualTo _ItemStock) then {
+        _index_Stock = _index_Stock + _foreachindex;
     };
-};
+}forEach (_inventoryStock select 0);
+
+    switch (_type) do {
+        // Player -> Stockage
+        case "Env": {
+
+                if (_item in _allItemsUnit) then [{
+                    _ArrUnit = (_inventoryUnit select 0) select _index_Unit;
+                    _nrb = _ArrUnit select 1;
+                    if (_val > _nrb) exitWith {[1,"Tu ne dispose pas de cette quantité"]call DA3F_fnc_hint;};
+                    _nrb = _nrb - _val;
+                    _ArrUnit set [1,_nrb];
+                },{
+                _exit = true;
+            }];
+
+                    if (_exit) exitWith {};
+
+                if (_item in _allItemsStock) then [{
+                    _ArrStock = (_inventoryStock select 0) select _index_Stock;
+                    _nrb = _ArrStock select 1;
+                    _nrb = _nrb + _val;
+                    _ArrStock set [1,_nrb];
+                },{
+                (_inventoryStock select 0) set [count(_inventoryStock select 0),[_item,_val]];
+            }];
+                    _itemPoids  = Items_Cfg(getNumber,_item,"poids");
+                    _PoidsStock = _PoidsStock + (_itemPoids * _val);
+                    _Poids = _Poids - (_itemPoids * _val);
+        };
+
+        // Stockage -> Player
+        case "Rec": {
+                if (_ItemStock in _allItemsStock) then [{
+                    _ArrStock = (_inventoryStock select 0) select _index_Stock;
+                    _nrb = _ArrStock select 1;
+                    if (_val > _nrb) exitWith {[1,"Le stockage ne dispose pas de cette quantité"]call DA3F_fnc_hint;};
+                    _nrb = _nrb - _val;
+                    _ArrStock set [1,_nrb];
+                },{
+                _exit = true;
+            }];
+
+                    if (_exit) exitWith {};
+
+                if (_ItemStock in _allItemsUnit) then [{
+                    _ArrUnit = (_inventoryUnit select 0) select _index_Unit;
+                    _nrb = _ArrUnit select 1;
+                    _nrb = _nrb + _val;
+                    _ArrStock set [1,_nrb];
+                },{
+                (_inventoryUnit select 0) set [count(_inventoryUnit select 0),[_item,_val]];
+            }];
+                    _itemPoids  = Items_Cfg(getNumber,_item,"poids");
+                    _PoidsStock = _PoidsStock + (_itemPoids * _val);
+                    _Poids = _Poids - (_itemPoids * _val);
+        };
+
+    };
 closeDialog 0;

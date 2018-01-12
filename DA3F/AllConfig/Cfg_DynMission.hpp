@@ -29,7 +29,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            1, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -48,7 +48,7 @@ class DA3F_Dyn_Mission {
         Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
-        -1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
+        -1,    // -1 = random recompense | 1 = cash / 2 = veh / etc ("€","Klix")
             {
                 {"cash",
                     {
@@ -100,7 +100,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -111,14 +111,14 @@ class DA3F_Dyn_Mission {
         {
             "Infiltrer le réseau",
             {
-                "[]spawn {hint ""Départ dans quelques seconde""; sleep 2;player setpos [14204.9,16351.1]}",
+                "[""Infection en cours :"",0.9,true] spawn DA3F_fnc_Progresse;",
                 ""
             };
         };
         Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
-        1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
+        1,    // -1 = random recompense | 1 = cash / 2 = veh / etc ("€","Klix")
             {
                 {"cash",
                     {
@@ -189,7 +189,7 @@ class DA3F_Dyn_Mission {
         Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
-        2,    // -1 = random recompense | 1 = cash / 2 = veh / etc
+        2,    // -1 = random recompense | 1 = cash / 2 = veh / etc ("€","Klix")
             {
                 {"cash",
                     {

@@ -8,14 +8,13 @@
 */
 if !(isServer) exitWith {}; // Dégage de la client !
 #include "..\..\DA3F_macros.hpp"
-private ["_condi","_Condition"];
+private ["_condi","_Condition","_vicTyp"];
 _AllMission = [];
 {
 	_AllMission pushBack (configName _x);
 } forEach ("true" configClasses (missionConfigFile >> "DA3F_Dyn_Mission"));
 	/* Selection de la mission */
 DA3F_NameClass_Mission 	= selectRandom _AllMission;
-diag_log format ["DA3F - Dynamique mission : %1", DA3F_NameClass_Mission];
 	/* Récupération des infos (Message aux joueurs) */
 _random_iko = true;
 _img 		= Mission_Cfg(getText,DA3F_NameClass_Mission,"icon");
@@ -37,6 +36,7 @@ DA3F_futureDA3F_NameClass_Mission = time + (20*60);
 		}];
 _vicTyp		= switch (_condi) do {case "Mort": {"Faites le ménage sur la zone"};case "Objet": {"Trouver l'ordinateur"};case "Cible": {"Tuez le VIP"};
 };
+diag_log format ["DA3F - Dynamique mission : %1 [victoire type : %2 (%3)]", DA3F_NameClass_Mission,_vicTyp,_condi];
 _msg		= "";
 if (_random_iko) then {
 _iko = selectRandom["dead","heli","signal"];
@@ -345,6 +345,14 @@ waitUntil
 	Or
 	time >= DA3F_futureDA3F_NameClass_Mission
 };
+
+		private _nearUnitsInZone = [];
+	_units = {_nearUnitsInZone pushBack _x; alive _x && isPlayer _x && _x distance getMarkerPos _mrk < 500} count playableUnits;
+	if (_units > 0 && !DA3F_Valide_Missio) then {
+		    		[1,format ["Le temps de mission est allongé de 10min",nil]]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
+		    		[0,format ["Le temps de mission est allongé de 10min",nil]]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
+		    		sleep (10*60);
+	};
 diag_log format ["DA3F - Dynamique mission : %1 Condition OK time ou accompli", diag_tickTime];
 	if !(DA3F_Valide_Missio) exitWith
 		{
@@ -379,8 +387,6 @@ diag_log format ["DA3F - Dynamique mission : %1 Condition OK time ou accompli", 
 		_Devise_Gain_victory = _Victory select 2;
 	};
 
-		private _nearUnitsInZone = [];
-	_units = {_nearUnitsInZone pushBack _x; alive _x && isPlayer _x && _x distance getMarkerPos _mrk < 500} count playableUnits;
 		switch (_Get_Type_victory) do
 		{
 		    case "cash":
@@ -418,10 +424,12 @@ diag_log format ["DA3F - Dynamique mission : %1 Condition OK time ou accompli", 
 		};
 
 		[1,"Vous disposez de + ou - 3 min avant le nettoyage de la zone"]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
+		[0,"Vous disposez de + ou - 3 min avant le nettoyage de la zone"]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
 			sleep ((2*60) + random (2*60));
 			_rad = 200;
 			_force = true;
 		[1,"Nettoyage de la zone dans 10 sec"]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
+		[0,"Nettoyage de la zone dans 10 sec"]remoteExecCall["DA3F_fnc_hint",_nearUnitsInZone];
 			sleep 10;
 			_wait = [_mrk,_clearAll,_stock,_rad,_force] spawn DA3F_fnc_ClearZone;
 			waitUntil {sleep .3;scriptDone _wait};

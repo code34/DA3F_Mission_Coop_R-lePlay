@@ -20,32 +20,33 @@ if (isnil {(_this select 0) getVariable "DA3F_Farm_IsAcive"}) then {
 	(_this select 0) setVariable ["DA3F_Farm_IsAcive",false,true];
 };
 
+if (isNil{(_this select 0) getVariable "DA3F_StockPetrol"}) then {
+	(_this select 0) setVariable ["DA3F_StockPetrol",[[],0],true];
+};
 if ((_this select 0) getVariable "DA3F_Farm_IsAcive") exitWith {[1,"L'usine est déjà en travail"]call DA3F_fnc_hint;};
 
 	(_this select 0) setVariable ["DA3F_Farm_IsAcive",true,true];
 
 	_maxPoids_CiternePetrole = DA3F_Cfg(getNumber,"DA3F_InvCiternePetrol");
-	_cuve = nearestObjects [getPos (_this select 0),["Land_dp_smallTank_F"],80]select 0;
+//	_cuve = nearestObjects [getPos (_this select 0),["Land_dp_smallTank_F"],80]select 0;
 	_usine = nearestObjects [getPos (_this select 0),["Land_Factory_Main_F"],80]select 0;
-
+/*
 	if (isNil "_cuve") exitWith {};
 		if (isNull _cuve) exitWith {};
 			if (isNil{_cuve getVariable "DA3F_StockPetrol"}) then {
 				_cuve setVariable ["DA3F_StockPetrol",[[],0],true];
-			};
+			};*/
 			_panne = false;
-			_cycle = (15 + ceil random 30);
+			_cycle = (25 + ceil random 25);
 			_TypeCarbu	= "Carbu_Brute";
 			_sound = "Sign_Sphere10cm_F" createVehicle position _usine;
 			_sound setObjectTextureGlobal [0,""];
 
 
 		_newInv = [];
-		_newPoids = 0;
+		_CntItems = 0;
 		for "_a" from 1 to _cycle step 0.5 do {
-
-
-			_inventoryUsine = (_cuve getVariable "DA3F_StockPetrol");
+			_inventoryUsine = ((_this select 0) getVariable "DA3F_StockPetrol");
 			_arrItemsUsine = _inventoryUsine select 0;
 			_TotalPoidsUsine = _inventoryUsine select 1;
 			_all = [];
@@ -59,8 +60,8 @@ if ((_this select 0) getVariable "DA3F_Farm_IsAcive") exitWith {[1,"L'usine est 
 		} forEach _arrItemsUsine;
 
 			// 30% de chance de tomber en panne
-			if (_a > 3 && (random 100) < 30) exitWith {_panne = true;};
-
+			if (_a > 5 && (random 100) < 30) exitWith {_panne = true;};
+			_CntItems = 0;
 				if (_TypeCarbu in _all) then [{
 
 
@@ -70,6 +71,7 @@ if ((_this select 0) getVariable "DA3F_Farm_IsAcive") exitWith {[1,"L'usine est 
 					_itemsPoids = Items_Cfg(getNumber,_item,"Poids");
 					_val = (ceil random 3);
 					_Nrbitem = _Nrbitem + _val;
+					_CntItems = _CntItems + _Nrbitem;
 					_TotalPoidsUsine = _TotalPoidsUsine + (_itemsPoids * _val);
 					_arr set [1,_Nrbitem];
 					_inventoryUsine set [1,_TotalPoidsUsine];
@@ -79,16 +81,22 @@ if ((_this select 0) getVariable "DA3F_Farm_IsAcive") exitWith {[1,"L'usine est 
 							_arrItemsUsine set [count _arrItemsUsine,["Carbu_Brute",_val]];
 							_itemsPoids 	= Items_Cfg(getNumber,"Carbu_Brute","Poids");
 							_TotalPoidsUsine 	= _TotalPoidsUsine  + (_itemsPoids * _val);
+							_CntItems = _CntItems + _val;
 							_inventoryUsine set [1,_TotalPoidsUsine];
 					}];
-				_sound say3D "Device_disassembled_loop"; // "mining";
+					[_sound,"Device_disassembled_loop"] remoteexeccall ["DA3F_fnc_Globalsound",-2];
+				//_sound say3D "Device_disassembled_loop"; // "mining";
 				sleep (30 + random 30);
 };
 		(_this select 0) setVariable ["DA3F_Farm_IsAcive",false,true];
-			_nameItem = Items_Cfg(getNumber,_TypeCarbu,"displayname");
+			_nameItem = Items_Cfg(getText,_TypeCarbu,"displayname");
 			deleteVehicle _sound;
 		if (_panne) then [{
-			[1,format["L'exploitation de carburant est tombé en panne<br/>%1<br/>%2/%3",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole]] call DA3F_fnc_hint;
+			//[1,format["L'exploitation de carburant est tombé en panne<br/>%1<br/>%2/%3",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole]] call DA3F_fnc_hint;
+		//	[1,format["L'exploitation de carburant est tombé en panne<br/>%1<br/>%2/%3<br/>Quantité : %4",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole,_CntItems]] call DA3F_fnc_hint;
+			[1,format["L'exploitation de carburant est tombé en panne<br/>%1<br/>%2/%3<br/>Quantité : %4",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole,_CntItems]] remoteexecCall ["DA3F_fnc_hint",-2];
 		},{
-			[1,format["L'exploitation de carburant est à l'arrêt.<br/>%1<br/>%2/%3",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole]] call DA3F_fnc_hint;
+			//[1,format["L'exploitation de carburant est à l'arrêt.<br/>%1<br/>%2/%3",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole]] call DA3F_fnc_hint;
+		//	[1,format["L'exploitation de carburant est à l'arrêt.<br/>%1<br/>%2/%3<br/>Quantité : %4",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole,_CntItems]] call DA3F_fnc_hint;
+			[1,format["L'exploitation de carburant est à l'arrêt.<br/>%1<br/>%2/%3<br/>Quantité : %4",_nameItem,_TotalPoidsUsine,_maxPoids_CiternePetrole,_CntItems]] remoteexecCall ["DA3F_fnc_hint",-2];
 		}];

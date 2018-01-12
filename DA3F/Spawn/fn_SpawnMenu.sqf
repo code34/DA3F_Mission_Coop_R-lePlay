@@ -36,9 +36,9 @@ for "_a" from 0 to (count _DA3F_listMrk -1) do
           _nameSpawn = format ["Spawn n° - %1", _spawn];
         };
     _add=lbAdd[1500,_nameSpawn];
+    lbSetData [1500,(lbSize 1500)-1,_x];
   } forEach _AllMrk;
 // hint str _AllMrk; // Surveillence array
-missionNamespace setVariable ["DA3F_Mrk_Sp",_AllMrk];
 [(findDisplay 181117)]spawn{
 disableSerialization;
 waitUntil {isNull (_this select 0)};

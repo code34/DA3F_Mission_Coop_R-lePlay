@@ -29,7 +29,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -40,11 +40,11 @@ class DA3F_Dyn_Mission {
         {
             "Envoyer les infos de la boîte noire",
             {
-                "[""Upload"",0.3] spawn DA3F_fnc_Progresse;",
+                "[""Upload"",0.7,true] spawn DA3F_fnc_Progresse;",
                 ""
             };
         };
-        Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
+        Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
         -1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
@@ -99,7 +99,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -110,11 +110,11 @@ class DA3F_Dyn_Mission {
         {
             "Infiltrer le réseau",
             {
-                "[]spawn {hint ""Départ dans quelques seconde""; sleep 2;player setpos [14204.9,16351.1]}",
+                "[""Mouchard"",1.1,true] spawn DA3F_fnc_Progresse;",
                 ""
             };
         };
-        Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
+        Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
         1,    // -1 = random recompense | 1 = cash / 2 = veh / etc
@@ -135,7 +135,7 @@ class DA3F_Dyn_Mission {
                 },
                 {"items",
                     {
-                        {"Carbu_Brute",2},
+                        {"Carbu_Brute",5},
                         {"Poudre_Noir",2}
                     }
                 };
@@ -169,7 +169,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -180,12 +180,12 @@ class DA3F_Dyn_Mission {
         {
             "Mettre fin à la transmission",
             {
-                "[""Redirection des IP :"",0.3] spawn DA3F_fnc_Progresse;",
+                "[""Redirection des IP :"",0.9,true] spawn DA3F_fnc_Progresse;",
                 //"hint ""T'es trop fort !!\n t'as pas stoppé la transmission...\n Tu viens d'envoyer une balise d'urgence...\nCela veut dire que on va avoir de la visite très bientôt""",
                 ""
             };
         };
-        Min_Units           = 10; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
+        Min_Units           = 3; // Nombre d'unité ennemis max vivante pour validé la victoire (donc quand il reste 9 bots vivant la mission en victoir ) 
         Recompense[]        = 
         {
         2,    // -1 = random recompense | 1 = cash / 2 = veh / etc

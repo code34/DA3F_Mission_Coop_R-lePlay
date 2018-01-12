@@ -20,14 +20,5 @@ player addAction ["<t color='#A4300' size='1.2'>del item</t>",
 	},"",0,true,true,"",""];
 */
 
-/*
-player addAction ["<t color='#EA4300' size='1.2'>TP</t>",
-	{
-		openMap true;
-		player allowDamage false;
-		onMapSingleClick "player setpos _pos;onMapSingleClick ''; true";
-		_InitPos = getPos player;
-		waitUntil {!(_InitPos isEqualTo (getPos player))};
-		openMap false;
-	},"",0,true,true,"","(getPlayerUID player) in DA3F_Admin"];
-*/
+
+player addAction ["<t color='#EA4300' size='1.2'>Identification</t>",DA3F_fnc_TargetIdentity,"",0,true,true,"","(currentWeapon (vehicle player)) in [""Rangefinder"",""Laserdesignator""]"];

@@ -9,7 +9,7 @@
 *
 */
 
-private ["_invVeh","_veh","_MaxInv","_TypeCarbu","_invUsine","_maxPoids_CiternePetrole"];
+private ["_invVeh","_veh","_cuve","_MaxInv","_TypeCarbu","_InventoryUsine","_maxPoids_CiternePetrole"];
 
 #include "..\..\DA3F_macros.hpp"
 
@@ -21,7 +21,8 @@ private ["_invVeh","_veh","_MaxInv","_TypeCarbu","_invUsine","_maxPoids_CiterneP
 	_info_veh	= _display displayCtrl 1101;
 
 	_index		= lbCurSel 1500;
-	_cuve 		= nearestObjects [player,["Land_dp_smallTank_F"],80]select 0;
+	_cuve 		= player getVariable "DA3F_Pc_Petrol";
+//	_cuve 		= nearestObjects [player,["Land_dp_smallTank_F"],80]select 0;
 	_InventoryUsine 		= (_cuve getVariable "DA3F_StockPetrol");
 	_maxQuantCit= DA3F_Cfg(getNumber,"DA3F_InvCiternePetrol");
 	_exit		= false;
@@ -84,25 +85,6 @@ _Nrbitem = _Nrbitem - 1;
 _TotalPoidsUsi = _TotalPoidsUsi - (_itemsPoids * 1);
 _arr set [1,_Nrbitem];
 _InventoryUsine set [1,_TotalPoidsUsi];
-/*
-{
-	_item = _x select 0;
-	_Nrbitem = _x select 1;
-	if (_item isEqualTo "Carbu_Brute") then [{
-		if (_Nrbitem > 0) then {
-			_itemsPoids = Items_Cfg(getNumber,_item,"Poids");
-			_Nrbitem = _Nrbitem - 1;
-			_NewItemsUsine pushBack [_item,_Nrbitem];
-			_NewPoidsUsi = _NewPoidsUsi  + (_itemsPoids * 1);
-		};
-	},{
-			_NewItemsUsine pushBack [_item,_Nrbitem];
-			_itemsPoids = Items_Cfg(getNumber,_item,"Poids");
-			_NewPoidsUsi = _NewPoidsUsi  + (_itemsPoids * 1);
-}];
-} forEach _arrItemsUsine;
-(_cuve setVariable ["DA3F_StockPetrol",[_NewItemsUsine,_NewPoidsUsi],true]);
-*/
 _arrIndex = 0;
 _active = false;
 _all=[];
@@ -126,38 +108,13 @@ _Nrbitem = _Nrbitem + 1;
 _TotalPoidsVeh = _TotalPoidsVeh + (_itemsPoids * 1);
 _arr set [1,_Nrbitem];
 _inventoryVeh set [1,_TotalPoidsVeh];
-/*
-	{
-		_item = _x select 0;
-		_Nrbitem = _x select 1;
-		if (_item isEqualTo "Carbu_Brute") then [{
-			if (_Nrbitem > 0) then {
-				_itemsPoids = Items_Cfg(getNumber,_item,"Poids");
-				_Nrbitem = _Nrbitem + 1;
-				_NewItemsVeh pushBack [_item,_Nrbitem];
-				_NewPoidsVeh = _NewPoidsVeh  + (_itemsPoids * 1);
-			};
-		},{
-				_NewItemsVeh pushBack [_item,_Nrbitem];
-				_itemsPoids = Items_Cfg(getNumber,_item,"Poids");
-				_NewPoidsVeh = _NewPoidsVeh  + (_itemsPoids * 1);
-		}];
-	} forEach _arrItemsVeh;
-*/
-//	(_veh setVariable ["DA3F_InvVirtVeh",[_NewItemsVeh,_NewPoidsVeh],true]);
 },{
 	_arrItemsVeh set [count _arrItemsVeh,["Carbu_Brute",1]];
 	_itemsPoids 	= Items_Cfg(getNumber,"Carbu_Brute","Poids");
 	_TotalPoidsVeh 	= _TotalPoidsVeh  + (_itemsPoids * 1);
 	_inventoryVeh set [1,_TotalPoidsVeh];
-/*
-	_arrItemsVeh pushBack ["Carbu_Brute",1];
-			_itemsPoids = Items_Cfg(getNumber,"Carbu_Brute","Poids");
-			_TotalPoidsVeh = _TotalPoidsVeh  + (_itemsPoids * 1);
-(_veh setVariable ["DA3F_InvVirtVeh",[_arrItemsVeh,_TotalPoidsVeh],true]);
-*/
 }];
-
+	_veh setVariable ["DA3F_InvVirtVeh",[_arrItemsVeh,_TotalPoidsVeh],true];
 		_convert 	= linearConversion [0, _maxQuantCit, _TotalPoidsUsi, 0, 10, true];
 		_progBar progressSetPosition _convert;
 		_pos = progressPosition _progBar;

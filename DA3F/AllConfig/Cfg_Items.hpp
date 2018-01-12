@@ -11,6 +11,16 @@
 *       Pensez à récupérer la valeur dans fn_request.sqf (server_side) et dans fn_result.sqf (MpMission)
 *
 */
+
+class DA3F_Cfg_Shop_virt {
+    class DA3F_Shop_Gen_Base {
+        name = "Epicerie de la base";
+        side[] = {};
+        conditions = "";
+        items[] = { "Obj_water", "Obj_Ration"};
+    };
+};
+
 class DA3F_Cfg_Items_virt {
 
     class Obj_water
@@ -60,7 +70,7 @@ class DA3F_Cfg_Items_virt {
     class Balise_GPS
     {
         displayname         = "Balise GPS";             // Nom de l'objet
-        devise              = "£";                      // Devise de l'objet
+        devise              = "K";                      // Devise de l'objet
         Price_Buy           = 50;                       // Prix d'achat
         Price_Sell          = 11;                       // Prix de vente
         Stats               = -1;                       // value de l'objet

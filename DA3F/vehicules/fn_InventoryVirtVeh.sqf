@@ -21,8 +21,14 @@ if ! _dial exitWith {};
 
 	_Btn_GoInv 	= ((_display)displayCtrl 2400);
 	_Btn_GoStok = ((_display)displayCtrl 2401);
+	/*
+	_Btn_GoInv 	ctrladdEventHandler ["buttonclick",{["Rec"] call DA3F_fnc_Transfert_Target}];
+	_Btn_GoStok ctrladdEventHandler ["buttonclick",{["Env"] call DA3F_fnc_Transfert_Target}];
+	*/
+
 	_Btn_GoInv 	ctrladdEventHandler ["buttonclick",{[3] call DA3F_fnc_Transfert_Target_1}];
 	_Btn_GoStok ctrladdEventHandler ["buttonclick",{[2] call DA3F_fnc_Transfert_Target_1}];
+
 	{
 		_item 	= _x select 0;
 		_nrb 	= _x select 1;
