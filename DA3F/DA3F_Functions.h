@@ -27,6 +27,8 @@ class DA3F_Master
             class GiveCash {}; // Menu I
             class Use {}; // Menu I
             class SaveUnit {}; // Menu I
+            class transfert_Inventory {}; // Menu I
+            class UpdateInv {}; // Menu I
     };
     class DA3F_Master_Admin
     {
@@ -126,6 +128,9 @@ class DA3F_Master
             class ShowDesc_Spe {};
             class Switch_Concess_Garage {};
             class Shop_New_VirtItems {};
+            class Show_infos_VirtItems {};
+            class VirtItems_BuySell {};
+            class Shop_Update_VirtItems {};
     };
 
     class DA3F_shopcustom

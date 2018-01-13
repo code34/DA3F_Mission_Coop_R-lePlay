@@ -16,8 +16,7 @@
 #include "DA3F_Gui_menu_joueur.hpp"		
 #include "DA3F_Gui_Esc.hpp"		
 #include "DA3F_Gui_SpawnTemp.hpp"		
-#include "DA3F_Gui_Coms.hpp"		
-#include "DA3F_Gui_ShopItemsVirt.hpp"		
+#include "DA3F_Gui_Coms.hpp"			
 #include "DA3F_Gui_Shop_Specialisation.hpp"		// J'avais pas plus court ... t'es pas content, branle une claquette !
 #include "DA3F_Gui_Consult.hpp"
 #include "DA3F_Gui_baseGestion.hpp"

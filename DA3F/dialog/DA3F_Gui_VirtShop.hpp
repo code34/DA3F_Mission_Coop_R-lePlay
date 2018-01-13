@@ -40,8 +40,10 @@ class controls {
 			h = 0.336 * safezoneH;
 			colorBackground[] = {-1,-1,-1,0};
 			colortext[] = {0.1,0.3,0.7,1};
+			sizeex = 0.033;
 			colorSelectBackground[] = {0.1,0.2,0.5,0.3};
 			colorSelectBackground2[] = {0.5,0.2,0.1,0.3};
+			onlbselchanged = "_this call DA3F_fnc_Show_infos_VirtItems";
 		};
 		class List_ItemsUnit: MCF_RscListbox
 		{
@@ -53,8 +55,10 @@ class controls {
 			h = 0.336 * safezoneH;
 			colorBackground[] = {-1,-1,-1,0};
 			colortext[] = {0.1,0.3,0.7,1};
+			sizeex = 0.033;
 			colorSelectBackground[] = {0.1,0.2,0.5,0.3};
 			colorSelectBackground2[] = {0.5,0.2,0.1,0.3};
+			onlbselchanged = "_this call DA3F_fnc_Show_infos_VirtItems";
 		};
 		class Info_Items: MCF_RscControlsGroup
 		{
@@ -73,7 +77,7 @@ class controls {
 					x = 0;
 					y = 0;
 					w = 0.180312 * safezoneW;
-					h = 0.100259 * safezoneH;
+					h = 2 * safezoneH;
 					/*
 					class Attributes {
 						align="center";
@@ -94,7 +98,7 @@ class controls {
 			colorSelectBackground[] = {0,0,0,0};
 			colorSelectBackground2[] = {0,0,0,0};
 			colorBackgroundFocused[] = {0,0,0,0};
-			onbuttonclick = "";
+			onbuttonclick = "_this call DA3F_fnc_VirtItems_BuySell";
 		};
 
 		class DA3F_Btn_Sell: MCF_RscButtonMenu
@@ -109,7 +113,7 @@ class controls {
 			colorSelectBackground[] = {0,0,0,0};
 			colorSelectBackground2[] = {0,0,0,0};
 			colorBackgroundFocused[] = {0,0,0,0};
-			onbuttonclick = "";
+			onbuttonclick = "_this call DA3F_fnc_VirtItems_BuySell";
 		};
 
 		class DA3F_Btn_close: MCF_RscButtonMenu
@@ -122,6 +126,7 @@ class controls {
 			h = 0.0289259 * safezoneH;
 			colorBackground[] = {1,-1,-1,0.85};
 			colorBackgroundFocused[] = {0,0,0,0};
+			colorSelectBackground2[] = {0,0,0,0.1};
 			onbuttonclick = "closeDialog 0";
 		};
 	};

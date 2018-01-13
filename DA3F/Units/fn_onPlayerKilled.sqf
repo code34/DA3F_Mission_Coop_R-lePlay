@@ -73,7 +73,17 @@ DA3F_CamKilled camCommit 0;
     };
 
 _unit spawn {
+_inventoryUnit = player getVariable "DA3F_InvVirt";
+player setVariable ["DA3F_InvVirt",[[],0]];
+if !((_inventoryUnit select 0)isEqualTo []) then {
+_invDead = "Land_LuggageHeap_02_F" createVehicle [0,0,0];
+_invDead attachTo [_this,[-1,0.5,-0.1],"Pelvis"];
+detach _invDead;
+_invDead setVariable ["DA3F_StockItems",_inventoryUnit,true];
+};
+
 if (DA3F_Cash <= 0) exitWith {};
+
 _cash = "Land_Money_F" createVehicle [0,0,0];
 _cash attachTo [_this,[1,0,0.1],"Pelvis"];
 detach _cash;

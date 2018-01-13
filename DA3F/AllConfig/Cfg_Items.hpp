@@ -13,11 +13,19 @@
 */
 
 class DA3F_Cfg_Shop_virt {
+    
     class DA3F_Shop_Gen_Base {
         name = "Epicerie de la base";
-        side[] = {};
+        side[] = {GUER}; // GUER = independent
         conditions = "";
         items[] = { "Obj_water", "Obj_Ration"};
+    };
+
+    class DA3F_Shop_Exemple_2 {
+        name = "Coucou je suis un exemple";
+        side[] = {};    
+        conditions = "DA3F_Sp_Pilote";//OU possible : conditions = "DA3F_Sp_Pilote && DA3F_Rank_Capo";
+        items[] = { "Poudre_Noir", "Balise_GPS"};
     };
 };
 

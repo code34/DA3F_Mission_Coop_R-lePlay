@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=10;
+	toggles=138;
 	class ItemIDProvider
 	{
-		nextID=501;
+		nextID=509;
 	};
 	class MarkerIDProvider
 	{
@@ -527,7 +527,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=356;
+		items=364;
 		class Item0
 		{
 			dataType="Marker";
@@ -545,252 +545,8 @@ class Mission
 			side="Independent";
 			class Entities
 			{
-				items=5;
+				items=1;
 				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2296.1438,7.2339354,9255.7275};
-						angles[]={0,1.5008241,0};
-					};
-					side="Independent";
-					flags=7;
-					class Attributes
-					{
-						name="DA3F_inde_1";
-						isPlayer=1;
-					};
-					id=2;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=4.7683716e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.04;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2296.1018,7.2059517,9257.3027};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_2";
-						isPlayable=1;
-					};
-					id=4;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=-4.7683716e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2296.0608,7.1783428,9258.8828};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_3";
-						isPlayable=1;
-					};
-					id=6;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=-4.7683716e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2296.009,7.1467152,9260.4736};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_4";
-						isPlayable=1;
-					};
-					id=8;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=-4.7683716e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -799,7 +555,7 @@ class Mission
 						angles[]={0,1.5522238,0};
 					};
 					side="Independent";
-					flags=5;
+					flags=7;
 					class Attributes
 					{
 						name="DA3F_inde_10";
@@ -856,7 +612,7 @@ class Mission
 			{
 			};
 			id=1;
-			atlOffset=4.7683716e-007;
+			atlOffset=0.0059380531;
 		};
 		class Item2
 		{
@@ -864,68 +620,8 @@ class Mission
 			side="Independent";
 			class Entities
 			{
-				items=5;
+				items=1;
 				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2298.3118,8.0199242,9256.4834};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=7;
-					class Attributes
-					{
-						name="DA3F_inde_8";
-						isPlayable=1;
-					};
-					id=16;
-					type="I_C_Soldier_Bandit_6_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
@@ -934,7 +630,7 @@ class Mission
 						angles[]={0,1.5522238,0};
 					};
 					side="Independent";
-					flags=5;
+					flags=7;
 					class Attributes
 					{
 						name="DA3F_inde_9";
@@ -986,194 +682,12 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2298.1809,7.892499,9261.3867};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_5";
-						isPlayable=1;
-					};
-					id=10;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=-1.4305115e-006;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2298.2366,7.9587975,9259.7051};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_6";
-						isPlayable=1;
-					};
-					id=12;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=-9.5367432e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item4
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2298.2805,7.9958124,9258.0654};
-						angles[]={0,1.5522238,0};
-					};
-					side="Independent";
-					flags=5;
-					class Attributes
-					{
-						name="DA3F_inde_7";
-						isPlayable=1;
-					};
-					id=14;
-					type="I_C_Soldier_Bandit_6_F";
-					atlOffset=4.7683716e-007;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03FRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
 			};
 			class Attributes
 			{
 			};
 			id=15;
+			atlOffset=-4.7683716e-007;
 		};
 		class Item3
 		{
@@ -11450,6 +10964,604 @@ class Mission
 			id=500;
 			type="Land_PCSet_01_screen_F";
 			atlOffset=1.1208768;
+		};
+		class Item356
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2298.3118,8.0199242,9256.4834};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_8";
+						isPlayable=1;
+					};
+					id=16;
+					type="I_C_Soldier_Bandit_6_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=501;
+		};
+		class Item357
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2298.2805,7.9958124,9258.0654};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_7";
+						isPlayable=1;
+					};
+					id=14;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=502;
+			atlOffset=4.7683716e-007;
+		};
+		class Item358
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2298.2366,7.9587975,9259.7051};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_6";
+						isPlayable=1;
+					};
+					id=12;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=-9.5367432e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=503;
+			atlOffset=-9.5367432e-007;
+		};
+		class Item359
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2298.1809,7.892499,9261.3867};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_5";
+						isPlayable=1;
+					};
+					id=10;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=-1.4305115e-006;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=504;
+			atlOffset=-1.4305115e-006;
+		};
+		class Item360
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2296.1438,7.2339354,9255.7275};
+						angles[]={0,1.5008241,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_1";
+						isPlayer=1;
+					};
+					id=2;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=505;
+			atlOffset=4.7683716e-007;
+		};
+		class Item361
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2296.1018,7.2059517,9257.3027};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_2";
+						isPlayable=1;
+					};
+					id=4;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=-4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=506;
+			atlOffset=-4.7683716e-007;
+		};
+		class Item362
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2296.0608,7.1783428,9258.8828};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_3";
+						isPlayable=1;
+					};
+					id=6;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=-4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=507;
+			atlOffset=-4.7683716e-007;
+		};
+		class Item363
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2296.009,7.1467152,9260.4736};
+						angles[]={0,1.5522238,0};
+					};
+					side="Independent";
+					flags=7;
+					class Attributes
+					{
+						name="DA3F_inde_4";
+						isPlayable=1;
+					};
+					id=8;
+					type="I_C_Soldier_Bandit_6_F";
+					atlOffset=-4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03FRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=508;
+			atlOffset=-4.7683716e-007;
 		};
 	};
 };
