@@ -54,6 +54,7 @@ if (str _this isEqualTo "true") then [{
 	_hierarchie = _this select 10;
 	_wCash 		= _this select 11;
 	_myMsg 		= _this select 12;
+	_xplevel	= _this select 13;
 
 	player setVariable ["DA3F_Save_Msg",_myMsg,true];
 	player setVariable ["DA3F_DB_Pos",_GetPos,false];
@@ -85,7 +86,8 @@ if (str _this isEqualTo "true") then [{
 	_invUnit = %8
 	_stats = %9
 	_AdminLvl = %10
-	_hierarchie = %11",_uid,_name,_cash,_bank,_GetPos,_spe_L,_invVirt,_invUnit,_stats,_AdminLvl,_hierarchie];
+	_hierarchie = %11
+	_xplevel	= %12",_uid,_name,_cash,_bank,_GetPos,_spe_L,_invVirt,_invUnit,_stats,_AdminLvl,_hierarchie,_xplevel];
 	//hint _ret;
 	diag_log format ["**************************************************************", nil];
 	diag_log format ["[DA3F Client] RETOUR BDD :: Array :: %1", _ret];

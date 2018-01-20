@@ -46,7 +46,7 @@
 			y = 0.599 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
-			onbuttonclick = "DA3F_IsRespawn = true;call DA3F_fnc_SpawnStartMenu";
+			onbuttonclick = "[true] call DA3F_fnc_SaveStats;DA3F_IsRespawn = true;call DA3F_fnc_SpawnStartMenu";
 			colorBackground[] = {0.4,0.2,0.1,0.8};
 			class Attributes {align = "center";};
 		};
@@ -59,7 +59,7 @@
 			w = 0.144375 * safezoneW;
 			h = 0.022 * safezoneH;
 			class Attributes {align = "center";};
-			onbuttonclick = "call DA3F_fnc_backLobby";
+			onbuttonclick = "[true] call DA3F_fnc_SaveStats;call DA3F_fnc_backLobby";
 			colorBackground[] = {0.8,0.2,0.1,0.8};
 		};
 	};

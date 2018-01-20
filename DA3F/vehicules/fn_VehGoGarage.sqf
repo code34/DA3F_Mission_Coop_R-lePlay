@@ -15,7 +15,7 @@ disableSerialization;
 #include "..\..\DA3F_macros.hpp"
 if ! (createDialog "DA3F_GarageVeh") exitWith {};
 	_display = (findDisplay 161217);
-	_list = nearestObjects [player,["car","air","ship","Tank"],40];
+	_list = nearestObjects [player,["car","air","ship","Tank"],100];
 for "_a" from 0 to (count _list -1) do {
 		_veh = (_list select _a);
 		_Real_Name = Real_NameVeh(typeOf _veh);

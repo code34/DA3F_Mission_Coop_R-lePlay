@@ -81,6 +81,9 @@ switch (_type) do
                 [
                 format ["%1", (Mission_Cfg(getArray,DA3F_NameClass_Mission,"Objet_Exec"))select 0],
             {
+            if (isnil "DA3F_futureDA3F_NameClass_Mission") then {
+                DA3F_futureDA3F_NameClass_Mission = time;
+            };
                 DA3F_futureDA3F_NameClass_Mission = DA3F_futureDA3F_NameClass_Mission + (2*60);
                 _arrExec = (Mission_Cfg(getArray,DA3F_NameClass_Mission,"Objet_Exec"))select 1;
                 _exec    = (_arrExec select 0);

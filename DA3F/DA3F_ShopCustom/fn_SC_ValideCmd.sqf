@@ -15,6 +15,7 @@ disableSerialization;
 		_array   = getArray(missionConfigFile >> "DA3F_Cfg_shop_air_drop" >> DA3F_Shop_Class >> "DA3F_ShopCustom");
 	//	_devise  = getText(missionConfigFile >> "DA3F_Cfg_shop_air_drop" >> DA3F_Shop_Class >> "DA3F_SC_Devise");
 		_total = 0;
+		_devisePognon = "";
 	{
 		_art = (_x select 1);
 		_cnt = (_x select 2);
@@ -26,6 +27,7 @@ disableSerialization;
 					_buy = (_shop select _b)select 1;
 					_sell = (_shop select _b)select 2;
 					_devise = (_shop select _b)select 3;
+					_devisePognon = _devisePognon + _devise;
 					if (_art isEqualTo _obj) then {
 						_allCash = (_buy * _cnt);
 						_total = _total + _allCash;
@@ -48,17 +50,17 @@ _total = 0;
 	_total = _total + (_info select 0);
 } forEach (player getVariable "DA3F_PanierShop");
 
-hintSilent str _total;
+//hintSilent str _total;
 sleep 2;
-	if (_devise isEqualTo "€") then {
+	if (_devisePognon isEqualTo "€") then {
 
 	if (DA3F_Cash < _total && DA3F_Bank < _total) exitWith
 		{
-			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
+			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devisePognon];
 			sleep (5+random 5);
 			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Vos fonds sont insuffisant.<t/>",nil];
 		};
-			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
+			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devisePognon];
 			sleep (5+random 5);
 			if (DA3F_Cash < _total) then [{
 				DA3F_Bank = DA3F_Bank - _total;
@@ -67,15 +69,15 @@ sleep 2;
 			}];
 	};
 
-	if (_devise isEqualTo "K") then {
+	if (_devisePognon isEqualTo "K") then {
 
 	if (DA3F_WCash < _total) exitWith
 		{
-			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
+			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devisePognon];
 			sleep (5+random 5);
 			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Vos fonds sont insuffisant.<t/>",nil];
 		};
-			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devise];
+			hint parseText format ["<t color='#FC2700' size='1.3'>DA3F :-: Online Express<t/><br/><br/><t color='#FEFEFE' size='1.1'>Verification de vos moyens...<br/>Coût de la commande <br/>%1%2<t/>",_total,_devisePognon];
 			sleep (5+random 5);
 				DA3F_WCash = DA3F_WCash - _total;
 	};

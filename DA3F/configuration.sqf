@@ -18,6 +18,7 @@ _Wcash 		= DA3F_Cfg(getNumber,"DA3F_WCash");
 _bouf 		= DA3F_Cfg(getNumber,"DA3F_Bouf_Start");
 _soif 		= DA3F_Cfg(getNumber,"DA3F_Soif_Start");
 DA3F_Active_debug	= true; // affichage debug en hint + log
+DA3F_1erCo 			= true;
 DA3F_IsAction 		= false;
 DA3F_Stop_Action 	= false;
 DA3F_IsRespawn 		= false;
@@ -36,7 +37,7 @@ DA3F_Faim 			= _bouf;
 DA3F_Soif 			= _soif;
 CountKillUnits 		= 0;
 player setVariable ["DA3F_IsLoadActiv",true,false];
-player setVariable ["DA3F_Save_Msg",[],true];
+player setVariable ["DA3F_Save_Msg",[],false];
 player setVariable ["DA3F_DB_Pos",[],false];
 player setVariable ["DA3F_Mdp_Co","1234",false];
 player setVariable ["DA3F_New_Co",false,false];

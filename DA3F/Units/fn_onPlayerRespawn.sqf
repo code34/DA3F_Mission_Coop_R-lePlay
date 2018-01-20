@@ -26,7 +26,10 @@ MCF_CountShoot = 0;
 if (player getVariable "DA3F_IsLoadActiv") then {
 	[player, [missionNamespace, "DA3F_InvUnit"]] call BIS_fnc_loadInventory;
 };
-[]spawn DA3F_fnc_statusBar;
+if (!(uiNamespace getVariable "MCFStatusBar")) then {
+	[]spawn DA3F_fnc_statusBar;
+};
+
 []call DA3F_fnc_SetupAction;
 	execVM "DA3F\functions\DA3F_particules.sqf";
-
+player addRating -6000;

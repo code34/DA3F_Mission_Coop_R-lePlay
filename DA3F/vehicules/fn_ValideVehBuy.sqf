@@ -132,6 +132,7 @@ if (_exit) exitWith {hint "Rempliser tous les champs"};
 		_vehsp setVariable ["DA3F_VehInfo",_infos,true];
 		_vehsp setVariable ["DA3F_InvVirtVeh",[[],0],true];
         _vehsp setVariable ["DA3F_Save_Me_Please",true,true];
+        _vehsp setFuelCargo 0;
 		_classVeh	=  ClassVeh(_veh);
 		if (_classVeh isEqualTo "Support") then {
 			_classVeh = "Car";

@@ -18,7 +18,7 @@ _plak = (cursorTarget getVariable ["DA3F_VehInfo",[]])select 2; hint str _plak;
 disableSerialization;
 _selectveh 		= lbCurSel 1500;
 _Data       	= (lbData[1500,_selectveh]);
-_list 			= nearestObjects [player,["car","air","ship","Tank"],40];
+_list 			= nearestObjects [player,["car","air","ship","Tank"],100];
 _veh 			= _list select _selectveh;
 _uid 			= (_veh getVariable ["DA3F_VehInfo",[]])select 0;
 _plak 			= (_veh getVariable ["DA3F_VehInfo",[]])select 2;

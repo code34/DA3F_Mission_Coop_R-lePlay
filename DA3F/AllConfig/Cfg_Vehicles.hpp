@@ -19,10 +19,10 @@ _array   = getArray(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "D
 class DA3F_Cfg_Mrk_ShopsVeh {
 MrkSp[] =
     {
-        {"DA3F_Mrk_Sp_loc_0","Base QG"},
+        {"DA3F_Mrk_Sp_loc_0","Armée de l'air"},
         {"DA3F_Mrk_Sp_loc_1","Caserne de repos"},
-        {"DA3F_Mrk_Sp_loc_2","Base secondaire"},
-        {"DA3F_Mrk_Sp_loc_3","Avant post d'Athira"}
+        {"DA3F_Mrk_Sp_loc_2","Armée de terre"},
+        {"DA3F_Mrk_Sp_loc_3","La marine - 41e flote d'Altis"}
     };
 };
 

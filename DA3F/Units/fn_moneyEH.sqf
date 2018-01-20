@@ -103,8 +103,11 @@ _Weapon ctrlSetStructuredText (parseText format ["<t color='#FE0019' size='1'>Co
 	}];
 }];
 _Weapon ctrlCommit 0;
+/*
+	_rebelPrime = _unit getVariable "DA3F_PrimeKill";
 	_PrimCash = _rebelPrime select 0;
 	_devise = _rebelPrime select 1;
+	*/
 	switch (_devise) do {
 	    case "€": {
 			[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.€<br/>Units : %2</t>",DA3F_Cash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;

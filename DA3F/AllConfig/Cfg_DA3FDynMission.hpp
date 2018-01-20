@@ -99,7 +99,7 @@ class DA3F_Dyn_Mission {
         Max_Vehicles        = 3;
         condition[]         = 
         {
-            2, // -1 = random condition | 1 = Mort / 2 = Objet / etc
+            3, // -1 = random condition | 1 = Mort / 2 = Objet / etc
             {
             "Mort", // Mort des unités ennemis (définissez un valeur sur 'Min_Units' si utilisé)
             "Objet", // Action ajouté sur un objet permettant la validation de la mission (clear mission 5 min après)
@@ -125,7 +125,7 @@ class DA3F_Dyn_Mission {
                         30000,
                         35000
                     },
-                    "€"
+                    "Klix"
                 },
                 {"veh",
                     {
@@ -196,7 +196,7 @@ class DA3F_Dyn_Mission {
                         3000,
                         3500
                     },
-                    "£"
+                    "Klix"
                 },
                 {"veh",
                     {
