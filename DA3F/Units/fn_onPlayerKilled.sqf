@@ -7,6 +7,7 @@
 *       Mort du joueur
 *
 */
+#include "..\..\DA3F_macros.hpp"
 params [
     ["_unit",objNull,[objNull]],
     ["_killer",objNull,[objNull]]
@@ -73,23 +74,53 @@ DA3F_CamKilled camCommit 0;
     };
 
 _unit spawn {
-_inventoryUnit = player getVariable "DA3F_InvVirt";
-player setVariable ["DA3F_InvVirt",[[],0]];
-if !((_inventoryUnit select 0)isEqualTo []) then {
-_invDead = "Land_LuggageHeap_02_F" createVehicle [0,0,0];
+
+   private _inventory  = [];
+   private _poids      = 0;
+
+sleep 0.1;
+
+    {
+        if (MNS_Gvar_Items(configName _x) > 0) then {
+            _inventory pushBack [(configName _x),MNS_Gvar_Items(configName _x)];
+            _itemPoids = ([(configName _x)]call DA3F_fnc_Inv_Items_Poids) * (MNS_Gvar_Items(configName _x));
+            _poids = _poids + _itemPoids;
+            [false,(configName _x),MNS_Gvar_Items(configName _x)]call DA3F_fnc_Inv_UpDown_Items;
+        };
+    } forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_Items_virt"));
+
+    private _inventoryUnit = [_inventory,_poids];
+    private _invDead = "Land_LuggageHeap_02_F" createVehicle [0,0,0];
+if !(str _inventoryUnit isEqualTo "[[],0]") then {
 _invDead attachTo [_this,[-1,0.5,-0.1],"Pelvis"];
 detach _invDead;
 _invDead setVariable ["DA3F_StockItems",_inventoryUnit,true];
+    {
+        _invDead disableCollisionWith _x;
+    } forEach playableUnits;
+    _invDead spawn {
+    waitUntil {sleep 1;((_this getVariable "DA3F_StockItems")select 0) isEqualTo []};
+    deleteVehicle _this;
+};
 };
 
-if (DA3F_Cash <= 0) exitWith {};
+if (DA3F_Cash <= 0 && DA3F_WCash <= 0) exitWith {};
 
 _cash = "Land_Money_F" createVehicle [0,0,0];
 _cash attachTo [_this,[1,0,0.1],"Pelvis"];
 detach _cash;
 _pepette = DA3F_Cash;
-_cash setVariable ["DA3F_DeadCash",_pepette,true];
-[0,_cash] remoteExec ["DA3F_fnc_ActTarget",-2];
+_klix = DA3F_WCash;
+_cash setVariable ["DA3F_DeadCash",[_pepette,_klix],true];
+// [0,_cash] remoteExec ["DA3F_fnc_ActTarget",-2];
+[_cash, ["<t color='#F59800' size='1.2' >Ramasser le cash<t/>", {
+            _cash = ((_this select 0) getVariable "DA3F_DeadCash")select 0;
+            _Klix = ((_this select 0) getVariable "DA3F_DeadCash")select 1;
+            DA3F_Cash = DA3F_Cash + _cash;
+            DA3F_WCash = DA3F_WCash + _Klix;
+            deleteVehicle (_this select 0);
+            [1,format ["Vous venez de Ramasser <br/>%1€<br/>%2Klix", _cash]]call DA3F_fnc_hint;
+        }]] remoteExec ["addAction", -2, _cash];
 };
 
 _unit spawn

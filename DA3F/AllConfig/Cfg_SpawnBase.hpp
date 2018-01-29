@@ -9,7 +9,6 @@
 */
 
 class DA3F_Cfg_SpawnBase {
-
     class Spawn_Base_recrutement
     {
         marker              = "DA3F_Spawn_0";               // Nom du marker *
@@ -20,7 +19,6 @@ class DA3F_Cfg_SpawnBase {
         Sp_Radius           = 0;                           // Radius autour du marker dans le quel le joueur sera tp
         icon                = "icons\ico_ItemsDefault.paa";  // Chemin de l'image .. peut rester vide
     };
-
     class Spawn_Armee_air
     {
         marker              = "DA3F_Spawn_1";               // Nom du marker *
@@ -57,12 +55,11 @@ class DA3F_Cfg_SpawnBase {
     class Spawn_Inde
     {
         marker              = "DA3F_Spawn_4";               // Nom du marker *
-        condition           = "";   // Condition dont dépend le spawn
+        condition           = "DA3F_Sp_Dero";   // Condition dont dépend le spawn
         displayname         = "Indépendance";          // Nom du spawn .. peut rester vide (Nom de la class sera par défault)
-        Title               = "Serez-vous prêt ??";                           // Titre .. peut rester vide 
-        Descrip             = "L'armée, l'autorité, c'est pas pour vous... Mais serez vous survivre dans cet environnement ? Vos actions en vers les autres seront décisive pour votre survie...";                           // Description de la zone ..  peut rester vide
+        Title               = "L'armée d'état n'est pas pour moi";                           // Titre .. peut rester vide 
+        Descrip             = "L'armée, l'autorité, c'est pas pour vous...Donc le Groupe Indépendantiste est pour vous.<br/> Mais serez vous survivre dans cet environnement ? Vos actions en vers les autres seront décisive pour votre survie...";                           // Description de la zone ..  peut rester vide
         Sp_Radius           = 0;                           // Radius autour du marker dans le quel le joueur sera tp
         icon                = "icons\ico_ItemsDefault.paa";  // Chemin de l'image .. peut rester vide
     };
-
 };

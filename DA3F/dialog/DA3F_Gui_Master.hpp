@@ -28,3 +28,4 @@
 #include "DA3F_Gui_SC.hpp" 		
 #include "DA3F_Gui_ExploitPetrol.hpp" 		
 #include "DA3F_Gui_VirtShop.hpp" 		
+#include "DA3F_Gui_escort.hpp" 		

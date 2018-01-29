@@ -15,11 +15,10 @@ _plak = (cursorTarget getVariable ["DA3F_VehInfo",[]])select 2; hint str _plak;
 */
 
 _this spawn {
-private ["_selectCat","_selectveh","_selectMrk","_selectInVeh","_timeDelVehinMrkSp","_exit","_veh","_PriceAchat","_PriceVente","_mrk","_Infomrk","_pos","_vehGenant","_pos_1","_pos_2","_alti","_vehsp","_invVirt","_classVeh"];
+private ["_selectCat","_selectveh","_selectMrk","_selectInVeh","_timeDelVehinMrkSp","_exit","_veh","_PriceAchat","_PriceVente","_mrk","_Infomrk","_pos","_vehGenant","_pos_1","_pos_2","_alti","_vehsp","_invVirt","_classVeh","_Devise"];
 
 #include "..\..\DA3F_macros.hpp"
 disableSerialization;
-
 _selectCat 		= lbCurSel 2100;
 _selectveh 		= lbCurSel 1500;
 _selectMrk 		= lbCurSel 1501;
@@ -27,21 +26,23 @@ _selectInVeh 	= lbCurSel 2101;
 _Garage 		= lbText[2100,lbCurSel 2100];
 _Data       	= (lbData[1500,_selectveh]);
 _debug			= false;
-if !(_Data isEqualTo "") then [{
-	_Data 	= call compile _Data;
-},{
-	_exit = true;
-}];
-
 //systemChat str _Data;
 _arrayMrkSp	= Mrk_SpVeh_Cfg; // Macro no Global var
 _timeDelVehinMrkSp = DA3F_Cfg(getNumber,"DA3F_MaxTimeDelVeh");
 _exit = false;
+_exit_2 = false;
 {
 	if (_x isEqualTo -1) then {_exit = true};
 }forEach [_selectveh,_selectCat,_selectMrk];
 
-if (_exit) exitWith {hint "Rempliser tous les champs"};
+if !(_Data isEqualTo "") then [{
+	_Data 	= call compile _Data;
+},{
+	_exit_2 = true;
+}];
+
+if (_exit_2) exitWith {[1,"Erreur de chargement de données !"]call DA3F_fnc_hint;};
+if (_exit) exitWith {[1,"Rempliser tous les champs"]call DA3F_fnc_hint;};
 
 	_veh = _Data select 0;
 	_PriceAchat = _Data select 1;
@@ -50,16 +51,17 @@ if (_exit) exitWith {hint "Rempliser tous les champs"};
     _mrk = (_arrayMrkSp select _selectMrk) select 0;
     _Infomrk = (_arrayMrkSp select _selectMrk) select 1;
     _pos = getMarkerPos _mrk;
-			switch (_devise) do {
+    systemChat format ["%1 %2 %3", (typeName _PriceAchat),_Devise,_PriceAchat];
+			switch (_Devise) do {
 			    case "€": {
-					if (DA3F_Cash < _PriceAchat) exitWith {[1,format["Tu manque de cash <br/>%1%2",(DA3F_Cash - _PriceAchat),_devise]]call DA3F_fnc_hint};
-				//[1,format["Vous avez acheté :<br/>%2 X %1<br/>Pour : %3%4",_NameItem,_val,_total,_devise]]call DA3F_fnc_hint;
+					if (DA3F_Cash < _PriceAchat) exitWith {[1,format["Tu manque de cash <br/>%1%2",(DA3F_Cash - _PriceAchat),_Devise]]call DA3F_fnc_hint};
+				//[1,format["Vous avez acheté :<br/>%2 X %1<br/>Pour : %3%4",_NameItem,_val,_total,_Devise]]call DA3F_fnc_hint;
 				DA3F_Cash = DA3F_Cash - _PriceAchat;
 			    };
 
-			    case "£": {
-					if (DA3F_WCash < _PriceAchat) exitWith {[1,format["Tu manque de cash <br/>%1%2",(DA3F_WCash - _PriceAchat),_devise]]call DA3F_fnc_hint};
-				//[1,format["Vous avez acheté :<br/>%2 X %1<br/>Pour : %3%4",_NameItem,_val,_total,_devise]]call DA3F_fnc_hint;
+			    case "Klix": {
+					if (DA3F_WCash < _PriceAchat) exitWith {[1,format["Tu manque de cash <br/>%1%2",(DA3F_WCash - _PriceAchat),_Devise]]call DA3F_fnc_hint};
+				//[1,format["Vous avez acheté :<br/>%2 X %1<br/>Pour : %3%4",_NameItem,_val,_total,_Devise]]call DA3F_fnc_hint;
 				DA3F_WCash = DA3F_WCash - _PriceAchat;
 			    };
 			};

@@ -10,6 +10,7 @@
 _this allowDamage false;
 _this enableSimulation false;
 //_this addAction["<t color='#01D585' size='1.3'>Boutique<t/>",{[0]call DA3F_fnc_ShopItemsVirt},nil,0,false,false,"","_this distance _target < 4"];
-_this addAction["<t color='#01D585' size='1.3'>New Boutique<t/>",DA3F_fnc_Shop_New_VirtItems,"DA3F_Shop_Gen_Base",0,false,false,"","_this distance _target < 4"];
+_this addAction["<t color='#01D585' size='1.3'>Boutique<t/>",DA3F_fnc_Shop_New_VirtItems,"DA3F_Shop_Gen_Base",0,false,false,"","_this distance _target < 4"];
 _this addAction["<t color='#01D585' size='1.3'>Boutique Pilote<t/>",DA3F_fnc_Shop_New_VirtItems,"DA3F_Shop_Exemple_2",0,false,false,"","_this distance _target < 4"];
 _this addAction["<t color='#01D585' size='1.3'>Spécialisation<t/>",DA3F_fnc_Shop_Specialisation,nil,0,false,false,"","_this distance _target < 4"];
+_this addAction["<t color='#01D585' size='1.3'>Active Mission<t/>",{[]spawn DA3F_fnc_PlayerMission_0},nil,0,false,false,"","_this distance _target < 4"];

@@ -22,3 +22,7 @@ player addAction ["<t color='#A4300' size='1.2'>del item</t>",
 
 
 player addAction ["<t color='#EA4300' size='1.2'>Identification</t>",DA3F_fnc_TargetIdentity,"",0,true,true,"","(currentWeapon (vehicle player)) in [""Rangefinder"",""Laserdesignator""]"];
+
+/*
+player addAction ["<t color='#EA4300' size='1.2'>Escorte Menu</t>",DA3F_fnc_Escort_Call_Menu,"",0,true,false,"","(getPlayerUID player) in DA3F_Admin"];
+*/

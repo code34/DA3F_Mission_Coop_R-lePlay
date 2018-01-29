@@ -21,7 +21,6 @@ class DA3F_Master
             class Units_Interaction {};
             class Units_Interaction_valide {};
             class result {};
-            class customInventory {};
             class Appli {}; // Menu I
             class Give {}; // Menu I
             class GiveCash {}; // Menu I
@@ -30,6 +29,17 @@ class DA3F_Master
             class transfert_Inventory {}; // Menu I
             class UpdateInv {}; // Menu I
     };
+    
+    class DA3F_LaserDesign
+    {
+        file = "DA3F\Target_DesignLaser";
+            class Identif_Target {};
+            class DesignLaser_Mortier {};
+            class UpdateProgress {};
+            class Boom_Target {};
+            class CreateDel_Arrow {};
+    };
+
     class DA3F_Master_Admin
     {
         file = "DA3F\admin";
@@ -46,6 +56,45 @@ class DA3F_Master
             class Expoitation_Petrol_InfoVeh {};
             class Expoitation_Petrol_Veh {};
             class move_Mouse {};
+    };
+
+    class DA3F_Mission_joueur
+    {
+        file = "DA3F\objectifs_Player";
+            class PlayerMission_0 {};
+    };
+
+    class DA3F_restrain
+    {
+        file = "DA3F\escort";
+            class Escort_Call_Menu {};
+            class Escorte_Go_Veh {};
+            class Escorte_menottage {};
+            class Escorte_Start {};
+            class Escorte_Stop {};
+            class Escorte_Freedom {};
+            class Escorte_loop {};
+    };
+
+    class DA3F_PNJ_restrain
+    {
+        file = "DA3F\escort\pnj";
+            class EscoPNJ_Menotte {};
+    };
+
+    class DA3F_Gestion_Inventory
+    {
+        file = "DA3F\Inventory";
+            class Inv_UpDown_Items {};
+            class Stock_UpDown_Items {};
+            class Inv_Calcul_Poids {};
+            class Inv_Items_Poids {};
+            class Stock_Open_Inv {};
+            class customInventory {};
+            class inv_UseItem {};
+            class inv_Valide_ActionListBox {};
+            class inv_DoubleClick {};
+            class Inv_Stock_echange_Items {};
     };
 
     class DA3F_Base

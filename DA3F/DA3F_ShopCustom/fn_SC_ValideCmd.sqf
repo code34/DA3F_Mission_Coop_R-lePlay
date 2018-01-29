@@ -15,7 +15,7 @@ disableSerialization;
 		_array   = getArray(missionConfigFile >> "DA3F_Cfg_shop_air_drop" >> DA3F_Shop_Class >> "DA3F_ShopCustom");
 	//	_devise  = getText(missionConfigFile >> "DA3F_Cfg_shop_air_drop" >> DA3F_Shop_Class >> "DA3F_SC_Devise");
 		_total = 0;
-		_devisePognon = "";
+	private	_devisePognon = "";
 	{
 		_art = (_x select 1);
 		_cnt = (_x select 2);
@@ -27,7 +27,7 @@ disableSerialization;
 					_buy = (_shop select _b)select 1;
 					_sell = (_shop select _b)select 2;
 					_devise = (_shop select _b)select 3;
-					_devisePognon = _devisePognon + _devise;
+					_devisePognon = _devisePognon + format ["%1", _devise];
 					if (_art isEqualTo _obj) then {
 						_allCash = (_buy * _cnt);
 						_total = _total + _allCash;

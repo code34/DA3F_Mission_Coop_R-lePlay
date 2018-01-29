@@ -148,11 +148,12 @@ fn_GoUnit={
 		_players = [];
 		{
 		if (isPlayer _x) then {
-			_players pushBack _x;
-		};
+			if !((side _x) isEqualTo east) then {
+				_players pushBack _x;
+			};
 		}forEach(nearestObjects[_Nearunit,["man"],150]);
 		if (_players isEqualTo []) exitWith {};
-			_player = _player select (count _player -1);
+			_player = selectRandom _players;
 			_group move getpos _player;
 		sleep (3*60);
 		(isNull _group)

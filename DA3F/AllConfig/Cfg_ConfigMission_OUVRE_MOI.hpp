@@ -24,6 +24,7 @@ _text       = getText(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> 
 _number     = getNumber(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "DA3F_Max_save_Veh");
 _array      = getArray(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "DA3F_listMrk");
 */
+
 #define true 1
 #define false 0
 
@@ -68,7 +69,7 @@ class DA3F_CfgMission {
             {"DA3F_SpUnitsCity_8",800}, //
             {"DA3F_SpUnitsCity_9",600}, // 
             {"DA3F_SpUnitsCity_10",600}, // 
-            {"DA3F_SpUnitsCity_11",600}, // 
+            {"DA3F_SpUnitsCity_11",500}, // 
             {"DA3F_SpUnitsCity_12",600}, // 
             {"DA3F_SpUnitsCity_13",800}, // 
             {"DA3F_SpUnitsCity_14",800}, //
@@ -87,9 +88,11 @@ class DA3F_CfgMission {
             {"DA3F_SpUnitsCity_27",600}, //
             {"DA3F_SpUnitsCity_28",600}, // 
             {"DA3F_SpUnitsCity_29",600}, //  
-            {"DA3F_SpUnitsCity_30",600}, //
+            {"DA3F_SpUnitsCity_30",500}, //
             {"DA3F_SpUnitsCity_31",600}, // 
-            {"DA3F_SpUnitsCity_32",800} // 
+            {"DA3F_SpUnitsCity_32",800}, // 
+            {"DA3F_SpUnitsCity_33",500}, // 
+            {"DA3F_SpUnitsCity_34",500} // 
         };
     };
 };

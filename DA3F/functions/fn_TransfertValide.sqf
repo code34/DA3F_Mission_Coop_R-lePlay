@@ -54,4 +54,3 @@ if (_silo_2) then {_get_2 = _desti getVariable "DA3F_SiloBase"};
             _desti setVariable [format["DA3F_%1Base",_type_2],[_calcul_2,_Max_2,_type_2],true];
             [1,format["Transfert en cours...<br/>%1<br/>%2<br/>%3<br/>%4<br/>%5",_type_1,_contenu_1,_val,_Max_1,_calcul_1]]call DA3F_fnc_hint;
             closeDialog 0;
-

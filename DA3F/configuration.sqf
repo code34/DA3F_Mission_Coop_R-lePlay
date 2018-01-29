@@ -20,6 +20,7 @@ _soif 		= DA3F_Cfg(getNumber,"DA3F_Soif_Start");
 DA3F_Active_debug	= true; // affichage debug en hint + log
 DA3F_1erCo 			= true;
 DA3F_IsAction 		= false;
+DA3F_Mission_Active = false;
 DA3F_Stop_Action 	= false;
 DA3F_IsRespawn 		= false;
 DA3F_Cam_IsActive 	= false;
@@ -36,6 +37,12 @@ DA3F_Bank 			= _bank;
 DA3F_Faim 			= _bouf;
 DA3F_Soif 			= _soif;
 CountKillUnits 		= 0;
+DA3F_IsKeyActived 	= false;
+DA3F_IsArrowActived = false;
+DA3F_IsReloadMortier= false;
+DA3F_cnt 			= 0.01;
+player setVariable ["DA3F_Escorte",false,true];
+player setVariable ["DA3F_isRestain",false,true];
 player setVariable ["DA3F_IsLoadActiv",true,false];
 player setVariable ["DA3F_Save_Msg",[],false];
 player setVariable ["DA3F_DB_Pos",[],false];
@@ -67,3 +74,11 @@ DA3F_Admin=
 		"76561198083277485",
 		"Uid_2"
 	];
+
+// Rappel in onPlayerRespaw (on sait jamais ^^)
+0 enableChannel [false,false];
+1 enableChannel [false,false];
+2 enableChannel [false,false];
+4 enableChannel [false,false];
+4 enableChannel [false,false];
+6 enableChannel [false,false];

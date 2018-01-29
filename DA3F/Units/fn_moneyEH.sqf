@@ -120,6 +120,7 @@ _Weapon ctrlCommit 0;
 			[format ["<t color='#00FF00' size ='.6'> Total : <br />%1.€<br/>Units : %2</t>",DA3F_Cash,CountKillUnits],1,.9,4,1,0,389] spawn BIS_fnc_dynamicText;
 	    };
 	};
+playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\checkpoint_clear.wss", player, false, getPosASL player, 1, 1, 0];
 _future = time + 10;
 waitUntil {time >= _future};
 MCF_CountShoot = 0;

@@ -14,6 +14,14 @@ _data = lbData[1500,(lbCurSel 1500)];
 if (_data isEqualTo "") exitWith {};
 
 switch (_data) do {
+    case "Sortir personne(s)": {
+        _veh = vehicle DA3F_TarObj;
+        _arrCrew = (crew _veh);
+            {
+                _x action ["Eject",_veh];
+                _arrCrew = _arrCrew - [_x];
+            } forEach (crew _veh);
+    };
 
     case "Identifier": {
         []spawn DA3F_fnc_IdentifVeh;

@@ -22,7 +22,8 @@ MrkSp[] =
         {"DA3F_Mrk_Sp_loc_0","Armée de l'air"},
         {"DA3F_Mrk_Sp_loc_1","Caserne de repos"},
         {"DA3F_Mrk_Sp_loc_2","Armée de terre"},
-        {"DA3F_Mrk_Sp_loc_3","La marine - 41e flote d'Altis"}
+        {"DA3F_Mrk_Sp_loc_3","La marine - 41e flote d'Altis"},
+        {"DA3F_Mrk_Sp_loc_4","Independance - Groupe indépendantiste"}
     };
 };
 
@@ -60,6 +61,7 @@ class DA3F_ShopsVeh {
             {
                 {"Car",
                     {"B_Quadbike_01_F",250,50,"€",""},
+                    {"B_Quadbike_01_F",250,50,"Klix",""},
                     {"I_C_Van_02_transport_F",1100,500,"€",""},
                     {"I_C_Van_02_vehicle_F",1100,500,"€",""},
                     {"I_MRAP_03_F",1500,500,"€",""},
@@ -91,6 +93,41 @@ class DA3F_ShopsVeh {
         };
 
     class Base_Athira {
+        side[] = {""};
+        conditions = "";
+        vehicles[] = 
+            {
+                {"Car",
+                    {"B_Quadbike_01_F",250,50,"€",""},
+                    {"I_C_Van_02_transport_F",1100,500,"€",""},
+                    {"I_C_Van_02_vehicle_F",1100,500,"€",""},
+                    {"I_MRAP_03_F",1500,500,"€",""},
+                    {"I_G_Offroad_01_F",1400,200,"€",""},
+                    {"I_C_Offroad_02_unarmed_F",950,200,"€",""},
+                    {"B_MRAP_01_hmg_F",5400,200,"€",""},
+                },
+                {"Air",
+                    {"I_C_Plane_Civil_01_F",3200,200,"€",""},
+                    {"C_Heli_light_01_ion_F",3200,200,"€",""},
+                    {"B_Heli_Light_01_F",3200,100,"€",""},
+                    {"B_Heli_Light_01_dynamicLoadout_F",25000,100,"€","DA3F_Sp_PPro"},
+                    {"B_Heli_Transport_01_F",35000,100,"€",""},
+                    {"B_Heli_Transport_03_F",47000,100,"€",""},
+                    {"B_T_VTOL_01_infantry_F",52000,100,"€",""},
+                    {"B_T_VTOL_01_vehicle_F",52000,100,"€",""},
+                    {"B_T_VTOL_01_armed_F",75000,100,"€",""},
+                },
+                {"Custom",
+                    {"C_Heli_light_01_ion_F",3200,200,"€",""},
+                    {"B_Heli_Light_01_F",3200,100,"€",""},
+                    {"I_MRAP_03_F",1500,500,"€",""},
+                    {"I_G_Offroad_01_F",1400,200,"€",""},
+                    {"I_Truck_02_fuel_F",25000,200,"€",""},
+                }
+            };
+        };
+
+    class Base_Kavala {
         side[] = {""};
         conditions = "";
         vehicles[] = 

@@ -18,7 +18,14 @@ class DA3F_Cfg_Shop_virt {
         name = "Epicerie de la base";
         side[] = {GUER}; // GUER = independent
         conditions = "";
-        items[] = { "Obj_water", "Obj_Ration"};
+        items[] = { "Obj_water", "Obj_Ration","menotte_1","menotte_2"};
+    };
+
+    class DA3F_Shop_Gen_West {
+        name = "Epicerie de la base";
+        side[] = {WEST};
+        conditions = "";
+        items[] = { "Obj_water", "Obj_Ration","menotte_1","menotte_2"};
     };
 
     class DA3F_Shop_Exemple_2 {
@@ -64,13 +71,35 @@ class DA3F_Cfg_Items_virt {
         icon                = "icons\ico_Items_water.paa";        // Chemin de l'image pour l'objet
     };
 
+    class menotte_1
+    {
+        displayname         = "Menotte";             // Nom de l'objet
+        devise              = "€";                      // Devise de l'objet
+        Price_Buy           = 300;                       // Prix d'achat
+        Price_Sell          = 75;                       // Prix de vente
+        Stats               = -1;                       // value de l'objet
+        Poids               = 1;                       // value de l'objet
+        icon                = "icons\ico_Items_water.paa";        // Chemin de l'image pour l'objet
+    };
+
+    class menotte_2
+    {
+        displayname         = "Menotte";             // Nom de l'objet
+        devise              = "K";                      // Devise de l'objet
+        Price_Buy           = 200;                       // Prix d'achat
+        Price_Sell          = 75;                       // Prix de vente
+        Stats               = -1;                       // value de l'objet
+        Poids               = 1;                       // value de l'objet
+        icon                = "icons\ico_Items_water.paa";        // Chemin de l'image pour l'objet
+    };
+
     class Carbu_Brute
     {
         displayname         = "Carburant";             // Nom de l'objet
         devise              = "€";                      // Devise de l'objet
-        Price_Buy           = 50;                       // Prix d'achat
-        Price_Sell          = 11;                       // Prix de vente
-        Stats               = -1;                       // value de l'objet
+        Price_Buy           = 500;                       // Prix d'achat
+        Price_Sell          = 120;                       // Prix de vente
+        Stats               = 1;                       // value de l'objet
         Poids               = 2;                       // value de l'objet
         icon                = "icons\ico_Items_water.paa";        // Chemin de l'image pour l'objet
     };

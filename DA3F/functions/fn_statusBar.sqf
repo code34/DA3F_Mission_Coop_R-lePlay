@@ -9,7 +9,7 @@
 */
 
 //waitUntil {DA3F_IsInitialisation};
-
+_west = playersNumber west ; _east = playersNumber east ; _civ = playersNumber civilian ; hint format ["West:%1 East:%2, Civ:%3", _west, _east, _civ];
 private ["_DA3F_Adresse_TS","_DA3F_NameMission","_rscLayer","_counter"];
 disableSerialization;
 _DA3F_Adresse_TS 	= getText(missionConfigFile >> "DA3F_CfgMission" >> "DA3F_Infos" >> "DA3F_Adresse_TS");

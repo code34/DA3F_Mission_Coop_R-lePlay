@@ -35,6 +35,11 @@ switch (true) do {
         [_item,1,"del"]call DA3F_fnc_Add_Ret_Items;
     	closeDialog 0;
     };
+
+    case (_item in ["menotte_1","menotte_2"]): {
+            [1,"Menottage bientôt disponible"]call DA3F_fnc_hint;
+    };
+
     /*
     case (_item isEqualTo "NameItem"): {
 

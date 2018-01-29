@@ -27,6 +27,17 @@ class DA3F_Cfg_Spe {
         icon                = "icons\ico_ItemsDefault.paa";     // Voir si on garde ???
     };
 
+    class Medic_hum
+    {
+        var                 = "medicH";                         // Variable de la license
+        displayname         = "Medecin";                         // Nom de la license
+        Price_Buy           = -1;                             // Prix d'achat de la license (-1 non visible dans le menu)
+        Price_Sell          = -1;                               // Prix de vente de la license (-1 non visible dans le menu)
+        devise              = "€";                              // Devise de la spe
+        Desc                = "Vous devrez vous rendre disponible lors d'opérations humanitaires";                               // Description de la spécialisation
+        icon                = "icons\ico_ItemsDefault.paa";     // Voir si on garde ???
+    };
+
     class Pilote
     {
         var                 = "Pilote";                         // Variable de la license

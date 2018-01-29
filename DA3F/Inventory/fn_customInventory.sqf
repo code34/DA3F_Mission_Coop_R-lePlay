@@ -29,11 +29,11 @@ disableSerialization;
 		private _Btn_Givecah = findDisplay 602 ctrlCreate ["RscButtonMenu", 2403, findDisplay 602 displayCtrl 2403];
 		private _Btn_Prendre = findDisplay 602 ctrlCreate ["RscButtonMenu", 2404, findDisplay 602 displayCtrl 2404];
 		private _Btn_Depot	 = findDisplay 602 ctrlCreate ["RscButtonMenu", 2405, findDisplay 602 displayCtrl 2405];
-            ((findDisplay 602) displayCtrl 631) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//uniform
+            ((findDisplay 602) displayCtrl 631) ctrlSetEventHandler ["LBSelChanged", "_this spawn DA3F_fnc_inv_UseItem"];//uniform
       //      ((findDisplay 602) displayCtrl 632) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_test"];//uniform
-            ((findDisplay 602) displayCtrl 633) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//uniform
-            ((findDisplay 602) displayCtrl 638) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//vest
-            ((findDisplay 602) displayCtrl 619) ctrlSetEventHandler ["LBSelChanged", "_this spawn fnc_Use_Items"];//backpack
+            ((findDisplay 602) displayCtrl 633) ctrlSetEventHandler ["LBSelChanged", "_this spawn DA3F_fnc_inv_UseItem"];//uniform
+            ((findDisplay 602) displayCtrl 638) ctrlSetEventHandler ["LBSelChanged", "_this spawn DA3F_fnc_inv_UseItem"];//vest
+            ((findDisplay 602) displayCtrl 619) ctrlSetEventHandler ["LBSelChanged", "_this spawn DA3F_fnc_inv_UseItem"];//backpack
 	// Posistion
 	_txtInfo	 	ctrlSetPosition [0.80948 * safezoneW + safezoneX, 0.396 * safezoneH + safezoneY, 0.177187 * safezoneW, 0.21 * safezoneH];
 	_backG_Right 	ctrlSetPosition [0.80555 * safezoneW + safezoneX, 0.1808 * safezoneH + safezoneY, 0.18375 * safezoneW, 0.43 * safezoneH];
@@ -106,113 +106,26 @@ disableSerialization;
 	_Btn_Valide 	ctrlSetText "Utiliser";
 	_Edit 			ctrlSetText "1";
 	_EditCash 		ctrlSetText "1";
-	_txtInfo		ctrlSetStructuredText parseText format ["<t color='#F44100' align='left' size='1' >Cash :<t/><t color='#FEFEFE' align='right' size='1' >%1€<t/><br/><br/><t color='#F44100' align='left' size='1' >Bank :<t/><t color='#FEFEFE' align='right' size='1' >%2€<t/><br/><br/><t color='#F44100' align='left' size='1' >Klix :<t/><t color='#FEFEFE' align='right' size='1' >%3<img size='0.65' image='%4' /><t/>",[DA3F_Cash]call DA3F_fnc_numberText,[DA3F_Bank]call DA3F_fnc_numberText,[DA3F_WCash]call DA3F_fnc_numberText,DA3F_Cfg(getText,"DA3F_IconCustomDevise")];
+	_txtInfo		ctrlSetStructuredText parseText format ["<t color='#F44100' align='left' size='1' >Cash :<t/><t color='#FEFEFE' align='right' size='1' >%1€<t/><br/><br/><t color='#F44100' align='left' size='1' >Bank :<t/><t color='#FEFEFE' align='right' size='1' >%2€<t/><br/><br/><t color='#F44100' align='left' size='1' >Klix :<t/><t color='#FEFEFE' align='right' size='1' >%3<img size='0.65' image='%4' /><t/>",
+		[DA3F_Cash]call DA3F_fnc_numberText,
+		[DA3F_Bank]call DA3F_fnc_numberText,
+		[DA3F_WCash]call DA3F_fnc_numberText,
+		DA3F_Cfg(getText,"DA3F_IconCustomDevise")
+		];
 
 
-DA3F_fnc_DlClick={
-if (isNil "DA3F_Dbl_clik") then [{DA3F_Dbl_clik = false;
-_wait = time + 1;
-waitUntil {time >= _wait};
-DA3F_Dbl_clik = nil;
-},{
-	_this call DA3F_fnc_Use;
-	DA3F_Dbl_clik = nil;
-}];
-};
-
-    fnc_Use_Items = {
-    End_Action = false;
-        _idc = ctrlIDC (_this select 0);
-        _selectedIndex = _this select 1;
-        _data = format ["Data\n%1\n________\n",lbData [_idc, _selectedIndex]];
-        _text = format ["Text\n%1\n________\n",lbText [_idc, _selectedIndex]];
-        _value = format ["Value\n%1\n________\n",lbValue [_idc, _selectedIndex]];
-        //_pic = format ["Picture\n%1\n________\n",lbPicture [_idc, _selectedIndex]];
-		_selected = format ["%1",((findDisplay 602)displayCtrl _idc) lbIsSelected _selectedIndex];
-		_selectd = format ["%1",lbSelection  ((findDisplay 602)displayCtrl _idc)];
-        _arr = getArray(configfile >> "CfgInventory" >> "SlotTypes" >> "RightHand");
-    //    hint format["Inventaire: \n%1\n%2\n%3\n%4\n%5\n%6\n\n%7\n%8\n\n%9",_selectedIndex,_data,_text,_value,_selected,_selectd,_arr,_idc,[] call BIS_fnc_invSlotType];
-        _data = lbData [_idc, _selectedIndex];
-
-        if (isNil "DA3F_Dbl_clik") then [{
-        	DA3F_Dbl_clik = false;
-			_wait = time + 0.3;
-			waitUntil {time >= _wait};
-			DA3F_Dbl_clik = nil;
-		},{
-        if !(_data isEqualTo "") then [{
-        	player removeItem format ["%1", lbData [_idc, _selectedIndex]];
-        },{
-		private _txt = lbText [_idc, _selectedIndex];
-			{
-			private _compar = _x;
-			if (_compar isEqualTo "FirstAidKit") then
-				{
-					_compar = "1ers secours";
-					closeDialog 0;
-					if (vehicle player isEqualTo player) then [{
-						_handle = ["Soin",0.08,false] spawn DA3F_fnc_Progresse;
-					waitUntil {sleep .3; scriptDone _handle};
-					},{
-						_handle = ["Soin",0.12,false] spawn DA3F_fnc_Progresse;
-					waitUntil {sleep .3; scriptDone _handle};
-				}];
-			};
-
-					if !(End_Action) exitWith
-						{
-							systemChat format ["%1 Utilisé !",_compar];
-							player setDamage 0;
-							if ([_compar,_txt] call BIS_fnc_inString) then
-								{
-									player removeItem format ["%1", (items player) select _selectedIndex];
-							};
-						};
-			}forEach (items player);
-	    }];
-	DA3F_Dbl_clik = nil;
-}];
-        false
-    };
-
-DA3F_fnc_ValideInteraction={
-	disableSerialization;
-	_idc = ctrlIDC(_this select 0);
-	_index = (_this select 1);
-	_data = lbData[_idc,_index];
-	switch (_data) do {
-		case "Aide": {
-		_msg = format ["Volume = (9 - ç)
-		<br/>
-Ejection pilote (Air) = Shift + H (! Au dessus de 160m !)
-<br/>
-Consomer items virtuel = Double clique <br/> ou <br/> Utiliser menu I
-<br/>
-Utiliser Trousse de soin ()  = Double clique <br/>",nil];
-			[1,format ["%1", _msg]]call DA3F_fnc_hint;
-		};
-	    case "Messagerie": {
-	    	closeDialog 0;
-    		call DA3F_fnc_Coms_CallCo;
-	    };
-	    case "Save Posistion": {
-	    	closeDialog 0;
-	    	call DA3F_fnc_SpawnTemp;
-	    };
-	    case "Syncro de vos données": {
-	    	closeDialog 0;
-	    	[]spawn DA3F_fnc_SaveUnit;
-	    };
-	};
-};
-	_ListeItem 	ctrladdEventHandler ["lbselchanged",{_this spawn DA3F_fnc_DlClick}];
+	_ListeItem 	ctrladdEventHandler ["lbselchanged",{_this spawn DA3F_fnc_inv_DoubleClick}];
 //	_ListeUnit 	ctrladdEventHandler ["lbselchanged",{_this call {hintSilent format ["%1\n%2",ctrlIDC (_this select 0), (_this select 1)]}}];
 	_Btn_give 	ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_Give}];
 	_Btn_Valide ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_Use}];
-	_List_Intera ctrladdEventHandler ["lbselchanged",{_this call DA3F_fnc_ValideInteraction}];
+	_List_Intera ctrladdEventHandler ["lbselchanged",{_this call DA3F_fnc_inv_Valide_ActionListBox}];
 	_Btn_Givecah ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_GiveCash}];
+	_Btn_Prendre ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_Inv_Stock_echange_Items}];
+	_Btn_Depot ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_Inv_Stock_echange_Items}];
+	/*
 	_Btn_Prendre ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_transfert_Inventory}];
 	_Btn_Depot ctrladdEventHandler ["buttonclick",{_this call DA3F_fnc_transfert_Inventory}];
+	*/
 
 	{
 		if (isPlayer _x) then {
@@ -237,7 +150,7 @@ Utiliser Trousse de soin ()  = Double clique <br/>",nil];
 			"Save Posistion",
 			"Syncro de vos données"
 		];
-
+/*
 	_invVirtUntis	= player getVariable "DA3F_InvVirt";
 	_arrItems		= _invVirtUntis select 0;
 	{
@@ -249,12 +162,27 @@ Utiliser Trousse de soin ()  = Double clique <br/>",nil];
         _ListeItem 	lbSetPictureRight [(lbSize _ListeItem)-1,_icon];
 		lbSetData [1500,(lbSize 1500)-1,str(_x)];
 	} forEach _arrItems;
+*/
+
+
+{
+    if (MNS_Gvar_Items(configName _x) > 0) then {
+        _ListeItem lbAdd format ["[x%1] %2",MNS_Gvar_Items(configName _x),(getText(_x >> "displayName"))];
+        _ListeItem lbSetData [(lbSize _ListeItem)-1,str([configName _x,MNS_Gvar_Items(configName _x)])];
+        _icon = Items_Cfg(getText,configName _x,"icon");
+        if (!(_icon isEqualTo "")) then {
+            _ListeItem lbSetPicture [(lbSize _ListeItem)-1,_icon];
+        };
+    };
+} forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_Items_virt"));
 
 	_obj = nearestObjects [player,["B_Slingload_01_Cargo_F","Land_cmp_Tower_F","Land_Tank_rust_F","Land_dp_bigTank_F","Land_LuggageHeap_02_F","Land_cmp_Tower_F"],6]select 0;
 	if (isNil "_obj") exitWith {};
 	if (isNull _obj) exitWith {};
+	if (isNull cursorObject) exitWith {};
+		DA3F_TarObj = cursorObject;
 	private _invVirtObj	= _obj getVariable "DA3F_StockItems";
-	DA3F_TarObj = _obj;
+//	DA3F_TarObj = _obj;
 	if (isnil "_invVirtObj") then [{
 		_add 		= _list_Coffre lbAdd format ["Aucun inventaire",nil];
 	},{

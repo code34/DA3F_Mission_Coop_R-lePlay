@@ -12,6 +12,8 @@ class CfgRemoteExec {
             mode = 1;
             jip = 0;
         /* DA3F Mission Template */
+            F(DA3F_fnc_EscoPNJ_Menotte,ANYONE)
+            F(DA3F_fnc_Escorte_menottage,ANYONE)
             F(DA3F_fnc_hint,ANYONE)
             F(DA3F_fnc_teleport,ANYONE)
             F(DA3F_fnc_ActTarget,ANYONE)
@@ -42,6 +44,7 @@ class CfgRemoteExec {
         F(addMagazine,ANYONE)
         F(addPrimaryWeaponItem,ANYONE)
         F(addWeapon,ANYONE)
+        F(addAction,ANYONE)
         F(setFuel,ANYONE)
     };
 };

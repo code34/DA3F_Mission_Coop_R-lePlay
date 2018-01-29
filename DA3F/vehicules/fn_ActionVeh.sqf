@@ -25,7 +25,8 @@ if !(createDialog "Gui_veh") exitWith {};
 	[
 		"Identifier",
 		"Coffre",
-		"Réparation"
+		"Réparation",
+		"Sortir personne(s)"
 	];
 
 

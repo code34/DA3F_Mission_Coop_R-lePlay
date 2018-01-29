@@ -9,7 +9,7 @@
 */
 //private [""];
 #include "..\..\DA3F_macros.hpp"
-DA3F_TarObj = cursorTarget;
+DA3F_TarObj = cursorObject;
 _className 	= typeOf DA3F_TarObj;
 _class		= (ClassVeh(_className));
 if !(isNil {DA3F_TarObj getVariable "DA3F_StockItems"}) exitWith {
@@ -19,6 +19,15 @@ if !(isNil {DA3F_TarObj getVariable "DA3F_StockItems"}) exitWith {
 if ((_class in ["Car","Air","Tank","Ship"] && ((DA3F_TarObj distance player )< 8)) OR !(isNil {DA3F_TarObj getVariable "DA3F_InvVirtVeh"})) exitWith {
 		call DA3F_fnc_ActionVeh;
 	};
+
+/*
+if !(isNil{DA3F_TarObj getVariable "DA3F_isRestain"}) exitWith {
+		if (DA3F_TarObj getVariable "DA3F_isRestain" && ((DA3F_TarObj distance player )< 8)) then {
+			[]call DA3F_fnc_Escort_Call_Menu;
+		};
+	};
+*/
+
 /*
 if !(isNil {DA3F_TarObj getVariable "DA3F_CiterneBase"}) then {
 	if ((typeOf DA3F_TarObj) in DA3F_Arr_Citerne) exitWith {

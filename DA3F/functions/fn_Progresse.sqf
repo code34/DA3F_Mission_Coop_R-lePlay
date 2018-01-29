@@ -5,6 +5,8 @@ _title  = (_this select 0);
 _loop   = (_this select 1);
 _bool   = (_this select 2);
 if (isNil "_bool") then {_bool = false};
+    if (DA3F_IsAction) exitWith {[1,"Action en cours !"]call DA3F_fnc_hint};
+    DA3F_IsAction       = true;
 5 cutRsc ["DA3F_progress","PLAIN"];
 _ui = uiNamespace getVariable "DA3F_progress";
 _progressBar = _ui displayCtrl 3138201;
@@ -35,6 +37,7 @@ _titleText  ctrlSetStructuredText parseText format["<t size='1px' color='#FA320A
 // Kill the UI display and check for various states
 5 cutText ["","PLAIN"];
 player playActionNow "stop";
+    DA3F_IsAction       = false;
     if(_exit) exitWith {[1,"Tu ne dois pas bouger"]call DA3F_fnc_hint;End_Action = true};
     if!(alive player) exitWith {[1,"Tu ne dois pas bouger"]call DA3F_fnc_hint;End_Action = true};
 //[1,"Fin de l'envoi<br/>Il est temps de rentrer notre mission est fini"]call DA3F_fnc_hint;

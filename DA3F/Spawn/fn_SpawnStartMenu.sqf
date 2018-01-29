@@ -44,6 +44,7 @@ for "_a" from 0 to (count _DA3F_listMrk -1) do
     _NameClass    = (configName _x);
     _NameMarker   = getText (_x >> "marker");
     _nameSpawn    = getText (_x >> "displayname");
+    _condition    = getText (_x >> "condition");
     _titre        = getText (_x >> "Title");
     _Description  = getText (_x >> "Descrip");
     _radius       = getNumber (_x >> "Sp_Radius");
@@ -56,11 +57,20 @@ for "_a" from 0 to (count _DA3F_listMrk -1) do
   } forEach [_nameSpawn,_titre,_Description];
 //_Spawn_list pushBack _NameClass;
 //_AllMrk pushBack [_NameMarker,_titre,_Description,_radius];
-
+if !(_condition isEqualTo "") then [{
+    _condition = call compile format ["%1",_condition];
+    if (_condition) then {
     _add=lbAdd[1500,format ["%1 - %2", _nameSpawn,_titre]];
     lbSetData[1500,(lbSize 1500)-1,_NameClass];
       _ctrl     = ((findDisplay 1091217)displayCtrl 1500);
       _ctrl lbSetPictureRight [(lbSize _ctrl)-1,_icon]; //_ctrl lbSetPicture [(lbSize _ctrl)-1,_DA3F_Pixitems];
+    };
+},{
+    _add=lbAdd[1500,format ["%1 - %2", _nameSpawn,_titre]];
+    lbSetData[1500,(lbSize 1500)-1,_NameClass];
+      _ctrl     = ((findDisplay 1091217)displayCtrl 1500);
+      _ctrl lbSetPictureRight [(lbSize _ctrl)-1,_icon];
+}];
 
 } forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_SpawnBase"));
 //missionNamespace setVariable ["DA3F_SpawnList",_Spawn_list];

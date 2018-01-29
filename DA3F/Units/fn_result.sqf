@@ -29,6 +29,7 @@ if (str _this isEqualTo "true") then [{
 	{
 	    waitUntil {!(IsNull (findDisplay 46))};
 	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard"];
+		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then {DA3F_IsKeyActived = false;DA3F_cnt = 0.01}"];
 	};
 
 	{
@@ -115,11 +116,11 @@ if (str _this isEqualTo "true") then [{
     missionNamespace setVariable [format ["DA3F_Sp_%1",_x],true];
 } forEach _spe_L;
 
-
 	[]spawn
 	{
 	    waitUntil {!(IsNull (findDisplay 46))};
 	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard"];
+		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then {DA3F_IsKeyActived = false;DA3F_cnt = 0.01}"];
 	};
 _Pt = 0;
 _arr = [];
@@ -132,7 +133,12 @@ _invItem = (_invVirt select 0);
 			diag_log format ["***************************************",nil];
 			diag_log format ["Items : %1 Value : %2", _item,_nrb];
 			diag_log format ["***************************************",nil];
-			[_item,_nrb,"add"]call DA3F_fnc_Add_Ret_Items;
+		//	[_item,_nrb,"add"]call DA3F_fnc_Add_Ret_Items;
+			if([true,_item,_nrb]call DA3F_fnc_Inv_UpDown_Items)then [{
+				systemChat format ["Ajout confirmé : %2 X %1", _item, _nrb];
+			},{
+				systemChat format ["Ajout refusé : %2 X %1", _item, _nrb];
+		}];
 			};
 	};
 	player addEventHandler["Killed", {_this call DA3F_fnc_onPlayerKilled}];

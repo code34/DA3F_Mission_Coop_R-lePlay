@@ -60,7 +60,7 @@ if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 		   			{
 					    if (_x animationPhase "Door_1_rot" isEqualTo 1 or _x animationPhase "Door_2_rot" isEqualTo 1) then {
 
-						    if ((count (nearestObjects [getPos _x,["car","air"],8]))>0) then [{
+						    if ((count (nearestObjects [getPos _x,["car","air"],6]))>0) then [{
 							[1,"Fermeture de la barrière impossible"]call DA3F_fnc_hint;
 						    },{
 						        _x animate ["Door_1_rot", 0];
@@ -72,7 +72,7 @@ if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 						        _x animate ["Door_1_rot",1];
 						        _x animate ["Door_2_rot",1];
 					    };
-					}forEach (nearestObjects [player, ["Land_BarGate_F","Land_Net_Fence_Gate_F"], 15]);
+					}forEach (nearestObjects [player, ["Land_BarGate_F","Land_Net_Fence_Gate_F"], 30]);
 		   		};
    			};
    		};
@@ -126,9 +126,24 @@ if (getPlayerUID player in DA3F_Admin) then [{
 
 // keys ² | Menu player
 case 41: {
-	[1,format["Player interaction<br/>Boujour,<br/>%1<br/>Menu Temporaire en cours de maj (Maj : Avoir tout dans le menu 'i' et réaménagement du menu en lui même pour bientôt ... )",name player]]call DA3F_fnc_hint;
-	if !(dialog) then [{
-		[]call DA3F_fnc_Units_Interaction;
+_handled = true;
+  if !(dialog) then [{
+if (isNull cursorObject) exitWith {
+  if (player getVariable "DA3F_Escorte") then {
+  []spawn DA3F_fnc_Escort_Call_Menu;
+    };
+};
+
+		//[]call DA3F_fnc_Units_Interaction;player setVariable ["DA3F_Escorte",false,true];
+        if ((cursorObject distance player )< 5) then {
+          if (cursorObject getVariable "DA3F_isRestain")  then [{
+            []spawn DA3F_fnc_Escort_Call_Menu;
+        },{
+          if (player getVariable "DA3F_Escorte") then {
+              []spawn DA3F_fnc_Escort_Call_Menu;
+          };
+      }];
+      };
 	},{
 		closeDialog 0;
 	}];
@@ -158,36 +173,114 @@ case 41: {
         };
     };
 
- // 20 = T | 25 = P
- /*
-	case 25:
-		{
-   		if ((!_shift) && (!_alt)) then
-			{
-				switch (playerSide) do {
-				    case west: {
-				    	private _mdp = DA3F_Pc_Red getVariable "DA3F_Red_MAF";
-				    	if (isNil "_mdp") then [{
-    					    		hint "Votre équipe ne détient pas le mot de passe";
-					    	},{
-	    					    	hint format ["Le mot de passe est :\n%1", _mdp];
-	    					    }];
-				    };
-				    case east: {
-				    	private _mdp = DA3F_Pc_Blu getVariable "DA3F_Blu_MAF";
-				    	if (isNil "_mdp") then [{
-    					    		hint "Votre équipe ne détient pas le mot de passe";
-					    	},{
-	    					    	hint format ["Le mot de passe est :\n%1", _mdp];
-	    					    }];
-				    };
-
-				    default {
-				     	hint "Seul les joueurs peuvent consulter cette information";
-				    };
-				};
-			};
+	   	// C
+	   	case 46:{
+	   	//	execVM "DA3F\Target_DesignLaser\fn_CreateDel_Arrow.sqf";
+	   		[]spawn DA3F_fnc_CreateDel_Arrow;
 		};
-	*/
-	};
+   		// T
+   		case 20:{
+   				DA3F_IsKeyActived = true;
+   				DA3F_Target = cursorObject;
+   				[]spawn DA3F_fnc_DesignLaser_Mortier;
+
+   				[]spawn {
+   				waitUntil {sleep 0.1;!DA3F_IsKeyActived};
+   				5 cutText ["","PLAIN"];
+   			};
+	   	};
+
+    //Restraining (Shift + R) |-| (Ctrl + R)
+    case 19: {
+    // Player
+        if (_shift) then {_handled = true;};
+        if (_shift && {!isNull cursorObject} && {cursorObject isKindOf "Man"} && {(isPlayer cursorObject)} && {alive cursorObject} && {cursorObject distance player < 3.5} && {!(cursorObject getVariable "DA3F_isRestain")} && {speed cursorObject < 1}) then {
+         //   [cursorObject,true]call DA3F_fnc_Escorte_menottage;
+					hint "Cible menotté";
+            [cursorObject,true] remoteExecCall ["DA3F_fnc_Escorte_menottage",cursorObject];
+        };
+
+        if (_ctrlKey) then {_handled = true;};
+        if (_ctrlKey && {!isNull cursorObject} && {cursorObject isKindOf "Man"} && {(isPlayer cursorObject)} && {alive cursorObject} && {cursorObject distance player < 3.5} && {(cursorObject getVariable "DA3F_isRestain")} && {speed cursorObject < 1}) then {
+         //   [cursorObject,true]call DA3F_fnc_Escorte_menottage;
+         hint "Cible démenotté";
+            [cursorObject,false] remoteExecCall ["DA3F_fnc_Escorte_menottage",cursorObject];
+
+            if (DA3F_Item_menotte_1 >= 1) exitWith {
+            [false,"menotte_1",1]call DA3F_fnc_Inv_UpDown_Items;
+            cursorObject setVariable ["DA3F_GetMenotte","menotte_1",true];
+            };
+
+            if (DA3F_Item_menotte_2 >= 1) exitWith {
+            [false,"menotte_2",1]call DA3F_fnc_Inv_UpDown_Items;
+            cursorObject setVariable ["DA3F_GetMenotte","menotte_2",true];
+            };
+        };
+  // PNJ
+          private _cursorObj = cursorObject;
+          if (_shift) then {_handled = true;};
+          if (_shift && !(_cursorObj getVariable "DA3F_isRestain")) then {
+            if !(_cursorObj isKindOf "Man") exitWith {};
+              if (local _cursorObj) then [{
+                    _cursorObj switchMove "AmovPercMstpSsurWnonDnon";
+                    _cursorObj setVariable ["DA3F_isRestain",true,true];
+                    player setVariable ["DA3F_Escorte",true,true];
+
+                    if (DA3F_Item_menotte_1 >= 1) exitWith {
+                    [false,"menotte_1",1]call DA3F_fnc_Inv_UpDown_Items;
+                    _cursorObj setVariable ["DA3F_GetMenotte","menotte_1",true];
+                    };
+
+                    if (DA3F_Item_menotte_2 >= 1) exitWith {
+                    [false,"menotte_2",1]call DA3F_fnc_Inv_UpDown_Items;
+                    _cursorObj setVariable ["DA3F_GetMenotte","menotte_2",true];
+                    };
+              },{
+              systemChat "no local";
+                  [player,cursorObject,true] remoteExecCall ["DA3F_fnc_EscoPNJ_Menotte",cursorObject];
+          }];
+        };
+          if (_ctrlKey) then {_handled = true;};
+        if (_ctrlKey && cursorObject getVariable "DA3F_isRestain") then {
+            if !(_cursorObj isKindOf "Man") exitWith {};
+              if (local _cursorObj) then [{
+                    _cursorObj switchMove "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+                    _cursorObj setVariable ["DA3F_isRestain",false,true];
+                    player setVariable ["DA3F_Escorte",false,true];
+                    _menotte = cursorObject getVariable ["DA3F_GetMenotte","menotte_1"];
+                      if !([true,_menotte,1]call DA3F_fnc_Inv_UpDown_Items) exitWith {
+                        [1,"Vous n'avez pas pu récupérer les menottes"]call DA3F_fnc_hint;
+                      };
+              },{
+                  [player,cursorObject,false] remoteExecCall ["DA3F_fnc_EscoPNJ_Menotte",cursorObject];
+          }];
+            [player,cursorObject,false] remoteExecCall ["DA3F_fnc_EscoPNJ_Menotte",cursorObject];
+        };
+
+/*
+        if (_shift) then {_handled = true;};
+        	if (isNil{(cursorObject getVariable "DA3F_isRestain")}) then {
+        		cursorObject setVariable ["DA3F_isRestain",false,true];
+        	};
+        if (_shift && !(cursorObject getVariable "DA3F_isRestain") && cursorObject distance player < 3.5 && speed cursorObject < 1) then {
+//					if !([cursorObject,true]call DA3F_fnc_Escorte_menottage) exitWith {};
+        [cursorObject]spawn DA3F_fnc_Escorte_loop;
+    };
+
+        if (_ctrlKey) then {_handled = true;};
+        if (_ctrlKey && (cursorObject getVariable "DA3F_isRestain") && cursorObject distance player < 3.5 && speed cursorObject < 1) then {
+		//			if !([cursorObject,false]call DA3F_fnc_Escorte_menottage)exitWith {};
+		            [cursorObject,false] remoteExecCall ["DA3F_fnc_Escorte_menottage",cursorObject];
+						hint "Cible démenotté";
+						_menotte = cursorObject getVariable ["DA3F_GetMenotte","menotte_1"];
+						if !([true,_menotte,1]call DA3F_fnc_Inv_UpDown_Items) then {
+							[1,"Vous n'avez pas pu récupérer les menottes"]call DA3F_fnc_hint;
+						};
+						cursorObject setVariable ["DA3F_GetMenotte",nil,true];
+           // [cursorObject,false] remoteExecCall ["DA3F_fnc_Escorte_menottage",cursorObject]; DA3F_fnc_Escorte_menottage;
+
+        };
+*/
+    };
+};
 _handled

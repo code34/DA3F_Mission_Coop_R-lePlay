@@ -49,6 +49,50 @@ class MCFStatusBar {
 	};
 };
 
+class DA3F_progress_Target
+{
+    name = "DA3F_progress_Target";
+    idd = 3138202;
+    fadein=0;
+    duration = 99999999999;
+    fadeout=0;
+    movingEnable = 0;
+    onLoad="uiNamespace setVariable ['DA3F_progress',_this select 0]";
+    objects[]={};
+
+    class controlsBackground
+    {
+        class background : MCF_RscText
+        {
+            idc = 545465;
+            colorBackground[] = {0,0,0.3,0.4};
+            x = 0.48140 * safezoneW + safezoneX;
+            y = 0.79 * safezoneH + safezoneY;
+            w = 0.35; h = 0.039;
+        };
+        class ProgressBar : MCF_RscProgress
+        {
+            idc = 3138201;
+            colorBackground[] = {0,0,0.5,0.3};
+            colorBar[] = {0,0.6,0.9,0.85};
+            x = 0.48140 * safezoneW + safezoneX;
+            y = 0.79 * safezoneH + safezoneY;
+            w = 0.35; 
+            h = 0.039;
+        };
+
+        class ProgressText : MCF_RscStructuredText
+        {
+            idc = 3138202;
+            text = "DA3F Erreur de chargement...";
+            x = 0.53 * safezoneW + safezoneX;
+            y = 0.7882 * safezoneH + safezoneY;
+            w = 0.35; h = (1 / 25);
+        };
+    };
+};
+
+
 class DA3F_progress
 {
     name = "DA3F_progress";

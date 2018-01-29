@@ -19,14 +19,21 @@ DA3F_corpse setVariable ["Revive",false,true];
 DA3F_Faim = 100;
 DA3F_Soif = 100;
 DA3F_Cash = 0;
+DA3F_WCash = 0;
 DA3F_IsAction = false;
 DA3F_Stop_Action = false;
 MCF_CountShoot = 0;
 
+0 enableChannel [false,false];
+1 enableChannel [false,false];
+2 enableChannel [false,false];
+4 enableChannel [false,false];
+4 enableChannel [false,false];
+6 enableChannel [false,false];
 if (player getVariable "DA3F_IsLoadActiv") then {
 	[player, [missionNamespace, "DA3F_InvUnit"]] call BIS_fnc_loadInventory;
 };
-if (!(uiNamespace getVariable "MCFStatusBar")) then {
+if (isNull(uiNamespace getVariable "MCFStatusBar")) then {
 	[]spawn DA3F_fnc_statusBar;
 };
 

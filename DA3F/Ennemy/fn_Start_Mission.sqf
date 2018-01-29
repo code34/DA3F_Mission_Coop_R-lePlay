@@ -291,7 +291,18 @@ _clearAll	= [];
 					_clearAll pushBack _PC;
 			    	_PC attachTo [_obj,[0,0,0.1]];
 			    	detach _PC;
-			    	[4,_PC] remoteExecCall ["DA3F_fnc_ActTarget",-2];
+//			    	[4,_PC] remoteExecCall ["DA3F_fnc_ActTarget",-2];
+
+[_PC,format ["%1", (Mission_Cfg(getArray,DA3F_NameClass_Mission,"Objet_Exec"))select 0], {
+			if (isnil "DA3F_futureDA3F_NameClass_Mission") then {
+                DA3F_futureDA3F_NameClass_Mission = time;
+            };
+                DA3F_futureDA3F_NameClass_Mission = DA3F_futureDA3F_NameClass_Mission + (2*60);
+                _arrExec = (Mission_Cfg(getArray,DA3F_NameClass_Mission,"Objet_Exec"))select 1;
+                _exec    = (_arrExec select 0);
+                _exec = compile (_exec);
+                call _exec;
+            }] remoteExec ["addAction", -2, _PC];
 			    };
 
 			    case "Cible":

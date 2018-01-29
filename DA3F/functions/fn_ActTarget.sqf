@@ -21,10 +21,12 @@ switch (_type) do
     		_obj = (_this select 1);
     		_obj addAction ["<t color='#F59800' size='1.2' >Ramasser le cash<t/>",
     	{
-    		_cash = (_this select 0) getVariable "DA3F_DeadCash";
-    		DA3F_Cash = DA3F_Cash + _cash;
+            _cash = ((_this select 0) getVariable "DA3F_DeadCash")select 0;
+    		_Klix = ((_this select 0) getVariable "DA3F_DeadCash")select 1;
+            DA3F_Cash = DA3F_Cash + _cash;
+    		DA3F_WCash = DA3F_WCash + _Klix;
     		deleteVehicle (_this select 0);
-    		[1,format ["Vous venez de Ramasser <br/>%1€", _cash]]call DA3F_fnc_hint;
+    		[1,format ["Vous venez de Ramasser <br/>%1€<br/>%2Klix", _cash]]call DA3F_fnc_hint;
     	}];
     };
     // Switch Spécialisation
