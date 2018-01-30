@@ -102,23 +102,7 @@ class controls {
             colorSelectBackground2[] = {0.8,0.2,-1,1};
 			onlbselchanged="[_this,1] call DA3F_fnc_SelectSpawnMap";
 		};
-		/*
-		class DA3F_List_Spawn: MCF_RscListbox
-		{
-			idc = 1500;
-			text = ".."; //--- ToDo: Localize;
-			x = 0.288594 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
-			w = 0.319688 * safezoneW;
-			h = 0.088 * safezoneH;
-			sizeEx = 0.05;
-			ColorText[] = {0,0.9,-1,1};
-			colorBackground2[] = {0.6,0.3,0,0.5};
-            colorSelectBackground[] = {-1,-1,-1,0.8};
-            colorSelectBackground2[] = {0.8,0.2,-1,1};
-			onlbselchanged="[_this,1] call DA3F_fnc_SelectSpawnMap";
-		};
-		*/
+		
 		class DA3F_btn_spawn: MCF_RscButtonMenu
 		{
 			idc = 2400;
@@ -130,12 +114,11 @@ class controls {
 			colorBackground[] = {0.8,0.2,-1,1};
 			colorSelectBackground2[] = {-1,1,-1,0.5};
 			onbuttonclick = "call DA3F_fnc_SpawnStartValide";
-			lineSpacing = 0;
-			class Attributes 
+		//		lineSpacing = 0;
+			class attributes
 				{
+					size= 3;
 					align = "center";
-					valign = "top";
-					sizeEx= 0.04;
 					font="EtelkaMonospacePro";
 				};
 		};
@@ -156,11 +139,10 @@ class controls {
 			colorBackground2[] = {0.8,0.2,-1,1};
             colorSelectBackground2[] = {0.8,0.2,-1,1};
 			onbuttonclick = "closedialog 0; endMission 'BackLobby';";
-			class Attributes 
+			class attributes 
 				{
+					size= 1.5;
 					align = "center";
-					valign = "top";
-					sizeEx= 0.04;
 					font="EtelkaMonospacePro";color="#0000FF";
 				};
 		};

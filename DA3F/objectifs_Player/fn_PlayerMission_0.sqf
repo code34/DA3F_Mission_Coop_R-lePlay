@@ -26,7 +26,7 @@ DA3F_Mission_Active = true;
 
 DA3F_Get_finalPos={
 _Init_pos = _this select 0;
-if (_Init_pos isEqualType "") then {_Init_pos = getMarkerPos _Init_pos};
+//if (_Init_pos isEqualType "") then {_Init_pos = getMarkerPos _Init_pos};
 _All_Pos = [];
 	{
 		_All_Pos pushBack (_x select 0);
@@ -71,6 +71,7 @@ DA3F_Go_House={
  private _search 	= true;
  private _positions = 0;
 _exit = false;
+
  WHILE {_search} do {
  if (isNil "_currentHouse") exitWith {_exit = true};
 	_housePos = _currentHouse buildingpos _n;
@@ -84,13 +85,16 @@ _exit = false;
 				}];
 	sleep 0.01;
 			};
+
 if (_exit) exitWith {};
 	_position=floor (random _positions);
 	_housePos=_currentHouse buildingpos _position;
 	_unit setPos _housePos;
 };
 
+
 	_pos=selectRandom(_All_Pos);
+
 private _grp = createGroup civilian;
 private _type_Otage = selectRandom(["C_Man_Paramedic_01_F","C_man_polo_4_F","C_man_p_beggar_F","C_Journalist_01_War_F","C_man_w_worker_F"]);
 private ["_markerstr"];
@@ -106,9 +110,10 @@ private ["_markerstr"];
 			_markerstr setMarkerColorLocal "ColorRed";
 	    };
 	    case "STRING": {
-	    [1,format ["Un civil est en difficulté sur la position:<br/> %1", mapGridPosition (getMarkerPos _pos)]]call DA3F_fnc_hint;
-			_type_Otage createUnit [getMarkerPos _pos,  _grp,"DA3F_otage = this;"];
-			[DA3F_otage,getMarkerPos _pos]spawn DA3F_Go_House;
+	    _pos = getMarkerPos _pos;
+	    [1,format ["Un civil est en difficulté sur la position:<br/> %1", mapGridPosition _pos]]call DA3F_fnc_hint;
+			_type_Otage createUnit [_pos,  _grp,"DA3F_otage = this;"];
+			[DA3F_otage,_pos]spawn DA3F_Go_House;
 			_markerstr = createMarkerLocal [format["Mrk_DA3F_%1", _pos], getPos DA3F_otage];
 			_markerstr setMarkerShapeLocal "ICON";
 			_markerstr setMarkerTypeLocal "hd_dot";

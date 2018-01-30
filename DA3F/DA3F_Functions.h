@@ -225,6 +225,7 @@ class DA3F_Master
             class SetStats {};
             class jumpFnc {};
             class KeyBoard {};
+            class KeyBoard_1 {};
             class SoundVolume {};
             class hint {};
             class SetupTV {};
@@ -259,5 +260,6 @@ class DA3F_Master
             class NoPilote {};
             class ZoneDeRadion {};
             class Globalsound {};
+            class open_barget {};
     };
 };

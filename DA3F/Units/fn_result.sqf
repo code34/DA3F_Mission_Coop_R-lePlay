@@ -28,8 +28,8 @@ if (str _this isEqualTo "true") then [{
 	[]spawn
 	{
 	    waitUntil {!(IsNull (findDisplay 46))};
-	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard"];
-		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then {DA3F_IsKeyActived = false;DA3F_cnt = 0.01}"];
+	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard_1"];
+//		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then [{DA3F_IsKeyActived = false;DA3F_cnt = 0.01},{false}]"];
 	};
 
 	{
@@ -69,7 +69,7 @@ if (str _this isEqualTo "true") then [{
 		    player setVariable [format["DA3F_Rank_%1",_class],true,true];
 	    },{
 		    missionNamespace setVariable [format ["DA3F_Rank_%1",_varName],false];
-	}];
+		}];
 	} forEach ("true" configClasses (missionConfigFile >> "DA3F_Cfg_Rank"));
 
 		_bouf 		= _stats select 0;
@@ -119,9 +119,10 @@ if (str _this isEqualTo "true") then [{
 	[]spawn
 	{
 	    waitUntil {!(IsNull (findDisplay 46))};
-	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard"];
-		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then {DA3F_IsKeyActived = false;DA3F_cnt = 0.01}"];
+	    (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call DA3F_fnc_KeyBoard_1"];
+//		(findDisplay 46) displaySetEventHandler ["KeyUp","if ((_this select 1) isEqualTo 20) then [{DA3F_IsKeyActived = false;DA3F_cnt = 0.01},{false}]"];
 	};
+
 _Pt = 0;
 _arr = [];
 _invItem = (_invVirt select 0);

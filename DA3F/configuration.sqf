@@ -76,9 +76,10 @@ DA3F_Admin=
 	];
 
 // Rappel in onPlayerRespaw (on sait jamais ^^)
-0 enableChannel [false,false];
-1 enableChannel [false,false];
-2 enableChannel [false,false];
-4 enableChannel [false,false];
-4 enableChannel [false,false];
-6 enableChannel [false,false];
+/*
+0 enableChannel [true,false];
+1 enableChannel [true,false];
+2 enableChannel [true,false];
+4 enableChannel [true,false];
+6 enableChannel [true,false];
+*/

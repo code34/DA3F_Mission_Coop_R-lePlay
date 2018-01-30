@@ -23,13 +23,6 @@ DA3F_WCash = 0;
 DA3F_IsAction = false;
 DA3F_Stop_Action = false;
 MCF_CountShoot = 0;
-
-0 enableChannel [false,false];
-1 enableChannel [false,false];
-2 enableChannel [false,false];
-4 enableChannel [false,false];
-4 enableChannel [false,false];
-6 enableChannel [false,false];
 if (player getVariable "DA3F_IsLoadActiv") then {
 	[player, [missionNamespace, "DA3F_InvUnit"]] call BIS_fnc_loadInventory;
 };
@@ -40,3 +33,11 @@ if (isNull(uiNamespace getVariable "MCFStatusBar")) then {
 []call DA3F_fnc_SetupAction;
 	execVM "DA3F\functions\DA3F_particules.sqf";
 player addRating -6000;
+
+/*
+0 enableChannel [true,false];
+1 enableChannel [true,false];
+2 enableChannel [true,false];
+4 enableChannel [true,false];
+6 enableChannel [true,false];
+*/

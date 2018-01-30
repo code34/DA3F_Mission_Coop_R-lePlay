@@ -179,7 +179,9 @@ class DA3F_AdminMenu{
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0.95,0.5,0.2,1};
 			onbuttonclick = "[1,""En cours de dev...""]call DA3F_fnc_hint";
-			class attributes{align="center"};
+			class attributes{
+				align="center";
+			};
 		};
 		class btn_ban: MCF_RscButtonMenu
 		{
@@ -191,7 +193,9 @@ class DA3F_AdminMenu{
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0.95,0.5,0.2,1};
 			onbuttonclick = "[1,""En cours de dev...""]call DA3F_fnc_hint";
-			class attributes{align="center"};
+			class attributes{
+				align="center";
+			};
 		};
 		class CamLookUnit: MCF_RscPicture
 		{
